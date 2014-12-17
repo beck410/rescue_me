@@ -61,7 +61,7 @@
       },
       sass: {
         files: ['app/sass','app/sass/*.scss', 'app/dist/styles/*.css'],
-        tasks: ['sass', 'cssmin','uncss']
+        tasks: ['sass']
       }
 
       // js: {
