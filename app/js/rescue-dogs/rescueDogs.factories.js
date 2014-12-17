@@ -1,5 +1,4 @@
 ;(function(){
   'use strict';
-  angular.module('rescue_me');
+  angular.module('rescue_me')
 })();
-
