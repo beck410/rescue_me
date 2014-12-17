@@ -101,7 +101,7 @@
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish')
       },
-      files: ['Gruntfile.js', 'app/js/**/*.js','test/*.js']
+      files: ['app/js/**/*.js','test/*.js']
     },
 
     connect: {
