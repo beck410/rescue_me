@@ -7,9 +7,9 @@
       templateUrl: 'views/landing.html'
     })
     .when('/snapshot',{
-      templateUrl: 'views/snapshot.html'
-    })
-    .when('/',{
+      templateUrl: 'views/snapshot.html',
+      controller: 'snapshotController',
+      controllerAs: 'snapshot'
     })
     .otherwise({
       redirectTo:'/'
