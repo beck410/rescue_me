@@ -6,7 +6,6 @@
 
     vm.login= function(){
       authFactory.login(vm.email, vm.password, function(){
-        // authFactory.getShelterDogs();
         $location.path('/snapshot');
         $scope.$apply();
       });
