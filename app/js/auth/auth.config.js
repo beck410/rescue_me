@@ -4,16 +4,24 @@
   .config(function($routeProvider){
     $routeProvider
     .when('/register',{
-      templateUrl: 'views/auth/register.html'
+      templateUrl: 'views/auth/register.html',
+      controller: 'registerController',
+      controllerAs: 'register'
     })
     .when('/login',{
-      templateUrl: 'views/auth/login.html'
+      templateUrl: 'views/auth/login.html',
+      controller: 'loginController',
+      controllerAs: 'login'
     })
     .when('/logout',{
-      templateUrl: 'views/auth/logout.html'
+      templateUrl: 'views/auth/logout.html',
+      controller: 'logoutController',
+      controllerAs: 'logout'
     })
     .when('/changepassword',{
-      templateUrl: 'views/auth/changepassword.html'
+      templateUrl: 'views/auth/changepassword.html',
+      controller: 'changePasswordController',
+      controllerAs: 'changepw'
     })
   });
 })();
