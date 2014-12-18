@@ -5,12 +5,15 @@
     $routeProvider
     .when('/register',{
       templateUrl: 'views/auth/register.html'
-    });
+    })
     .when('/login',{
       templateUrl: 'views/auth/login.html'
-    });
+    })
     .when('/logout',{
       templateUrl: 'views/auth/logout.html'
-    });
+    })
+    .when('/changepassword',{
+      templateUrl: 'views/auth/changepassword.html'
+    })
   });
 })();
