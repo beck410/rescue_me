@@ -91,25 +91,16 @@
 
       $http.jsonp(url)
         .success(function(data){
-          var rescueInfo = _objectToArray(data.data);
+          // var rescueInfo = _objectToArray(data.data);
           var firebaseParent = parent;
-          _postToFirebase(rescueInfo, firebaseParent);
+          _postToFirebase(data.data, firebaseParent);
           console.log(data);
-
         })
       .error(function(err){
         console.log('you got an error: ' + err);
 
       });
 
-    }
-
-    function _objectToArray(data){
-      var dataArray = [];
-      for(var key in data){
-        dataArray.push(data[key]);
-      }
-      return dataArray;
     }
 
     function _postToFirebase(data,fbID){
