@@ -5,10 +5,12 @@
 
     var vm = this;
 
-    shelterFactory.getShelterDogs(function(data){
-      vm.shelterDogs = data;
-      console.log(vm.shelterDogs);
+    shelterFactory.getShelterDogs(function(shelterDogs){
+      vm.shelterDogs = shelterDogs;
+      console.log(vm.shelterDogs)
     });
 
   });
 })();
+
+
