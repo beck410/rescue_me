@@ -4,7 +4,9 @@
   .config(function($routeProvider){
     $routeProvider
     .when('/potential-dogs',{
-      templateUrl: 'views/potential-dogs/potential-dogs.html'
+      templateUrl: 'views/potential-dogs/potential-dogs.html',
+      controller:'potentialDogsController',
+      controllerAs:'potential',
     })
   })
 })();
