@@ -4,7 +4,9 @@
   .config(function($routeProvider){
     $routeProvider
     .when('/rescue-dogs',{
-      templateUrl: 'views/rescue-dogs/rescue-dogs.html'
+      templateUrl: 'views/rescue-dogs/rescue-dogs.html',
+      controller: 'rescueDogsController',
+      controllerAs: 'rescue'
     });
   });
 })();
