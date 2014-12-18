@@ -1,11 +1,7 @@
 
 <h2>Rescue Me Login</h2>
 <form name="loginForm" ng-submit="login.login()" novalidate>
-  <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.user}">
-    <label>User Name</label>
-    <input class="form-control" type="user" ng-model="login.user" required>
-  </div>
-  <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.email}">
+    <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.email}">
     <label>Email</label>
     <input class="form-control" type="email" ng-model="login.email" required>
   </div>
