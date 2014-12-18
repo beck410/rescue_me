@@ -5,3 +5,4 @@ bower_components/
 build/
 dist/
 TODO.txt
+firebase.json
