@@ -14,8 +14,18 @@
        });
     }
 
+    function objectToArray(data){
+      var dataArray = [];
+      for(var key in data){
+        dataArray.push(data[key]);
+      }
+      return dataArray;
+    }
+
+
     return {
-      getShelterDogs: getShelterDogs
+      getShelterDogs: getShelterDogs,
+      objectToArray: objectToArray
     };
   });
 })();
