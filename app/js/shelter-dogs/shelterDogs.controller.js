@@ -7,7 +7,7 @@
 
     shelterFactory.getShelterDogs(function(shelterDogs){
       vm.shelterDogs = shelterDogs;
-      console.log(vm.shelterDogs)
+      console.log(vm.shelterDogs);
     });
 
   });

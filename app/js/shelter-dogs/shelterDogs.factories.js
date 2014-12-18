@@ -10,7 +10,7 @@
           var dataToArray = _objectToArray(data);
           _addShelterContactDetails(dataToArray, mainCB,
             function(orgs,dogs,mainCB){
-              mainCB(dogs,orgs);
+              mainCB(dogs);
             });
         })
         .error(function(err){
@@ -30,7 +30,8 @@
       var url = FIREBASE_URL + 'shelterOrgs/.json';
       $http.get(url)
       .success(function(data){
-        configureCB(data, dogs, mainCB);
+        var dataToArray = _objectToArray(data);
+        configureCB(dataToArray, dogs, mainCB);
       })
       .error(function(err){
         console.log('get shelterOrgs error: ' + err);
