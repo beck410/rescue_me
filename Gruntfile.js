@@ -1,4 +1,4 @@
-  module.exports = function(grunt) {
+module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
@@ -57,7 +57,7 @@
         options: {
           livereload: '<%= connect.options.livereload %>'
         },
-        files: ['app/*.html','app/views/*','app/views/*/*','app/sass/*.scss', 'app/styles/*.css','app/js/**.js','app/js/*' 'app/js/*/*/*']
+        files: ['app/*.html','app/views/*/*.html','app/views/*.html','app/sass/*.scss', 'app/styles/*.css','app/js/*.js','app/js/*.js', 'app/js/*/*.js']
       },
       sass: {
         files: ['app/sass','app/sass/*.scss', 'app/dist/styles/*.css'],
