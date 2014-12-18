@@ -4,7 +4,9 @@
   .config(function($routeProvider){
     $routeProvider
     .when('/find-dogs',{
-      templateUrl: 'views/shelter-dogs/shelter-dogs.html'
+      templateUrl: 'views/shelter-dogs/shelter-dogs.html',
+      controller: 'shelterDogsController',
+      controllerAs: 'shelter'
     });
   });
 })();
