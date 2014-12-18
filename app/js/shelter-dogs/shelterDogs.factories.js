@@ -32,6 +32,7 @@
           dog.shelterCity = dogShelter[0].orgCity || '';
           dog.shelterPhone = dogShelter[0].orgPhone || '';
           dog.shelterWebsite = dogShelter[0].orgWebsiteUrl || '';
+          dog.shelterState = dogShelter[0].orgState || '';
           newShelterDogArray.push(dog);
         }
       });

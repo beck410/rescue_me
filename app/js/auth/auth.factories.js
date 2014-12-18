@@ -33,14 +33,12 @@
           'resultOrder' : 'asc',
           'calcFoundRows': 'Yes',
           'fields': [
-            'orgID','orgLocation','orgName', 'orgAddress', 'orgCity','orgPhone','orgEmail','orgWebsiteUrl'
-
+            'orgID','orgLocation','orgName', 'orgAddress', 'orgCity','orgPhone','orgEmail','orgWebsiteUrl','orgState'
             ],
           'filters':[
           {
             'fieldName':'orgID',
             'operation':'notblank',
-
           }]
         }
       };
@@ -78,7 +76,7 @@
             'fieldName':'animalNeedsFoster',
             'operation':'equal',
             'criteria': 'yes'
-          }
+           }
           ]
         }
       };
