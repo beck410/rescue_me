@@ -6,8 +6,7 @@
     var vm = this;
 
     shelterFactory.getShelterDogs(function(data){
-      var transformedData = shelterFactory.objectToArray(data);
-      vm.shelterDogs = transformedData;
+      vm.shelterDogs = data;
       console.log(vm.shelterDogs);
     });
 

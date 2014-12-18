@@ -7,14 +7,15 @@
       var url = FIREBASE_URL + 'shelterDogs/.json';
       $http.get(url)
         .success(function(data){
-          cb(data);
+          var dataToArray = _objectToArray(data)
+          cb(dataToArray);
         })
         .error(function(err){
           console.log('get shelterDogs error:' + err);
        });
     }
 
-    function objectToArray(data){
+    function _objectToArray(data){
       var dataArray = [];
       for(var key in data){
         dataArray.push(data[key]);
@@ -22,10 +23,8 @@
       return dataArray;
     }
 
-
     return {
       getShelterDogs: getShelterDogs,
-      objectToArray: objectToArray
     };
   });
 })();
