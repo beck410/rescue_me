@@ -7,6 +7,11 @@
       templateUrl: 'views/shelter-dogs/shelter-dogs.html',
       controller: 'shelterDogsController',
       controllerAs: 'shelter'
-    });
+    })
+    .when('/find-dogs/:id',{
+      templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
+      controller: 'shelterDogsController',
+      controllerAs: 'shelter'
+    })
   });
 })();
