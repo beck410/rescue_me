@@ -124,19 +124,17 @@ module.exports = function(grunt) {
       },
       scripts: {
         options: {
-          destPrefix: 'app/dist/'
+          destPrefix: 'app/vendors/'
           },
         files: {
           'js/firebase/firebase.js': 'firebase/firebase.js',
-          'js/jquery/jquery.min.js': 'jquery/dist/jquery.js',
+          'js/jquery/jquery.js': 'jquery/dist/jquery.js',
           'js/lodash/lodash.js': 'lodash/dist/lodash.js',
           'js/angular/angular.js': 'angular/angular.js',
-          'js/angular-route/angular-route.min.js': 'angular-route/angular-route.min.js',
-          'js/angular-route/angular-route.min.js.map': 'angular-route/angular-route.min.js.map',
+          'js/angular-route/angular-route.js': 'angular-route/angular-route.js',
           'styles/normalize.css' : 'normalize.css/normalize.css',
           'js/bootstrap.js' : 'bootstrap/dist/js/bootstrap.js',
-          'styles/bootstrap.css' : 'bootstrap/dist/css/bootstrap.css',
-          'styles/bootstrap.css.map' : 'bootstrap/dist/css/bootstrap.css.map'
+          'styles/bootstrap.css' : 'bootstrap/dist/css/bootstrap.css'
         }
       }
     }
