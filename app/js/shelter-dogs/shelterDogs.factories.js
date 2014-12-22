@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('shelterFactory',function($http,FIREBASE_URL){
+  .factory('shelterFactory',function($rootScope, $http,FIREBASE_URL){
 
     function getShelterDogs(mainCB){
       var url = FIREBASE_URL + 'shelterDogs/.json';
@@ -11,6 +11,7 @@
           _addShelterContactDetails(dataToArray, mainCB,
             function(orgs,dogs,mainCB){
               var configuredData = _addShelterContactInfo(dogs,orgs);
+              $rootScope.shelterDog = configuredData;
               mainCB(configuredData);
             });
         })
@@ -19,6 +20,12 @@
        });
     }
 
+    function getShelterDogDetails(id, cb){
+      var dog = $rootScope.shelterDog[id];
+      cb(dog);
+    }
+
+    //PRIVATE FUNCTIONS
     //http://plnkr.co/edit/HZzR5ILFq4F7lFu6OlGr
     function _addShelterContactInfo(dogs, orgs){
       var newShelterDogArray = [];
@@ -61,6 +68,7 @@
 
     return {
       getShelterDogs: getShelterDogs,
+      getShelterDogDetails: getShelterDogDetails
     };
   });
 })();

@@ -10,8 +10,8 @@
     })
     .when('/find-dogs/:id',{
       templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
-      controller: 'shelterDogsController',
-      controllerAs: 'shelter'
+      controller: 'showShelterController',
+      controllerAs: 'showShelter'
     })
   });
 })();
