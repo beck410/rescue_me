@@ -11,7 +11,7 @@
           _addShelterContactDetails(dataToArray, mainCB,
             function(orgs,dogs,mainCB){
               var configuredData = _addShelterContactInfo(dogs,orgs);
-              $rootScope.shelterDog = configuredData;
+              $rootScope.shelterDogs = configuredData;
               mainCB(configuredData);
             });
         })
@@ -21,7 +21,7 @@
     }
 
     function getShelterDogDetails(id, cb){
-      var dog = $rootScope.shelterDog[id];
+      var dog = $rootScope.shelterDogs[id];
       cb(dog);
     }
 

@@ -1,14 +1,19 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('shelterDogsController',function(shelterFactory){
+  .controller('shelterDogsController',function(shelterFactory, $rootScope){
 
     var vm = this;
-
-    shelterFactory.getShelterDogs(function(shelterDogs){
-      vm.shelterDogs = shelterDogs;
-    });
-
+    console.log($rootScope.shelterDogs)
+    if(!$rootScope.shelterDogs){
+      shelterFactory.getShelterDogs(function(shelterDogs){
+        vm.shelterDogs = shelterDogs;
+        console.log('http')
+      });
+    } else {
+      vm.shelterDogs = $rootScope.shelterDogs;
+      console.log('rootScope');
+    }
   })
   .controller('showShelterController', function(shelterFactory, $routeParams){
     var vm = this;
