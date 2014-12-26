@@ -60,26 +60,6 @@
         });
     }
 
-    //http://plnkr.co/edit/HZzR5ILFq4F7lFu6OlGr
-    function _addShelterContactInfo(dogs, orgs){
-      var newShelterDogArray = [];
-      dogs.forEach(function(dog){
-        var dogId = dog.animalOrgID;
-        var dogShelter = _.filter(orgs,{'orgID':dogId});
-        if(dogShelter.length !== 0){
-          dog.shelterName = dogShelter[0].orgName || '';
-          dog.shelterEmail = dogShelter[0].orgEmail || '';
-          dog.shelterAddress = dogShelter[0].orgAddress || '';
-          dog.shelterCity = dogShelter[0].orgCity || '';
-          dog.shelterPhone = dogShelter[0].orgPhone || '';
-          dog.shelterWebsite = dogShelter[0].orgWebsiteUrl || '';
-          dog.shelterState = dogShelter[0].orgState || '';
-          newShelterDogArray.push(dog);
-        }
-      });
-      return newShelterDogArray;
-    }
-
     function _objectToArray(data){
       var dataArray = [];
       for(var key in data){

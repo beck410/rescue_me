@@ -109,12 +109,25 @@
 
     function _addContactInfo(mainCB,dogs,orgs,cb){
       console.log('addContactInfo');
-      console.log(dogs);
-      console.log(orgs);
-      cb(mainCB)
+      for(var dog in dogs){
+        var dogId = dogs[dog].animalOrgID;
+        var dogShelter = (_.filter(orgs,{'orgID':dogId}));
+        if(dogShelter.length !== 0){
+          dogs[dog].shelterName = dogShelter[0].orgName || '';
+          dogs[dog].shelterEmail = dogShelter[0].orgEmail || '';
+          dogs[dog].shelterAddress = dogShelter[0].orgAddress || '';
+          dogs[dog].shelterCity = dogShelter[0].orgCity || '';
+          dogs[dog].shelterPhone = dogShelter[0].orgPhone || '';
+          dogs[dog].shelterWebsite = dogShelter[0].orgWebsiteUrl || '';
+          dogs[dog].shelterState = dogShelter[0].orgState || '';
+        }
+      };
+      cb(mainCB,dogs)
     }
 
     function _postDogsToFirebase(cb,dogs){
+      console.log('post dogs')
+      console.log(dogs);
       cb();
     }
 
