@@ -12,8 +12,8 @@
         if(error === null) {
           console.log('user logged in');
           _getShelterDogs(function(dogs){
-            _getShelterOrgs(dogs,function(dogs){
-              _addContactInfo(dogs,function(){
+            _getShelterOrgs(dogs,function(dogs,orgs){
+              _addContactInfo(dogs,orgs,function(){
                 _postDogsToFirebase(mainCB);
               })
             })
@@ -72,18 +72,50 @@
     }
 
     function _getShelterOrgs(dogs,cb){
-      console.log(dogs);
-      cb();
+      console.log('get shelter orgs');
+      var keys = {
+        'apikey': 'pkF6l2hC',
+        'objectType': 'orgs',
+        'objectAction': 'publicSearch',
+        'search': {
+          'resultStart' : 0,
+          'resultLimit' : 500,
+          'resultSort': 'orgID',
+          'resultOrder' : 'asc',
+          'calcFoundRows': 'Yes',
+          'fields': [
+          'orgID','orgLocation','orgName', 'orgAddress', 'orgCity','orgPhone','orgEmail','orgWebsiteUrl','orgState'
+          ],
+          'filters':[
+            {
+              'fieldName':'orgID',
+              'operation':'notblank',
+            }
+          ]
+        }
+      };
+      var encodedKeys = JSON.stringify(keys);
+      var url = 'https://api.rescuegroups.org/http/json/?data=' + encodedKeys + '&callback=JSON_CALLBACK';
+
+      $http.jsonp(url)
+      .success(function(shelterOrgs){
+        console.log('shelter orgs api done');
+        cb(dogs,shelterOrgs.data);
+      })
+      .error(function(err){
+        console.log('you got an error: ' + err);
+      });
     }
 
-    function _addContactInfo(cb){
+    function _addContactInfo(dogs,orgs,cb){
       console.log('addContactInfo');
+      console.log(dogs);
+      console.log(orgs);
       cb();
     }
 
-    function _postDogsToFirebase(cb){
-      console.log('postDogsToFirebase');
-      cb();
+    function _postDogsToFirebase(dogs,cb){
+      //cb();
     }
 
     return {
