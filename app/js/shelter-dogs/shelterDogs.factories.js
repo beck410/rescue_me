@@ -1,4 +1,4 @@
-;(function(){
+  ;(function(){
   'use strict';
   angular.module('rescue_me')
   .factory('shelterFactory',function($rootScope, $http,FIREBASE_URL){
@@ -20,6 +20,7 @@
        });
     }
 
+
     function getShelterDogDetails(id, cb){
       var dog = $rootScope.shelterDogs[id];
       cb(dog);
@@ -39,7 +40,7 @@
         if(cb){
           cb();
         }
-        console.log('dog deleted');
+          console.log('dog deleted');
       })
       .error(function(err){
         console.log('delete dog error: ' + err);

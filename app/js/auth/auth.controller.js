@@ -6,8 +6,9 @@
 
     vm.login= function(){
       authFactory.login(vm.email, vm.password, function(){
-        $location.path('/snapshot');
-        $scope.$apply();
+        console.log('login done');
+        // $location.path('/snapshot');
+        // $scope.$apply();
       });
     };
 
