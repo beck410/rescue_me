@@ -11,10 +11,10 @@
       }, function(error, authData){
         if(error === null) {
           console.log('user logged in');
-          _getShelterDogs(function(dogs){
-            _getShelterOrgs(dogs,function(dogs,orgs){
-              _addContactInfo(dogs,orgs,function(){
-                _postDogsToFirebase(mainCB);
+          _getShelterDogs(mainCB,function(mainCB,dogs){
+            _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
+              _addContactInfo(mainCB,dogs,orgs,function(mainCB){
+                _postDogsToFirebase(mainCB,dogs);
               })
             })
           });
@@ -24,7 +24,7 @@
       });
     }
 
-    function _getShelterDogs(cb){
+    function _getShelterDogs(mainCB, cb){
       console.log('getShelterDogs');
       var keys ={
         'apikey':'pkF6l2hC',
@@ -64,14 +64,14 @@
       $http.jsonp(url)
       .success(function(shelterDogs){
         console.log('shelter dogs api done');
-        cb(shelterDogs.data);
+        cb(mainCB,shelterDogs.data);
       })
       .error(function(err){
         console.log('you got an error: ' + err);
       });
     }
 
-    function _getShelterOrgs(dogs,cb){
+    function _getShelterOrgs(mainCB,dogs,cb){
       console.log('get shelter orgs');
       var keys = {
         'apikey': 'pkF6l2hC',
@@ -100,22 +100,22 @@
       $http.jsonp(url)
       .success(function(shelterOrgs){
         console.log('shelter orgs api done');
-        cb(dogs,shelterOrgs.data);
+        cb(mainCB,dogs,shelterOrgs.data);
       })
       .error(function(err){
         console.log('you got an error: ' + err);
       });
     }
 
-    function _addContactInfo(dogs,orgs,cb){
+    function _addContactInfo(mainCB,dogs,orgs,cb){
       console.log('addContactInfo');
       console.log(dogs);
       console.log(orgs);
-      cb();
+      cb(mainCB)
     }
 
-    function _postDogsToFirebase(dogs,cb){
-      //cb();
+    function _postDogsToFirebase(cb,dogs){
+      cb();
     }
 
     return {
