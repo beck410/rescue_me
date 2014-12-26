@@ -25,7 +25,40 @@
       cb(dog);
     }
 
+    function addToPotentialList(id,cb){
+      // _postDog();
+      // _deleteDog();
+      cb();
+    }
+
     //PRIVATE FUNCTIONS
+
+    function _deleteDog(url,cb){
+      $http.delete(url)
+      .success(function(){
+        if(cb){
+          cb();
+        }
+        console.log('dog deleted');
+      })
+      .error(function(err){
+        console.log('delete dog error: ' + err);
+      });
+    }
+
+    function _postDog(url,cb,dog){
+      $http.post(url,dog)
+        .success(function(){
+          if(cb){
+            cb();
+          }
+          console.log('post dog to potential db');
+        })
+        .error(function(err){
+          console.log('post dog error: ' + err);
+        });
+    }
+
     //http://plnkr.co/edit/HZzR5ILFq4F7lFu6OlGr
     function _addShelterContactInfo(dogs, orgs){
       var newShelterDogArray = [];
@@ -68,7 +101,8 @@
 
     return {
       getShelterDogs: getShelterDogs,
-      getShelterDogDetails: getShelterDogDetails
+      getShelterDogDetails: getShelterDogDetails,
+      addToPotentialList: addToPotentialList
     };
   });
 })();
