@@ -120,6 +120,8 @@
           dogs[dog].shelterPhone = dogShelter[0].orgPhone || '';
           dogs[dog].shelterWebsite = dogShelter[0].orgWebsiteUrl || '';
           dogs[dog].shelterState = dogShelter[0].orgState || '';
+        } else {
+          delete dogs[dog];
         }
       }
       cb(mainCB,dogs);
