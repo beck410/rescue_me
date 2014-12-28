@@ -121,14 +121,21 @@
           dogs[dog].shelterWebsite = dogShelter[0].orgWebsiteUrl || '';
           dogs[dog].shelterState = dogShelter[0].orgState || '';
         }
-      };
-      cb(mainCB,dogs)
+      }
+      cb(mainCB,dogs);
     }
 
     function _postDogsToFirebase(cb,dogs){
-      console.log('post dogs')
-      console.log(dogs);
-      cb();
+      var url = FIREBASE_URL + 'shelterDogs.json';
+      var jsonData = angular.toJson(dogs);
+      $http.put(url,jsonData)
+      .success(function(){
+        console.log('shelterDogs pushed to firebase');
+        cb();
+      })
+      .error(function(err){
+        console.log('firebase shelterDogs error: ' + err);
+      });
     }
 
     return {
