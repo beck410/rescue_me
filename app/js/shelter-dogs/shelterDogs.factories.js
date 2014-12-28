@@ -1,19 +1,13 @@
   ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('shelterFactory',function($rootScope, $http,FIREBASE_URL){
+  .factory('shelterFactory',function($http,FIREBASE_URL){
 
-    function getShelterDogs(mainCB){
+    function getShelterDogs(cb){
       var url = FIREBASE_URL + 'shelterDogs/.json';
       $http.get(url)
-        .success(function(data){
-          var dataToArray = _objectToArray(data);
-          _addShelterContactDetails(dataToArray, mainCB,
-            function(orgs,dogs,mainCB){
-              var configuredData = _addShelterContactInfo(dogs,orgs);
-              $rootScope.shelterDogs = configuredData;
-              mainCB(configuredData);
-            });
+        .success(function(dogs){
+          cb(dogs);
         })
         .error(function(err){
           console.log('get shelterDogs error:' + err);
