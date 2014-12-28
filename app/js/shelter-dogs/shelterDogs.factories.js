@@ -16,8 +16,16 @@
 
 
     function getShelterDogDetails(id, cb){
-      var dog = $rootScope.shelterDogs[id];
-      cb(dog);
+      var url = FIREBASE_URL + 'shelterDogs/' + id +'.json';
+      console.log(url)
+      $http.get(url)
+      .success(function(dog){
+        console.log(dog);
+        cb(dog);
+      })
+      .error(function(err){
+        console.log('get shelter dog error: ' + err)
+      })
     }
 
     function addToPotentialList(id,cb){

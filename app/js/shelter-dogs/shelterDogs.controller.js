@@ -15,9 +15,7 @@
     var id = $routeParams.id;
     shelterFactory.getShelterDogDetails(id,function(shelterDog){
       vm.shelterDog = shelterDog;
-      console.log(vm.shelterDog);
     });
   });
 })();
-
 
