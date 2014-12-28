@@ -1,14 +1,15 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('loginController', function(authFactory, $scope, $location){
+  .controller('loginController', function(authFactory, $scope, $location,$timeout){
     var vm = this;
 
     vm.login= function(){
       authFactory.login(vm.email, vm.password, function(){
-        console.log('login done');
-        // $location.path('/snapshot');
-        // $scope.$apply();
+        $timeout(function(){
+          $location.path('/snapshot');
+          $scope.$apply();
+        })
       });
     };
 
