@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('loginController', function(authFactory, $scope, $location,$timeout){
+  .controller('loginController', function(authFactory, $scope, $location,$timeoutt ){
     var vm = this;
 
     vm.login= function(){
