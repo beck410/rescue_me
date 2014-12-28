@@ -17,39 +17,36 @@
 
     function getShelterDogDetails(id, cb){
       var url = FIREBASE_URL + 'shelterDogs/' + id +'.json';
-      console.log(url)
       $http.get(url)
       .success(function(dog){
-        console.log(dog);
         cb(dog);
       })
       .error(function(err){
-        console.log('get shelter dog error: ' + err)
-      })
+        console.log('get shelter dog error: ' + err);
+      });
     }
 
-    function addToPotentialList(id,cb){
-      // _postDog();
-      // _deleteDog();
-      cb();
+    function addToPotentialList(shelterID,dog,cb){
+      _postDog(dog,cb);
+      _deleteDog(shelterID);
     }
 
     //PRIVATE FUNCTIONS
 
-    function _deleteDog(url,cb){
+    function _deleteDog(shelterID){
+      var url = FIREBASE_URL + 'shelterDogs/' + shelterID + '.json';
       $http.delete(url)
       .success(function(){
-        if(cb){
-          cb();
-        }
-          console.log('dog deleted');
+        console.log('removed dog from fb shelterDogs')
       })
       .error(function(err){
         console.log('delete dog error: ' + err);
       });
     }
 
-    function _postDog(url,cb,dog){
+    function _postDog(dog,cb){
+      console.log(dog);
+      var url = FIREBASE_URL + 'potentialDogs.json'; 
       $http.post(url,dog)
         .success(function(){
           if(cb){
