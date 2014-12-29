@@ -1,2 +1,14 @@
 <h2>Potential Dogs</h2>
+<table>
+  <tbody>
+    <tr ng-repeat="(id,dog) in potential.potentialDogs">
+      <td><img ng-src="{{dog.animalThumbnailUrl}}" alt="potential dog image"></td>
+      <td>{{dog.animalName}}</td>
+      <td>{{dog.animalBreed}}</td>
+      <td>{{dog.shelterState}}</td>
+      <td><a class="btn btn-primary"href="/#/potential-dogs/{{id}}">More Details</a></td>
+      <td><button class="btn btn-primary" ng-click="potential.addToRescueList(id,dog)">Add to Rescued List</button></td>
+    </tr>
+  </tbody>
+</table>
 
