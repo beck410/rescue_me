@@ -37,7 +37,7 @@
       var url = FIREBASE_URL + 'shelterDogs/' + shelterID + '.json';
       $http.delete(url)
       .success(function(){
-        console.log('removed dog from fb shelterDogs')
+        console.log('removed dog from fb shelterDogs');
       })
       .error(function(err){
         console.log('delete dog error: ' + err);
@@ -46,7 +46,7 @@
 
     function _postDog(dog,cb){
       console.log(dog);
-      var url = FIREBASE_URL + 'potentialDogs.json'; 
+      var url = FIREBASE_URL + 'potentialDogs.json';
       $http.post(url,dog)
         .success(function(){
           if(cb){

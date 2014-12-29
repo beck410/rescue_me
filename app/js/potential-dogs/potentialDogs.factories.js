@@ -62,7 +62,6 @@
       getPotentialDogs: getPotentialDogs,
       getDogDetails: getDogDetails,
       addToRescueList: addToRescueList,
-      test:test
     };
 
   });
