@@ -12,6 +12,6 @@
       templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
       controller: 'showPotentialDogController',
       controllerAs: 'show'
-    })
-  })
+    });
+  });
 })();
