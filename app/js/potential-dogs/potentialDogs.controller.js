@@ -7,5 +7,12 @@
       vm.potentialDogs = dogs;
       console.log(vm.potentialDogs);
     });
+  })
+  .controller('showPotentialDogController', function(potentialFactory, $routeParams){
+    var vm = this;
+    var dog = $routeParams.id;
+    potentialFactory.getDogDetails(dog,function(potentialDog){
+      vm.potentialDog = potentialDog;
+    });
   });
 })();

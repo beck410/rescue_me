@@ -6,15 +6,15 @@
     var vm = this;
     shelterFactory.getShelterDogs(function(shelterDogs){
       vm.shelterDogs = shelterDogs;
-    })
+    });
 
     vm.addToPotentialList = function(shelterID,dog){
       shelterFactory.addToPotentialList(shelterID,dog,function(item){
         delete vm.shelterDogs[item];
         alert('dog added to potential list');
         $location.path('/potential-dogs');
-      })
-    }
+      });
+    };
   })
   .controller('showShelterController', function(shelterFactory, $routeParams){
     var vm = this;
