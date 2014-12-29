@@ -20,7 +20,7 @@
     var vm = this;
     var id = $routeParams.id;
     shelterFactory.getShelterDogDetails(id,function(shelterDog){
-      vm.shelterDog = shelterDog;
+      vm.dog = shelterDog;
     });
   });
 })();

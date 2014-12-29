@@ -11,7 +11,7 @@
     .when('/find-dogs/:id',{
       templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
       controller: 'showShelterController',
-      controllerAs: 'showShelter'
+      controllerAs: 'show'
     })
   });
 })();

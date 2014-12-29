@@ -11,7 +11,7 @@
     .when('/potential-dogs/:id', {
       templateUrl: 'views/potential-dogs/potential-dog-details.html',
       controller: 'showPotentialDogController',
-      controllerAs: 'showPotential'
+      controllerAs: 'show'
     })
   })
 })();
