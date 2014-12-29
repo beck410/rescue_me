@@ -9,7 +9,7 @@
       controllerAs:'potential'
     })
     .when('/potential-dogs/:id', {
-      templateUrl: 'views/potential-dogs/potential-dog-details.html',
+      templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
       controller: 'showPotentialDogController',
       controllerAs: 'show'
     })

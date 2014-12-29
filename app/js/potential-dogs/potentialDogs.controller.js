@@ -12,7 +12,7 @@
     var vm = this;
     var dog = $routeParams.id;
     potentialFactory.getDogDetails(dog,function(potentialDog){
-      vm.potentialDog = potentialDog;
+      vm.dog = potentialDog;
     });
   });
 })();

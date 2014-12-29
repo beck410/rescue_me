@@ -14,8 +14,20 @@
       });
     }
 
+    function getDogDetails(dog,cb){
+      var url = FIREBASE_URL + 'potentialDogs/' + dog + '.json';
+      $http.get(url)
+      .success(function(details){
+        cb(details);
+      })
+      .error(function(err){
+        console.log('potential dog details error: ' + err);
+      })
+    }
+
     return {
-      getPotentialDogs: getPotentialDogs
+      getPotentialDogs: getPotentialDogs,
+      getDogDetails: getDogDetails
     };
 
   });
