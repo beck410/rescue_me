@@ -1,10 +1,10 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('potentialDogsController',function(potentialFactory,$location){
+  .controller('potentialDogsController',function(potentialFactory,dogListFactory,$location){
     var vm = this;
-    potentialFactory.getPotentialDogs(function(dogs){
-      vm.potentialDogs = dogs;
+    dogListFactory.getDogList('potentialDogs',function(dogs){
+      vm.dogs = dogs;
     });
 
     vm.addToRescueList = function(potentialID,dog){
