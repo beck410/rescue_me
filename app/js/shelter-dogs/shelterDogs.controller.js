@@ -15,10 +15,10 @@
       });
     };
   })
-  .controller('showShelterController', function(shelterFactory, $routeParams){
+  .controller('showShelterController', function(dogDetailsFactory,$routeParams){
     var vm = this;
     var id = $routeParams.id;
-    shelterFactory.getShelterDogDetails(id,function(shelterDog){
+    dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
       vm.dog = shelterDog;
     });
   });
