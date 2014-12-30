@@ -4,9 +4,9 @@
   .config(function($routeProvider){
     $routeProvider
     .when('/rescue-dogs',{
-      templateUrl: 'views/rescue-dogs/rescue-dogs.html',
+      templateUrl: 'views/dog-list.html',
       controller: 'rescueDogsController',
-      controllerAs: 'rescue'
+      controllerAs: 'DogList'
     })
     .when('/rescue-dogs/:id',{
       templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
