@@ -6,7 +6,6 @@
       var url = FIREBASE_URL + 'potentialDogs.json';
       $http.get(url)
       .success(function(dogs){
-        console.log('potential dogs pulled from fb');
         cb(dogs);
       })
       .error(function(err){
@@ -36,7 +35,6 @@
       var url = FIREBASE_URL + 'potentialDogs/' + potentialID + '.json';
       $http.delete(url)
       .success(function(){
-        console.log('removed dog from fb potentialDogs')
       })
       .error(function(err){
         console.log('delete dog error: ' + err);

@@ -11,7 +11,6 @@
     vm.addToPotentialList = function(shelterID,dog){
       shelterFactory.addToPotentialList(shelterID,dog,function(dog){
         delete vm.shelterDogs[dog];
-        alert('dog added to potential list');
         $location.path('/potential-dogs');
       });
     };

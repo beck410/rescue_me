@@ -37,7 +37,6 @@
       var url = FIREBASE_URL + 'shelterDogs/' + shelterID + '.json';
       $http.delete(url)
       .success(function(){
-        console.log('removed dog from fb shelterDogs');
       })
       .error(function(err){
         console.log('delete dog error: ' + err);
