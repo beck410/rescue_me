@@ -4,6 +4,8 @@
   .controller('shelterDogsController',function(shelterFactory,dogListFactory,$location){
 
     var vm = this;
+    vm.dogGroup = 'find-dogs';
+
     dogListFactory.getDogList('shelterDogs',function(shelterDogs){
       vm.dogs = shelterDogs;
     });

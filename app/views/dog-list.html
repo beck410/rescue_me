@@ -5,7 +5,7 @@
     <td>{{dog.animalName}}</td>
     <td>{{dog.animalBreed}}</td>
     <td>{{dog.shelterState}}</td>
-    <td><a class="btn btn-primary" href="/#/find-dogs/{{id}}">More Details</a><td>
+    <td><a class="btn btn-primary" ng-href="/#/{{dogList.dogGroup}}/{{id}}">More Details</a><td>
     <td><button class="btn btn-primary" ng-click="dogList.addToNextList(id,dog)">Add To Potential Dogs</button></td>
     <tr>
     </table>

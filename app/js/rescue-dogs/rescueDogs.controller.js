@@ -13,10 +13,10 @@
       });
     };
   })
-  .controller('showRescueController', function(rescueFactory, $routeParams){
+  .controller('showRescueController', function(dogDetailsFactory, $routeParams){
     var vm = this;
     var dog = $routeParams.id;
-    rescueFactory.getDogDetails(dog, function(rescueDog){
+    dogDetailsFactory.getDogDetails('rescueDogs',dog, function(rescueDog){
       vm.dog = rescueDog;
     });
   });
