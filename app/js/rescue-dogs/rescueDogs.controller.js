@@ -5,8 +5,13 @@
     var vm = this;
     rescueFactory.getRescueDogs(function(dogs){
       vm.rescueDogs = dogs;
-      console.log(vm.rescueDogs);
     });
+
+    vm.removeDog = function(dog){
+      rescueFactory.removeDog(dog,function(rescueDog){
+        delete vm.rescueDogs[rescueDog];
+      })
+    }
   })
   .controller('showRescueController', function(rescueFactory, $routeParams){
     var vm = this;
