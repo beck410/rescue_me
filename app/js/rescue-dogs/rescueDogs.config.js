@@ -6,7 +6,7 @@
     .when('/rescue-dogs',{
       templateUrl: 'views/dog-list.html',
       controller: 'rescueDogsController',
-      controllerAs: 'DogList'
+      controllerAs: 'dogList'
     })
     .when('/rescue-dogs/:id',{
       templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
