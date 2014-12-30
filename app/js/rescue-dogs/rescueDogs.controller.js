@@ -7,5 +7,12 @@
       vm.rescueDogs = dogs;
       console.log(vm.rescueDogs);
     });
+  })
+  .controller('showRescueController', function(rescueFactory, $routeParams){
+    var vm = this;
+    var dog = $routeParams.id;
+    rescueFactory.getDogDetails(dog, function(rescueDog){
+      vm.dog = rescueDog;
+    });
   });
 })();
