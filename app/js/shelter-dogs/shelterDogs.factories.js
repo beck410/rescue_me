@@ -3,18 +3,6 @@
   angular.module('rescue_me')
   .factory('shelterFactory',function($http,FIREBASE_URL){
 
-    function getShelterDogs(cb){
-      var url = FIREBASE_URL + 'shelterDogs/.json';
-      $http.get(url)
-        .success(function(dogs){
-          cb(dogs);
-        })
-        .error(function(err){
-          console.log('get shelterDogs error:' + err);
-       });
-    }
-
-
     function getShelterDogDetails(id, cb){
       var url = FIREBASE_URL + 'shelterDogs/' + id +'.json';
       $http.get(url)
@@ -79,7 +67,6 @@
     }
 
     return {
-      getShelterDogs: getShelterDogs,
       getShelterDogDetails: getShelterDogDetails,
       addToPotentialList: addToPotentialList
     };

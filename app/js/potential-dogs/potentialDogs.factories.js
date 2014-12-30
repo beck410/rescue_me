@@ -2,27 +2,6 @@
   'use strict';
   angular.module('rescue_me')
   .factory('potentialFactory',function(FIREBASE_URL, $http){
-    function getPotentialDogs(cb){
-      var url = FIREBASE_URL + 'potentialDogs.json';
-      $http.get(url)
-      .success(function(dogs){
-        cb(dogs);
-      })
-      .error(function(err){
-        console.log('potential dogs list error: ' + err);
-      });
-    }
-
-    function getDogDetails(dog,cb){
-      var url = FIREBASE_URL + 'potentialDogs/' + dog + '.json';
-      $http.get(url)
-      .success(function(details){
-        cb(details);
-      })
-      .error(function(err){
-        console.log('potential dog details error: ' + err);
-      });
-    }
 
     function addToRescueList(potentialID,dog,cb){
       _postDog(dog,cb);
@@ -43,7 +22,7 @@
 
     function _postDog(dog,cb){
       console.log(dog);
-      var url = FIREBASE_URL + 'rescueDogs.json'; 
+      var url = FIREBASE_URL + 'rescueDogs.json';
       $http.post(url,dog)
         .success(function(){
           if(cb){
@@ -57,8 +36,6 @@
     }
 
     return {
-      getPotentialDogs: getPotentialDogs,
-      getDogDetails: getDogDetails,
       addToRescueList: addToRescueList,
     };
 
