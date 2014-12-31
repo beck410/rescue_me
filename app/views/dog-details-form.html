@@ -1,71 +1,71 @@
 <h1 id="heading">Add Dog Form</h1>
-<form name="dogDetailsForm" ng-submit="dogDetailsForm.$valid && addDogDetails.submitDogDetails()" novalidate>
+<form name="dogForm" ng-submit="dogDetailsForm.$valid && dogList.submitDogDetails()" novalidate>
   <div class="form-group">
     <label>Dog's Name</label>
-    <input type="text" class="form-control" ng-model=addDogDetails.dog.sex>
+    <input type="text" class="form-control" ng-model=dogList.dog.animalName>
   </div>
   <div class="form-group">
     <label>Breed</label>
-    <input type="text" class="form-control" ng-model=addDogDetails.dog.breed>
+    <input type="text" class="form-control" ng-model=dogList.dog.animalBreed>
   </div>
   <div class="form-group">
     <label>Sex</label>
-        <input type="text" class="form-control" ng-model=addDogDetails.dog.sex>
+        <input type="text" class="form-control" ng-model=dogList.dog.animalSex>
   </div>
-    <section ng-show="addDogDetails.potentialDog">
+    <section ng-show="dogList.potentialDog">
     <div class="form-group">
       <label>Kill Date</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.killDate>
+      <input type="text" class="form-control" ng-model=dogList.dog.animalKillDate>
     </div>
     <div class="form-group">
       <label>Shelter Name</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.shelterName>
+      <input type="text" class="form-control" ng-model=dogList.dog.shelterName>
     </div>
     <div class="form-group">
       <label>Shelter State</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.shelterState>
+      <input type="text" class="form-control" ng-model=dogList.dog.shelterState>
     </div>
     <div class="form-group">
       <label>Shelter City</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.ShelterCity>
+      <input type="text" class="form-control" ng-model=dogList.dog.ShelterCity>
     </div>
     <div class="form-group">
       <label>Shelter Email</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.shelterEmail>
+      <input type="text" class="form-control" ng-model=dogList.dog.shelterEmail>
     </div>
     <div class="form-group">
       <label>Shelter Phone</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.shelterPhone>
+      <input type="text" class="form-control" ng-model=dogList.dog.shelterPhone>
     </div>
     <div class="form-group">
       <label>Shelter Website</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.shelterWebsite>
+      <input type="text" class="form-control" ng-model=dogList.dog.shelterWebsite>
     </div>
   </section>
-  <section ng-show="addDogDetails.rescueDog">
+  <section ng-show="dogList.rescueDog">
     <div class="form-group">
       <label>Foster's Name</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.fosterName>
+      <input type="text" class="form-control" ng-model=dogList.dog.fosterName>
     </div>
     <div class="form-group">
       <label>Foster's Phone</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.fosterPhone>
+      <input type="text" class="form-control" ng-model=dogList.dog.fosterPhone>
     </div>
     <div class="form-group">
       <label>Foster's Email</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.fosterEmail>
+      <input type="text" class="form-control" ng-model=dogList.dog.fosterEmail>
     </div>
     <div class="form-group">
       <label>Foster's Address</label>
-      <input type="text" class="form-control" ng-model=addDogDetails.dog.fosterAddress>
+      <input type="text" class="form-control" ng-model=dogList.dog.fosterAddress>
     </div>
   </section>
   <div class="form-group">
     <label>Summary of Dog</label>
-    <input type="text" class="form-control" ng-model=addDogDetails.dog.summary>
+    <input type="text" class="form-control" ng-model=dogList.dog.animalSummary>
   </div>
   <div class="form-group">
     <label>Notes</label>
-    <input type="text" class="form-control" ng-model=addDogDetails.dog.notes>
+    <input type="text" class="form-control" ng-model=dogList.dog.animalNotes>
   </div>
 </form>
