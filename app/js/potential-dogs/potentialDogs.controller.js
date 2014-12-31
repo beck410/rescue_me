@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('potentialDogsController',function(potentialFactory,dogListFactory,removeDogFactory,$location){
+  .controller('potentialDogsController',function(potentialFactory,dogListFactory,removeDogFactory,moveDogFactory,$location){
     var vm = this;
     vm.dogGroup = 'potential-dogs';
     vm.dogHeader = 'Potential Dogs';
@@ -18,12 +18,12 @@
       });
     };
 
-    vm.addToRescueList = function(potentialID,dog){
-      potentialFactory.addToRescueList(potentialID,dog,function(dog){
-        delete vm.potentialDogs[dog];
+    vm.addToNextList = function(potentialID,dog){
+      moveDogFactory.addToNextList('rescueDogs','potentialDogs',potentialID,dog,function(dog){
+        delete vm.dogs[dog];
         $location.path('/rescue-dogs');
       });
-    };
+     };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams){
     var vm = this;
