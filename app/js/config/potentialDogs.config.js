@@ -8,10 +8,15 @@
       controller:'potentialDogsController',
       controllerAs:'dogList'
     })
-    .when('/potential-dogs/:id', {
+    .when('/potential-dogs/:id',{
       templateUrl: 'views/dog-details.html',
       controller: 'showPotentialDogController',
       controllerAs: 'dogDetails'
+    })
+    .when('/potential-dog/:id/edit',{
+      templateUrl: 'views/dog-details-form.html',
+      controller: 'editPotentialDog',
+      controllerAd: 'addDogDetails'
     });
   });
 })();

@@ -31,5 +31,8 @@
     dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
       vm.dog = potentialDog;
     });
-  });
+  })
+  .controller('editPotentialDog',{
+    
+  })
 })();
