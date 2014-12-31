@@ -4,7 +4,7 @@
   .factory('removeDogFactory',function($http,FIREBASE_URL){
 
     function removeDog(dogDB,dog,cb){
-      var url = FIREBASE_URL + 'rescueDogs/' + dog + '.json';
+      var url = FIREBASE_URL + dogDB + '/' + dog + '.json';
       $http.delete(url)
       .success(function(){
         cb(dog);
