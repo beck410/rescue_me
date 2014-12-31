@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('shelterDogsController',function(shelterFactory,moveDogFactory,dogListFactory,$location){
+  .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location){
 
     var vm = this;
     vm.dogGroup = 'find-dogs';
@@ -27,4 +27,3 @@
     });
   });
 })();
-

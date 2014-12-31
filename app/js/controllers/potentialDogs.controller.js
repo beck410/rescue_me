@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('potentialDogsController',function(potentialFactory,dogListFactory,removeDogFactory,moveDogFactory,$location){
+  .controller('potentialDogsController',function(dogListFactory,removeDogFactory,moveDogFactory,$location){
     var vm = this;
     vm.dogGroup = 'potential-dogs';
     vm.dogHeader = 'Potential Dogs';
