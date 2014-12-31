@@ -5,7 +5,7 @@
 
     function getDogList(dogDB,cb){
       var url = FIREBASE_URL + dogDB + '/.json';
-      $http.get(url)
+      $http.get(url, {cache:true})
         .success(function(dogs){
           cb(dogs);
         })
