@@ -1,5 +1,5 @@
 <h1 id="heading">Add Dog Form</h1>
-<form name="dogForm" ng-submit="dogDetailsForm.$valid && dogList.submitDogDetails()" novalidate>
+<form name="dogForm" ng-submit="dogList.submitDogDetails()" novalidate>
   <div class="form-group">
     <label>Dog's Name</label>
     <input type="text" class="form-control" ng-model=dogList.dog.animalName>
@@ -68,4 +68,5 @@
     <label>Notes</label>
     <input type="text" class="form-control" ng-model=dogList.dog.animalNotes>
   </div>
+  <input class="btn btn-primary" type="submit" value="Add Dog">
 </form>

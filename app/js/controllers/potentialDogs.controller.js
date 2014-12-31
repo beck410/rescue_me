@@ -32,7 +32,7 @@
       vm.dog = potentialDog;
     });
   })
-  .controller('editPotentialDog',function(dogDetailsFactory,$routeParams){
+  .controller('editPotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
 
@@ -40,10 +40,10 @@
       vm.dog = dogDetails;
     });
 
-    // vm.submitDogDetails = function(){
-    //   addDogDetailsFactory.addDogDetails(vm.addDogDetails,function(dog){
-
-    //   })
-    // };
+    vm.submitDogDetails = function(){
+      moveDogFactory.addDogToList('potentialDogs','shelterDogs',id,vm.dog,function(dog){
+        $location.path('/potential-dogs/')
+      });
+    };
   });
 })();

@@ -3,7 +3,7 @@
   angular.module('rescue_me')
   .factory('moveDogFactory',function(FIREBASE_URL,$http){
 
-    function addToNextList(newDogDB,oldDogDB,dogID,dog,cb){
+    function addDogToList(newDogDB,oldDogDB,dogID,dog,cb){
       _postDog(newDogDB,dog,cb);
       _deleteDog(oldDogDB,dogID,dog,cb);
     }
@@ -35,7 +35,7 @@
     }
 
     return {
-      addToNextList: addToNextList
+      addDogToList: addDogToList
     };
   });
 })();
