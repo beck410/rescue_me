@@ -16,7 +16,7 @@
     .when('/potential-dogs/:id/edit',{
       templateUrl: 'views/dog-details-form.html',
       controller: 'editPotentialDog',
-      controllerAd: 'addDogDetails'
+      controllerAs: 'dogList'
     });
   });
 })();
