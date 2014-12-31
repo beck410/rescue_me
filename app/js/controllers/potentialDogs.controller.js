@@ -32,7 +32,18 @@
       vm.dog = potentialDog;
     });
   })
-  .controller('editPotentialDog',function(){
+  .controller('editPotentialDog',function(dogDetailsFactory,$routeParams){
     var vm = this;
-  })
+    var id = $routeParams.id;
+
+    dogDetailsFactory.getDogDetails('shelterDogs',id,function(dogDetails){
+      vm.dog = dogDetails;
+    });
+
+    // vm.submitDogDetails = function(){
+    //   addDogDetailsFactory.addDogDetails(vm.addDogDetails,function(dog){
+
+    //   })
+    // };
+  });
 })();
