@@ -30,7 +30,6 @@
     var dog = $routeParams.id;
     dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
       vm.dog = potentialDog;
-      console.log(vm.dog)
     });
   });
 })();
