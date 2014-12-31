@@ -13,7 +13,7 @@
       controller: 'showPotentialDogController',
       controllerAs: 'dogDetails'
     })
-    .when('/potential-dog/:id/edit',{
+    .when('/potential-dogs/:id/edit',{
       templateUrl: 'views/dog-details-form.html',
       controller: 'editPotentialDog',
       controllerAd: 'addDogDetails'
