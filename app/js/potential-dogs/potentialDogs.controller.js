@@ -4,6 +4,9 @@
   .controller('potentialDogsController',function(potentialFactory,dogListFactory,$location){
     var vm = this;
     vm.dogGroup = 'potential-dogs';
+    vm.dogHeader = 'Potential Dogs';
+    vm.nextDogGroup = 'Rescue';
+    vm.removeButton = true;
 
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.dogs = dogs;

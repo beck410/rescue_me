@@ -4,6 +4,8 @@
   .controller('rescueDogsController',function(rescueFactory,dogListFactory){
     var vm = this;
     vm.dogGroup = 'rescue-dogs';
+    vm.dogHeader = 'Rescue Dogs';
+    vm.removeButton = true;
 
     dogListFactory.getDogList('rescueDogs',function(rescueDogs){
       vm.dogs = rescueDogs;
