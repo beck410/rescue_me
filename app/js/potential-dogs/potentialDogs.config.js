@@ -9,9 +9,9 @@
       controllerAs:'dogList'
     })
     .when('/potential-dogs/:id', {
-      templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
+      templateUrl: 'views/dog-details.html',
       controller: 'showPotentialDogController',
-      controllerAs: 'show'
+      controllerAs: 'dogDetails'
     });
   });
 })();

@@ -3,6 +3,8 @@
   angular.module('rescue_me')
   .controller('potentialDogsController',function(potentialFactory,dogListFactory,$location){
     var vm = this;
+    vm.dogGroup = 'potential-dogs';
+
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.dogs = dogs;
     });
@@ -14,11 +16,12 @@
       });
     };
   })
-  .controller('showPotentialDogController', function(potentialFactory, $routeParams){
+  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams){
     var vm = this;
     var dog = $routeParams.id;
-    potentialFactory.getDogDetails(dog,function(potentialDog){
+    dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
       vm.dog = potentialDog;
+      console.log(vm.dog)
     });
   });
 })();
