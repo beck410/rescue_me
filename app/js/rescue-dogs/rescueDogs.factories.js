@@ -3,18 +3,6 @@
   angular.module('rescue_me')
   .factory('rescueFactory',function(FIREBASE_URL,$http){
 
-    function getDogDetails(dog, cb){
-      var url = FIREBASE_URL + 'rescueDogs/' + dog + '.json';
-      console.log(url);
-      $http.get(url)
-      .success(function(rescueDog){
-        cb(rescueDog);
-      })
-      .error(function(err){
-        console.log('get rescue dog details err:' + err);
-      });
-    }
-
     function removeDog(dog,cb){
       var url = FIREBASE_URL + 'rescueDogs/' + dog + '.json';
       $http.delete(url)
@@ -27,7 +15,6 @@
     }
 
     return {
-      getDogDetails: getDogDetails,
       removeDog: removeDog
     };
   });
