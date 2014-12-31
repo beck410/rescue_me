@@ -9,9 +9,9 @@
       controllerAs: 'dogList'
     })
     .when('/rescue-dogs/:id',{
-      templateUrl: 'views/shelter-dogs/shelter-dog-details.html',
+      templateUrl: 'views/dog-details.html',
       controller: 'showRescueController',
-      controllerAs: 'show'
+      controllerAs: 'dogDetails'
     })
   });
 })();
