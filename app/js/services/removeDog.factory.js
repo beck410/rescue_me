@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('removeDogFactory',function(){
+  .factory('removeDogFactory',function($http,FIREBASE_URL){
 
     function removeDog(dogDB,dog,cb){
       var url = FIREBASE_URL + 'rescueDogs/' + dog + '.json';
