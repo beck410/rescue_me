@@ -1,0 +1,71 @@
+<h1 id="heading">Add Dog Form</h1>
+<form name="dogDetailsForm" ng-submit="dogDetailsForm.$valid && addDogDetails.submitDogDetails()" novalidate>
+  <div class="form-group">
+    <label class="control-group">Dog's Name<label>
+    <input type="text" ng-model=addDogDetails.dog.sex>
+  </div>
+  <div class="form-group">
+    <label class="control-group">Breed<label>
+    <input type="text" ng-model=addDogDetails.dog.breed>
+  </div>
+  <div class="form-group">
+    <label class="control-group">Sex<label>
+        <input type="text" ng-model=addDogDetails.dog.sex>
+  </div>
+    <div class="form-group">
+      <label class="control-group">Kill Date<label>
+      <input type="text" ng-model=addDogDetails.dog.killDate>
+    </div>
+    <section ng-show="addDogDetails.potentialDog">
+    <div class="form-group">
+      <label class="control-group">Shelter Name<label>
+      <input type="text" ng-model=addDogDetails.dog.shelterName>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Shelter State<label>
+      <input type="text" ng-model=addDogDetails.dog.shelterState>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Shelter City<label>
+      <input type="text" ng-model=addDogDetails.dog.ShelterCity>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Shelter Email<label>
+      <input type="text" ng-model=addDogDetails.dog.shelterEmail>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Shelter Phone<label>
+      <input type="text" ng-model=addDogDetails.dog.shelterPhone>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Shelter Website<label>
+      <input type="text" ng-model=addDogDetails.dog.shelterWebsite>
+    </div>
+  </section>
+  <section ng-show="addDogDetails.rescueDog">
+    <div class="form-group">
+      <label class="control-group">Foster's Name<label>
+      <input type="text" ng-model=addDogDetails.dog.fosterName>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Foster's Phone<label>
+      <input type="text" ng-model=addDogDetails.dog.fosterPhone>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Foster's Email<label>
+      <input type="text" ng-model=addDogDetails.dog.fosterEmail>
+    </div>
+    <div class="form-group">
+      <label class="control-group">Foster's Address<label>
+      <input type="text" ng-model=addDogDetails.dog.fosterAddress>
+    </div>
+  </section>
+  <div class="form-group">
+    <label class="control-group">Summary of Dog<label>
+    <input type="text" ng-model=addDogDetails.dog.summary>
+  </div>
+  <div class="form-group">
+    <label class="control-group">Notes<label>
+    <input type="text" ng-model=addDogDetails.dog.notes>
+  </div>
+</form>
