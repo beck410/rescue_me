@@ -32,7 +32,7 @@
       vm.dog = potentialDog;
     });
   })
-  .controller('editPotentialDog',{
-    
+  .controller('editPotentialDog',function(){
+    var vm = this;
   })
 })();
