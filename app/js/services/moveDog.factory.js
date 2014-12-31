@@ -11,9 +11,9 @@
     function _postDog(newDogDB,dog,cb){
       var url = FIREBASE_URL + newDogDB + '.json';
       $http.post(url,dog)
-        .success(function(){
+        .success(function(dog){
           if(cb){
-            cb();
+            cb(dog);
           }
         })
         .error(function(err){
