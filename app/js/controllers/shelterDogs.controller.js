@@ -13,10 +13,7 @@
     });
 
     vm.addToNextList = function(shelterID,dog){
-      moveDogFactory.addToNextList('potentialDogs','shelterDogs',shelterID,dog,function(dog){
-        delete vm.dogs[dog];
-        $location.path('/potential-dogs/' + dog.name + '/edit');
-      });
+        $location.path('/potential-dogs/' + shelterID + '/edit');
     };
   })
   .controller('showShelterController', function(dogDetailsFactory,$routeParams){
