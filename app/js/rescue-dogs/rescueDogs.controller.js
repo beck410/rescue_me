@@ -13,7 +13,7 @@
 
     vm.removeDog = function(dog){
       removeDogFactory.removeDog('rescueDogs',dog,function(rescueDog){
-        delete vm.rescueDogs[rescueDog];
+        delete vm.dogs[rescueDog];
       });
     };
   })

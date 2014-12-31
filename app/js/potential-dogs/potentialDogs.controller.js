@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('potentialDogsController',function(potentialFactory,dogListFactory,$location){
+  .controller('potentialDogsController',function(potentialFactory,dogListFactory,removeDogFactory,$location){
     var vm = this;
     vm.dogGroup = 'potential-dogs';
     vm.dogHeader = 'Potential Dogs';
@@ -11,6 +11,12 @@
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.dogs = dogs;
     });
+
+    vm.removeDog = function(dog){
+      removeDogFactory.removeDog('potentialDogs',dog,function(potentialDog){
+        delete vm.dogs[potentialDog];
+      });
+    };
 
     vm.addToRescueList = function(potentialID,dog){
       potentialFactory.addToRescueList(potentialID,dog,function(dog){
