@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('shelterDogsController',function(shelterFactory,dogListFactory,$location){
+  .controller('shelterDogsController',function(shelterFactory,moveDogFactory,dogListFactory,$location){
 
     var vm = this;
     vm.dogGroup = 'find-dogs';
@@ -12,9 +12,9 @@
       vm.dogs = shelterDogs;
     });
 
-    vm.addToPotentialList = function(shelterID,dog){
-      shelterFactory.addToPotentialList(shelterID,dog,function(dog){
-        delete vm.shelterDogs[dog];
+    vm.addToNextList = function(shelterID,dog){
+      moveDogFactory.addToNextList('potentialDogs','shelterDogs',shelterID,dog,function(dog){
+        delete vm.dogs[dog];
         $location.path('/potential-dogs');
       });
     };
