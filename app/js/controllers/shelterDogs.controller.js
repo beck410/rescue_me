@@ -15,7 +15,7 @@
     vm.addToNextList = function(shelterID,dog){
       moveDogFactory.addToNextList('potentialDogs','shelterDogs',shelterID,dog,function(dog){
         delete vm.dogs[dog];
-        $location.path('/potential-dogs');
+        $location.path('/potential-dogs/' + dog.name + '/edit');
       });
     };
   })
