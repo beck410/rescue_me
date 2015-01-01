@@ -12,7 +12,7 @@
       vm.dogs = shelterDogs;
     });
 
-    vm.addToNextList = function(shelterID,dog){
+    vm.addToNextList = function(shelterID){
         $location.path('/potential-dogs/' + shelterID + '/add');
     };
   })

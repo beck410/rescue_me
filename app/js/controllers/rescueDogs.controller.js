@@ -23,5 +23,17 @@
     dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
       vm.dog = rescueDog;
     });
-  });
+
+    vm.editDogDetails = function(){
+     $location.path('/rescue-dogs/' + id + '/edit') 
+    }
+  })
+  .controller('addRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location){
+    var vm = this;
+    var id = $routeParams.id;
+
+    dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
+      vm.dog = dogDetails;
+    })
+  })
 })();
