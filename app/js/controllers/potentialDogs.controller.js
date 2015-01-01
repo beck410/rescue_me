@@ -19,7 +19,7 @@
     };
 
     vm.addToNextList = function(potentialID){
-        $location.path('/rescue-dogs/' + potentialID + '/add');
+        $location.path('/rescue-dogs/' + potentialID + '/move');
     };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
@@ -35,7 +35,7 @@
     };
 
   })
-  .controller('addPotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('movePotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
 

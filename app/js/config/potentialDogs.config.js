@@ -13,9 +13,9 @@
       controller: 'showPotentialDogController',
       controllerAs: 'dogDetails'
     })
-    .when('/potential-dogs/:id/add',{
+    .when('/potential-dogs/:id/move',{
       templateUrl: 'views/dog-details-form.html',
-      controller: 'addPotentialDog',
+      controller: 'movePotentialDog',
       controllerAs: 'dogList'
     })
     .when('/potential-dogs/:id/edit',{

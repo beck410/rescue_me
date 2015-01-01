@@ -13,9 +13,9 @@
       controller: 'showRescueController',
       controllerAs: 'dogDetails'
     })
-    .when('/rescue-dogs/:id/add',{
+    .when('/rescue-dogs/:id/move',{
       templateUrl: 'views/dog-details-form.html',
-      controller: 'addRescueDog',
+      controller: 'moveRescueDog',
       controllerAs: 'dogList'
     })
     .when('/rescue-dogs/:id/edit',{
