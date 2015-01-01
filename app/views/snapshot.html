@@ -5,6 +5,7 @@
   <p>Dogs Needing Fosters: <span>{{snapshot.potentialDogsLength}}</span></p>
   <ul ng-repeat="(key,dog) in snapshot.potentialDogs">
     <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
+    <li>{{dog.animalName}}</li>
   </ul>
 </section>
 <section>
@@ -14,8 +15,8 @@
   <p>Available Dogs</p>
     <ul ng-repeat="(key,dog) in snapshot.rescueDogs">
       <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
+      <li>{{dog.animalName}}</li>
     </ul>
-    
 </section>
 <section>
 <h3>Contact Information</h3>
