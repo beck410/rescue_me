@@ -9,18 +9,25 @@
         $timeout(function(){
           $location.path('/snapshot');
           $scope.$apply();
-        })
+        });
       });
     };
 
   })
-  .controller('logoutController', function(authFactory){
+  .controller('logoutController', function(){
 
   })
-  .controller('registerController', function(authFactory){
+  .controller('registerController', function($scope,$location,registerFactory){
+    var vm = this;
+    vm.addUser = function(){
+
+      registerFactory.register(vm.user,function(){
+        // $location.path('/#/')
+        // $scope.$apply();
+      });
+    };
 
   })
   .controller('changePasswordController', function(authFactory){
-
   });
 })();
