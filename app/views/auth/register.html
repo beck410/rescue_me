@@ -1,39 +1,38 @@
 <h2>Register Page</h2>
-<form name="registerForm" ng-submit="register.register()" novalidate>
-<div class="form-group" ng-class="{'has-error':registerForm.$dirty && !register.org}">
-<label>Rescue Organization</label>
-  <input class="form-control" type="text" ng-model="register.org" required>
-</div>
-<div class="form-group" ng-class="{'has-error':registerForm.$dirty && !register.email}">
+<form name="registerForm" ng-submit="register.addUser()" novalidate>
+<div class="form-group">
   <label>Email</label>
-  <input class="form-control" type="email" ng-model="register.email" required>
+  <input class="form-control" type="email" ng-model="register.user.email" required>
 </div>
-<div class="form-group" ng-class="{'has-error':registerForm.$dirty && !register.password}">
+<div class="form-group">
   <label>Password</label>
-  <input class="form-control" type="password" ng-model="register.password" required>
+  <input class="form-control" type="password" ng-model="register.user.password" required>
 </div>
 <section>
   <h2>About your rescue...</h2>
+<div class="form-group">
+  <label>Rescue Organization</label>
+  <input class="form-control" type="text" ng-model="register.user.org" required>
+</div>
   <div class="form-group">Summary of Rescue Group</label>
-    <textarea class="form-control"></textarea>
+    <textarea class="form-control" ng-model="register.user.summary"></textarea>
   </div>
   <div class="form-group">
     <label>City</label>
-    <input class="form-control" type="text" ng-model="register.city" required>
+    <input class="form-control" type="text" ng-model="register.user.city" required>
   </div>
  <div class="form-group">
     <label>State</label>
-    <input class="form-control" type="text" ng-model="register.state" required>
+    <input class="form-control" type="text" ng-model="register.user.state" required>
   </div>
- <div class="form-group">
-    <label>Email</label>
-    <input class="form-control" type="text" ng-model="register.email" required>
-  </div>
- <div class="form-group">
+  <div class="form-group">
     <label>Phone</label>
-    <input class="form-control" type="text" ng-model="register.phone" required>
+    <input class="form-control" type="text" ng-model="register.user.phone" required>
+  </div>
+  <div class="form-group">
+    <label>Website</label>
+    <input class="form-control" type="text" ng-model="register.user.website" required>
   </div>
 </section>
-<div class="btn btn-default btn-block"ng-class="{disabled: registerForm.$invalid}">Register</div>
-<input type="submit" class="btn btn-primary btn-block" value="Login" ng-class="{disabled: registerForm.$invalid}">
+<input type="submit" class="btn btn-primary btn-block" value="Register">
 </form>
