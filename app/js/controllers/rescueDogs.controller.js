@@ -17,7 +17,7 @@
       });
     };
   })
-  .controller('showRescueController', function(dogDetailsFactory, $routeParams){
+  .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
     dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
