@@ -34,6 +34,12 @@
 
     dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
       vm.dog = dogDetails;
-    })
-  })
+    });
+
+    vm.submitDogDetails = function(){
+      moveDogFactory.addDogToList('rescueDogs','potentialDogs',id,vm.dog,function(){
+        $location.path('/rescue-dogs/');
+      });
+    };
+  });
 })();
