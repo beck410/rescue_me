@@ -8,7 +8,7 @@
       controller:'potentialDogsController',
       controllerAs:'dogList'
     })
-    .when('/potential-dogs/:id',{
+    .when('/potential-dogs/details/:id',{
       templateUrl: 'views/dog-details.html',
       controller: 'showPotentialDogController',
       controllerAs: 'dogDetails'
