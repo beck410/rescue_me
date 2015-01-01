@@ -2,7 +2,7 @@
 <p>{{snapshot.rescueOrg.summary}}</p>
 <section>
   <p>Dogs Rescued: </span><span></p>
-  <p>Dogs Needing Fosters: <span>{{snapshot.potentialDogsLength}}</span></p>
+  <p>Dogs Needing Fosters: {{snapshot.potentialDogsLength}}</p>
   <ul ng-repeat="(key,dog) in snapshot.potentialDogs">
     <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
     <li>{{dog.animalName}}</li>
@@ -12,7 +12,7 @@
   <p>Urgent</p>
 </section>
 <section>
-  <p>Available Dogs</p>
+  <p>Available Dogs: {{snapshot.rescueDogsLength}}</p>
     <ul ng-repeat="(key,dog) in snapshot.rescueDogs">
       <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
       <li>{{dog.animalName}}</li>

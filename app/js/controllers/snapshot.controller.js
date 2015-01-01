@@ -15,7 +15,7 @@
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogs = dogs;
-      console.log(vm.rescueDogs)
+      vm.rescueDogsLength = (_.size(dogs));
     });
   });
 })();
