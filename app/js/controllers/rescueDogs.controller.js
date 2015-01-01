@@ -60,5 +60,17 @@
       });
     };
 
+  })
+  .controller('addRescueDog',function(addNewDogFactory,$location){
+    var vm = this;
+    vm.submitDogDetails = function(){
+      addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
+        vm.dogs = vm.dogs || {};
+        console.log(vm.dogs);
+        vm.dogs[dog.name] = vm.dog;
+        vm.dog = {};
+        $location.path('/rescue-dogs');
+      });
+    };
   });
 })();
