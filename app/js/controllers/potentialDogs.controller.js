@@ -39,7 +39,7 @@
     };
 
   })
-  .controller('editPotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('addPotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
 
@@ -48,8 +48,23 @@
     });
 
     vm.submitDogDetails = function(){
-      moveDogFactory.addDogToList('potentialDogs','shelterDogs',id,vm.dog,function(dog){
-        $location.path('/potential-dogs/')
+      moveDogFactory.addDogToList('potentialDogs','shelterDogs',id,vm.dog,function(){
+        $location.path('/potential-dogs/');
+      });
+    };
+  })
+  .controller('editPotentialDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location){
+    var vm = this;
+    var id = $routeParams.id;
+
+    dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
+      vm.dog = dogDetails;
+    });
+
+    vm.submitDogDetails = function(){
+      editDogFactory.editDog('potentialDogs',vm.dog,function(){
+        console.log('called');
+        $location.path('potential-dogs/');
       });
     };
   });
