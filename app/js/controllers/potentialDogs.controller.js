@@ -62,8 +62,7 @@
     });
 
     vm.submitDogDetails = function(){
-      editDogFactory.editDog('potentialDogs',vm.dog,function(){
-        console.log('called');
+      editDogFactory.editDog('potentialDogs',id,vm.dog,function(){
         $location.path('potential-dogs/');
       });
     };
