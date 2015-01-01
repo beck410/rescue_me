@@ -13,6 +13,7 @@
         console.log('get rescue details error:' + err);
       })
     }
+
     return {
      getDetails : getDetails
     };
