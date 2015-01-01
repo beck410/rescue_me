@@ -25,12 +25,19 @@
       });
      };
   })
-  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams){
+  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
     var dog = $routeParams.id;
+
     dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
       vm.dog = potentialDog;
     });
+
+    vm.editDogDetails = function(){
+      console.log('/potential-dogs/' + dog + '/edit')
+      $location.path('/potential-dogs/' + dog + '/edit');
+    };
+
   })
   .controller('editPotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
