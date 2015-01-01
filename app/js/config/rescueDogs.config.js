@@ -13,5 +13,15 @@
       controller: 'showRescueController',
       controllerAs: 'dogDetails'
     })
+    .when('/rescue-dogs/:id/add',{
+      templateUrl: 'views/dog-details-form.html',
+      controller: 'addRescueDog',
+      controllerAs: 'dogList'
+    })
+    .when('/rescue-dogs/:id/edit',{
+      templateUrl: 'views/dog-details-form.html',
+      controller: 'editPotentialDog',
+      controllerAs: 'dogList'
+    });
   });
 })();
