@@ -23,10 +23,8 @@
 
     function _deleteDog(oldDogDB,dogID,dog,cb){
       var url = FIREBASE_URL + oldDogDB  + '/' + dogID + '.json';
-      console.log(url)
       $http.delete(url)
       .success(function(){
-        console.log('deleted')
         cb(dog);
       })
       .error(function(err){
