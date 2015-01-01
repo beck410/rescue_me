@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('rescueDogsController',function(removeDogFactory,dogListFactory){
+  .controller('rescueDogsController',function(removeDogFactory,dogListFactory,$location){
     var vm = this;
     vm.dogGroup = 'rescue-dogs';
     vm.dogHeader = 'Rescue Dogs';
@@ -16,6 +16,10 @@
         delete vm.dogs[rescueDog];
       });
     };
+
+    vm.addNewDog = function(){
+      $location.path('/rescue-dogs/add')
+    }
   })
   .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;

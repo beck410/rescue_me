@@ -21,6 +21,10 @@
     vm.addToNextList = function(potentialID){
         $location.path('/rescue-dogs/' + potentialID + '/move');
     };
+
+    vm.addNewDog = function(){
+      $location.path('/potential-dogs/add');
+    };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
