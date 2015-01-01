@@ -41,5 +41,20 @@
         $location.path('/rescue-dogs/');
       });
     };
+  })
+  .controller('editRescueDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location){
+    var vm = this;
+    var id = $routeParams.id;
+
+    dogDetailsFactory.getDogDetails('rescueDogs',id,function(dogDetails){
+      vm.dog = dogDetails;
+    });
+
+    vm.submitDogDetails = function(){
+      editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
+        $location.path('rescue-dogs/');
+      });
+    };
+
   });
 })();
