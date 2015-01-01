@@ -1,5 +1,6 @@
 <h2>{{dogList.dogHeader}}</h2>
 <table>
+  <button class="btn btn-warning" ng-click="dogList.addNewDog()"></button>
   <tr ng-repeat="(id, dog) in dogList.dogs">
     <td><img class="shelter-dog-img" ng-src="{{dog.animalThumbnailUrl}}" alt="Dog needing foster"></td>
     <td>{{dog.animalName}}</td>
