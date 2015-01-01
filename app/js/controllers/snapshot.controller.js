@@ -9,6 +9,7 @@
     });
 
     dogListFactory.getDogList('potentialDogs',function(dogs){
+      vm.potentialDogs = dogs;
       vm.potentialDogsLength = (_.size(dogs));
     });
 
