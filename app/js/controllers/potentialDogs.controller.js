@@ -18,12 +18,9 @@
       });
     };
 
-    vm.addToNextList = function(potentialID,dog){
-      moveDogFactory.addToNextList('rescueDogs','potentialDogs',potentialID,dog,function(dog){
-        delete vm.dogs[dog];
-        $location.path('/rescue-dogs');
-      });
-     };
+    vm.addToNextList = function(potentialID){
+        $location.path('/rescue-dogs/' + potentialID + '/add');
+    };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
@@ -34,7 +31,6 @@
     });
 
     vm.editDogDetails = function(){
-      console.log('/potential-dogs/' + dog + '/edit')
       $location.path('/potential-dogs/' + dog + '/edit');
     };
 
