@@ -1,11 +1,11 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('loginController', function(authFactory, $scope, $location,$timeout){
+  .controller('loginController', function($scope, $location,$timeout,loginFactory){
     var vm = this;
 
     vm.login= function(){
-      authFactory.login(vm.email, vm.password, function(){
+      loginFactory.login(vm.email, vm.password, function(){
         $timeout(function(){
           $location.path('/snapshot');
           $scope.$apply();
@@ -22,12 +22,12 @@
     vm.addUser = function(){
 
       registerFactory.register(vm.user,function(){
-        // $location.path('/#/')
-        // $scope.$apply();
+        $location.path('/#/')
+        $scope.$apply();
       });
     };
 
   })
-  .controller('changePasswordController', function(authFactory){
+  .controller('changePasswordController', function(){
   });
 })();
