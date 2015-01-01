@@ -6,7 +6,6 @@
 
     rescueDetailsFactory.getDetails(function(details){
       vm.rescue = details;
-      vm.rescueGroupName = vm.rescue.org;
     });
 
     dogListFactory.getDogList('potentialDogs',function(dogs){
