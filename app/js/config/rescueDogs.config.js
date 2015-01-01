@@ -20,7 +20,7 @@
     })
     .when('/rescue-dogs/:id/edit',{
       templateUrl: 'views/dog-details-form.html',
-      controller: 'editPotentialDog',
+      controller: 'editRescueDog',
       controllerAs: 'dogList'
     });
   });
