@@ -35,6 +35,7 @@
   .controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
+    vm.dogGroup = 'potential-dogs';
 
     dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
       vm.dog = dogDetails;
@@ -49,6 +50,7 @@
   .controller('editRescueDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
+    vm.dogGroup = 'rescue-dogs';
 
     dogDetailsFactory.getDogDetails('rescueDogs',id,function(dogDetails){
       vm.dog = dogDetails;
@@ -63,6 +65,8 @@
   })
   .controller('addRescueDog',function(addNewDogFactory,$location){
     var vm = this;
+    vm.dogGroup = 'rescue-dogs';
+
     vm.submitDogDetails = function(){
       addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
         vm.dogs = vm.dogs || {};
