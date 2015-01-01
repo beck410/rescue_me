@@ -22,6 +22,12 @@
       templateUrl: 'views/dog-details-form.html',
       controller: 'editPotentialDog',
       controllerAs: 'dogList'
+    })
+    .when('/potential-dogs/add',{
+      templateUrl: 'views/dog-details-form.html',
+      controller: 'addPotentialDog',
+      controllerAs: 'dogList'
     });
+
   });
 })();

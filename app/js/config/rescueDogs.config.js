@@ -22,6 +22,11 @@
       templateUrl: 'views/dog-details-form.html',
       controller: 'editRescueDog',
       controllerAs: 'dogList'
-    });
+    })
+    .when('/rescue-dogs/add',{
+      templateUrl: 'views/dog-details-form.html',
+      controller: 'addRescueDog',
+      controllerAs: 'dogList'
+    })
   });
 })();
