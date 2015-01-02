@@ -17,13 +17,15 @@
   .controller('logoutController', function(){
 
   })
-  .controller('registerController', function($scope,$location,registerFactory){
+  .controller('registerController', function($scope,$location,registerFactory,$timeout){
     var vm = this;
     vm.addUser = function(){
-
+      console.log(vm.user);
       registerFactory.register(vm.user,function(){
-        $location.path('/#/')
-        $scope.$apply();
+        $timeout(function(){
+          $location.path('/snapshot');
+          $scope.$apply();
+        });
       });
     };
 
