@@ -18,12 +18,15 @@
     };
 
     vm.addNewDog = function(){
-      $location.path('/rescue-dogs/add')
-    }
+      $location.path('/rescue-dogs/add');
+    };
   })
   .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
+    vm.ownNotes = true;
+    vm.foster = true;
+
     dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
       vm.dog = rescueDog;
     });

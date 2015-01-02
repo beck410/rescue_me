@@ -19,6 +19,7 @@
   .controller('showShelterController', function(dogDetailsFactory,$routeParams){
     var vm = this;
     var id = $routeParams.id;
+    vm.shelter = true;
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
       vm.dog = shelterDog;
     });

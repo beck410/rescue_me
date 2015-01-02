@@ -29,6 +29,8 @@
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
     var vm = this;
     var dog = $routeParams.id;
+    vm.shelter = true;
+    vm.ownNotes = true;
 
     dogDetailsFactory.getDogDetails('potentialDogs',dog,function(dogDetails){
       vm.dog = dogDetails;
