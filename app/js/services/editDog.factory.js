@@ -8,7 +8,7 @@
     }
 
     function _postDog(newDogDB,id,dog,cb){
-      var url = requestURL(newDogDB,id);
+      var url = requestURL.url(newDogDB,id);
       $http.put(url,dog)
         .success(function(dog){
           if(cb){
