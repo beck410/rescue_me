@@ -26,14 +26,15 @@
       $location.path('/potential-dogs/add');
     };
   })
-  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location){
+  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails){
     var vm = this;
     var dog = $routeParams.id;
     vm.shelter = true;
     vm.ownNotes = true;
 
-    dogDetailsFactory.getDogDetails('potentialDogs',dog,function(dogDetails){
-      vm.dog = dogDetails;
+    dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
+      var completePotentialDog = completeDogDetails.fillEmptyDetails(potentialDog);
+      vm.dog = completePotentialDog;
     });
 
     vm.editDogDetails = function(){

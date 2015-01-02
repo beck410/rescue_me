@@ -21,14 +21,16 @@
       $location.path('/rescue-dogs/add');
     };
   })
-  .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location){
+  .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location,completeDogDetails){
     var vm = this;
     var id = $routeParams.id;
     vm.ownNotes = true;
     vm.foster = true;
 
     dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
-      vm.dog = rescueDog;
+      var completeRescueDog = completeDogDetails.fillEmptyDetails(rescueDog)
+      console.log(completeRescueDog)
+      vm.dog = completeRescueDog;
     });
 
     vm.editDogDetails = function(){
@@ -71,6 +73,7 @@
   .controller('addRescueDog',function(addNewDogFactory,$location){
     var vm = this;
     vm.dogGroup = 'rescue-dogs';
+    vm.rescueDog = true;
 
     vm.submitDogDetails = function(){
       addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){

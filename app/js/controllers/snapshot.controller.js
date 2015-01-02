@@ -1,11 +1,12 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails){
     var vm = this;
 
     rescueDetailsFactory.getDetails(function(details){
-      vm.rescueOrg = details;
+      var completeDetails = completeDogDetails.fillEmptyDetails(details);
+      vm.rescueOrg = completeDetails;
     });
 
     dogListFactory.getDogList('potentialDogs',function(dogs){

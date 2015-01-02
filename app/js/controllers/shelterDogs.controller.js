@@ -16,12 +16,13 @@
         $location.path('/potential-dogs/' + shelterID + '/move');
     };
   })
-  .controller('showShelterController', function(dogDetailsFactory,$routeParams){
+  .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails){
     var vm = this;
     var id = $routeParams.id;
     vm.shelter = true;
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
-      vm.dog = shelterDog;
+      var completeShelterDog = completeDogDetails.fillEmptyDetails(shelterDog);
+      vm.dog = completeShelterDog;
     });
   });
 })();
