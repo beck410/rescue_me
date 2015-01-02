@@ -43,6 +43,7 @@
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'rescue-dogs';
+    vm.potentialDog = true;
 
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(dogDetails){
       vm.dog = dogDetails;
@@ -58,6 +59,7 @@
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'potential-dogs';
+    vm.potentialDog = true;
 
     dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
       vm.dog = dogDetails;
