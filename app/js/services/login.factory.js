@@ -1,16 +1,20 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('loginFactory', function($http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
+  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
+    var ref= new Firebase(FIREBASE_URL);
+    $rootScope.user = ref.getAuth();
+    console.log($rootScope.user);
 
     function login(email,password,mainCB){
-      var ref= new Firebase(FIREBASE_URL);
       ref.authWithPassword({
         email: email,
         password: password,
       }, function(error, authData){
         if(error === null) {
           console.log('user logged in');
+          $rootScope.user = authData;
+          ref.child('users').child(authData.uid).child('authData').set(authData);
           _getShelterDogs(mainCB,function(mainCB,dogs){
             _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
               _addContactInfo(mainCB,dogs,orgs,function(mainCB){
