@@ -39,11 +39,12 @@
     };
 
   })
-  .controller('movePotentialDog',function(moveDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('movePotentialDog',function(US_STATES,moveDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'rescue-dogs';
     vm.potentialDog = true;
+    vm.states = US_STATES;
 
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(dogDetails){
       vm.dog = dogDetails;
@@ -55,11 +56,12 @@
       });
     };
   })
-  .controller('editPotentialDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('editPotentialDog',function(US_STATES,editDogFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'potential-dogs';
     vm.potentialDog = true;
+    vm.states = US_STATES;
 
     dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
       vm.dog = dogDetails;
