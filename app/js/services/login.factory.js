@@ -128,7 +128,7 @@
     }
 
     function _postDogsToFirebase(cb,dogs){
-      var url = FIREBASE_URL + 'shelterDogs.json';
+      var url = requestURL.url('shelterDogs');
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
       .success(function(){

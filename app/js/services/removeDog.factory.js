@@ -1,11 +1,11 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('removeDogFactory',function($http,FIREBASE_URL){
+  .factory('removeDogFactory',function(requestURL,$http,FIREBASE_URL){
 
     function removeDog(dogDB,dog,cb){
-      var url = FIREBASE_URL + dogDB + '/' + dog + '.json';
-      $http.delete(url)
+    var url =  requestURL.url(dogDB,dog)
+    $http.delete(url)
       .success(function(){
         cb(dog);
       })

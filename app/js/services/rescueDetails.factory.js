@@ -1,10 +1,10 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('rescueDetailsFactory', function($http,FIREBASE_URL){
+  .factory('rescueDetailsFactory', function(requestURL,$http,FIREBASE_URL){
 
     function getDetails(cb){
-      var url = FIREBASE_URL + 'rescueDetails.json';
+      var url = requestURL.url('rescueDetails');
       $http.get(url)
       .success(function(details){
         cb(details);

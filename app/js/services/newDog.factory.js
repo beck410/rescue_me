@@ -1,10 +1,10 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('addNewDogFactory',function($http,FIREBASE_URL){
+  .factory('addNewDogFactory',function(requestURL,$http,FIREBASE_URL){
     function addDog(dog,dogDB,cb){
       console.log(dog);
-      var url = FIREBASE_URL + dogDB + '.json'
+      var url = requestURL.url(dogDB);
       $http.post(url,dog)
       .success(function(dog){
         console.log('success')
