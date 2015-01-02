@@ -16,12 +16,21 @@
     .when('/logout',{
       template: '',
       controller: 'logoutController',
-      controllerAs: 'logout'
+      controllerAs: 'logout',
+      needLogin: true
     })
     .when('/changepassword',{
       templateUrl: 'views/auth/changepassword.html',
       controller: 'changePasswordController',
-      controllerAs: 'changepw'
-    })
+      controllerAs: 'changepw',
+      needLogin: true
+    });
+  })
+  .run(function($rootScope,checkAccessFactory){
+    $rootScope.$on('$routeChangeStart', function(event,nextRoute){
+      if(nextRoute.$$route && nextRoute.$$route.needLogin){
+        checkAccessFactory.requireLogin();
+      }
+    });
   });
 })();
