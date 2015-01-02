@@ -1,4 +1,6 @@
 /* GLOBAL VARIABLES */
-
+  $thumbnail-height: 100px;
+  $thumbnail-bg: whitesmoke;
 /* IMPORTS */
-@import 'shelter-dogs'
+@import 'shelter-dogs';
+@import 'dog-details';

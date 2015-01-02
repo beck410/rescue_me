@@ -3,3 +3,9 @@
 .shelter-dog-img {
   height: 100px;
   max-width: 100px; }
+
+.dog-details-thumb {
+  max-height: 100px;
+  background: whitesmoke;
+  max-width: 100px;
+  max-width: auto; }

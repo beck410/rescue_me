@@ -1,6 +1,6 @@
 <h2>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h2>
 <ul>
-  <li><img ng-src="{{dogDetails.dog.animalThumbnailUrl}}" /></li>
+  <li><img class="dog-details-thumb" ng-src="{{dogDetails.dog.animalThumbnailUrl || 'images/default-dog.png'}}" /></li>
   <li>Breed: {{dogDetails.dog.animalBreed || 'N/A'}}</li>
   <li>Sex: {{dogDetails.dog.animalSex || 'N/A'}}</li>
   <li ng-show="dogDetails.shelter">Kill Date: {{dogDetails.dog.animalKillDate || 'N/A'}}</li>
@@ -17,4 +17,4 @@
   <li ng-show="dogDetails.ownNotes">Dog Summary: {{dogDetails.dog.animalSummary || 'N/A'}}</li>
   <li ng-show="dogDetails.ownNotes">Additional Notes: {{dogDetails.dog.animalNotes || 'N/A'}}</li>
 </ul>
-<button ng-click="dogDetails.editDogDetails(dogDetails.dog.name)">Edit Dog</button>
+
