@@ -14,8 +14,11 @@
     };
 
   })
-  .controller('logoutController', function(){
-
+  .controller('logoutController', function(logoutFactory,$scope,$location){
+    logoutFactory.logout(function(){
+      $location.path('/');
+      $scope.$apply();
+    })
   })
   .controller('registerController', function($scope,$location,registerFactory,$timeout){
     var vm = this;

@@ -14,7 +14,7 @@
       controllerAs: 'login'
     })
     .when('/logout',{
-      templateUrl: 'views/auth/logout.html',
+      template: '',
       controller: 'logoutController',
       controllerAs: 'logout'
     })
