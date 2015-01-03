@@ -1,6 +1,8 @@
 /* GLOBAL VARIABLES */
   $thumbnail-height: 100px;
   $thumbnail-bg: whitesmoke;
+  $site-padding-height: 0.7em;
+  $site-padding-width: 0.7em;
 /* IMPORTS */
 @import 'dog-details';
 @import 'auth';
@@ -8,3 +10,4 @@
 @import 'dog-details-form';
 @import 'landing';
 @import 'layout';
+@import 'header';

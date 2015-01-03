@@ -1,0 +1,24 @@
+.main-header{
+  width: 100%;
+  height: 550px;
+  background: url('../images/header-img.png');
+}
+
+.nav-main {
+  padding-top: 200px;
+  padding-left: 55px;
+  li{
+    display: inline-block;
+    background: white;
+
+    a{
+      color:black;
+      background: white;
+      border-color: white;
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,81 @@
+body{
+  font-size: 16px;
+  line-height: 1.375em;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.main{
+  padding: $site-padding-height $site-padding-width;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.05em;
+}
+
+h2{
+  font-size: 2.25em;
+  line-height: 1.25em;
+}
+
+h3{
+  font-size: 1.75em;
+  line-height: 1.25em;
+}
+
+h4{
+  font-size: 1.125em;
+  line-height: 1.222222222em;
+}
+
+@media (max-width: 760px) {
+  h1{
+    font-size: 2.5em;
+    line-height: 1.125em;
+  }
+
+  h2{
+    font-size: 2em;
+  }
+
+  h3{
+    font-size: 1.5em;
+    line-height: 1.25em;
+  }
+
+  h4{
+    font-size: 1.125em;
+    line-height: 1.222222222em;
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    line-height: 1.25em;
+  }
+
+  h1{
+    font-size: 2em;
+    line-height: 1.25em;
+  }
+
+  h2{
+    font-size: 1.625em;
+    line-height: 1.15384615em;
+  }
+
+  h3{
+    font-size: 1.375em;
+    line-height: 1.1363634em;
+  }
+
+  h4{
+    font-size: 1.125em;
+    line-height: 1.111111em;
+  }
+}
+
+li {
+  list-style-type: none;
+}
