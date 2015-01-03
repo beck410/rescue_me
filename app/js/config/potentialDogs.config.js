@@ -36,7 +36,7 @@
   })
   .run(function($rootScope,$location){
     if(!$rootScope.user){
-      $location.path('/login');
+      $location.path('/landing');
     }
   })
   .run(function($rootScope,checkAccessFactory){
