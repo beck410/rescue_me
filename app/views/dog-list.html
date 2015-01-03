@@ -1,16 +1,16 @@
 <h2>{{dogList.dogHeader}}</h2>
-<button class="btn btn-warning" ng-click="dogList.addNewDog()">Add New Dog</button>
+<button class="new-dog-btn" ng-click="dogList.addNewDog()">+ Add New Dog</button>
 <div class="dog-list">
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">
       <div class="dog-list-info">
         <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}" alt="Dog needing foster">
-        <span>{{dog.animalName}}</span>
-        <span>{{dog.animalBreed}}</span>
-        <span>{{dog.shelterState}}</span>
-        <span><a class="btn btn-primary" ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a><span>
-        <button class="btn btn-primary" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button>
-        <button class="btn btn-warning" ng-show="dogList.removeButton" ng-click="dogList.removeDog(id)">Remove</button>
+        <span><strong>{{dog.animalName}}</strong></span>
+        <span class="breed">{{dog.animalBreed}}</span>
+        <span class="state">Location: {{dog.shelterState}}</span>
+        <a class="btn" ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a>
+        <button class="btn" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button>
+        <button class="btn" ng-show="dogList.removeButton" ng-click="dogList.removeDog(id)">Remove</button>
       </div>
       </li>
   </ul>

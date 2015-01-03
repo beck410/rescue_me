@@ -3,6 +3,11 @@
   padding: 5px;
   overflow:hidden;
 
+  ul{
+    overflow: hidden;
+    padding-left: 0;
+  }
+
   li{
     margin-bottom: 10px;
   }
@@ -10,13 +15,35 @@
   .col-md-3:nth-child(4n+1){
     clear:left;
   }
-}
-.dog-list li span{
+
+  li span{
     display: block;
   }
 
-  .dog-list-info {
-    background:whitesmoke;
-    padding: 10px;
-
+  .breed, .state{
+    text-align:left;
   }
+
+  button {
+    width: 100%;
+    background: #295FA5;
+    color: white;
+    border-radius: 0px;
+  }
+}
+
+.new-dog-btn {
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  color: #295FA5;
+  padding: 20px;
+}
+
+.dog-list-info {
+  background:whitesmoke;
+  padding: 10px;
+  text-align:center;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+}
+

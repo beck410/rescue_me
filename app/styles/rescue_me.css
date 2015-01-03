@@ -14,17 +14,35 @@
   position: relative;
   padding: 5px;
   overflow: hidden; }
+  .dog-list ul {
+    overflow: hidden;
+    padding-left: 0; }
   .dog-list li {
     margin-bottom: 10px; }
   .dog-list .col-md-3:nth-child(4n+1) {
     clear: left; }
+  .dog-list li span {
+    display: block; }
+  .dog-list .breed, .dog-list .state {
+    text-align: left; }
+  .dog-list button {
+    width: 100%;
+    background: #295FA5;
+    color: white;
+    border-radius: 0px; }
 
-.dog-list li span {
-  display: block; }
+.new-dog-btn {
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  color: #295FA5;
+  padding: 20px; }
 
 .dog-list-info {
   background: whitesmoke;
-  padding: 10px; }
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3); }
 
 body {
   font-size: 16px;
