@@ -3,10 +3,13 @@ body{
   line-height: 1.375em;
   max-width: 1080px;
   margin: 0 auto;
+  background:whitesmoke;
 }
 
 .main{
   padding: $site-padding-height $site-padding-width;
+  background:white;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 }
 
 h1 {
