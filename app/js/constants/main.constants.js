@@ -3,7 +3,7 @@
   angular.module('rescue_me')
     .constant('FIREBASE_URL', 'https://bcd-rescue-me.firebaseio.com/')
     .constant('RESCUE_GROUPS_URL', 'https://api.rescuegroups.org/http/json/?data=')
-  .constant('US_STATES', {
+    .constant('US_STATES', {
     AK: 'ALASKA',
     AL: 'ALABAMA',
     AR: 'ARKANSAS',

@@ -83,7 +83,6 @@
     vm.submitDogDetails = function(){
       addNewDogFactory.addDog(vm.dog,'potentialDogs',function(dog){
         vm.dogs = vm.dogs || {};
-        console.log(vm.dogs);
         vm.dogs[dog.name] = vm.dog;
         vm.dog = {};
         $location.path('/potential-dogs');
