@@ -6,14 +6,24 @@
   height: auto;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
-  margin-top: 200px;
   margin-left: 55px; }
   .login-wrapper h3 {
     margin: 0; }
 
-.shelter-dog-img {
-  height: 100px;
-  max-width: 100px; }
+.dog-list {
+  position: relative;
+  padding: 5px; }
+  .dog-list li {
+    margin-bottom: 10px; }
+  .dog-list .col-md-3:nth-child(4n+1) {
+    clear: left; }
+
+.dog-list li span {
+  display: block; }
+
+.dog-list-info {
+  background: whitesmoke;
+  padding: 10px; }
 
 body {
   font-size: 16px;

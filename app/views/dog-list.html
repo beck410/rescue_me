@@ -1,13 +1,17 @@
 <h2>{{dogList.dogHeader}}</h2>
-<table>
-  <button class="btn btn-warning" ng-click="dogList.addNewDog()">Add New Dog</button>
-  <tr ng-repeat="(id, dog) in dogList.dogs">
-    <td><img class="dog-details-thumb" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}" alt="Dog needing foster"></td>
-    <td>{{dog.animalName}}</td>
-    <td>{{dog.animalBreed}}</td>
-    <td>{{dog.shelterState}}</td>
-    <td><a class="btn btn-primary" ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a><td>
-        <td><button class="btn btn-primary" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button></td>
-        <td><button class="btn btn-warning" ng-show="dogList.removeButton" ng-click="dogList.removeDog(id)">Remove</button></td>
-    <tr>
-    </table>
+<button class="btn btn-warning" ng-click="dogList.addNewDog()">Add New Dog</button>
+<div class="dog-list">
+  <ul>
+      <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">
+      <div class="dog-list-info">
+        <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}" alt="Dog needing foster">
+        <span>{{dog.animalName}}</span>
+        <span>{{dog.animalBreed}}</span>
+        <span>{{dog.shelterState}}</span>
+        <span><a class="btn btn-primary" ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a><span>
+        <button class="btn btn-primary" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button>
+        <button class="btn btn-warning" ng-show="dogList.removeButton" ng-click="dogList.removeDog(id)">Remove</button>
+      </div>
+      </li>
+  </ul>
+</div>
