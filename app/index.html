@@ -6,14 +6,17 @@
 <title>Rescue Me | A Dog Rescue's Best Friend</title>
 <link rel="stylesheet" href="vendors/styles/bootstrap.css" />
 <link rel="stylesheet" href="vendors/styles/loading-bar.css" />
+<link rel="stylesheet" href="vendors/styles/normalize.css" />
 <link rel="stylesheet" href="styles/rescue_me.css" />
 </head>
 <body>
-<h1> RESCUE ME </h1>
+<header class="main-header">
+  <div ng-include="'views/main-menu.html'"></div>
+  <div ng-hide="user" ng-controller="loginController as login" class="login-wrapper" ng-include="'views/auth/login.html'"></div>
+</header>
 <div class="main">
-  <div ng-include="'views/main-menu.html'">
+  <div ng-view></div>
 </div>
-<div ng-view></div>
 <script src="vendors/js/firebase/firebase.js" type="text/javascript"></script>
 <script src="vendors/js/jquery/jquery.js" type="text/javascript"></script>
 <script src="vendors/js/lodash/lodash.js" type="text/javascript"></script>

@@ -1,5 +1,3 @@
-
-<h2>Rescue Me Login</h2>
 <form name="loginForm" ng-submit="login.login()" novalidate>
     <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.email}">
     <label>Email</label>
@@ -9,7 +7,8 @@
     <label>Password</label>
     <input class="form-control" type="password" ng-model="login.password" required>
   </div>
-  <div class="btn btn-default btn-block" ng-click="login.register()" ng-class="{disabled: loginForm.$invalid}">Register</div>
-  <input type="submit" class="btn btn-primary btn-block" value="Login" ng-class="{disabled: loginForm.$invalid}">
-  <div class="btn btn-warning btn-block" ng-class="{disabled: !login.email}" ng-click="login.forgotPassword()">Forgot Password</div>
+  <input type="submit"class="btn btn-primary btn-block" value="Login" ng-class="{disabled: loginForm.$invalid}">
 </form>
+<p>Not a member?<a ng-href="/#/register">Join now</a></p>
+<a ng-href="">Forgot Password</a>
+
