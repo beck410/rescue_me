@@ -1,10 +1,20 @@
-<a class="btn btn-primary" href="/#/">About</a>
-<a class="btn btn-primary" href="/#/snapshot">Snapshot</a>
-<a class="btn btn-primary" href="/#/find-dogs">Find Shelter Dogs</a>
-<a class="btn btn-primary" href="/#/potential-dogs">Potential Dogs</a>
-<a class="btn btn-primary" href="/#/rescue-dogs">Rescue Dogs</a>
-<a class="btn btn-primary" href="/#/register">Register</a>
-<a class="btn btn-success" href="/#/login">Login</a>
-<a class="btn btn-warning" href="/#/logout">Logout</a>
-<a class="btn btn-warning" href="/#/changepassword">change password</a>
-
+<nav class='nav-main'>
+  <li>
+    <a class="btn btn-primary" ng-show="user" href="/#/">About</a>
+  </li>
+  <li>
+    <a class="btn btn-primary" ng-show="user" href="/#/snapshot">Snapshot</a>
+  </li>
+  <li>
+    <a class="btn btn-primary" ng-show="user"href="/#/find-dogs">Find Shelter Dogs</a>
+  </li>
+  <li>
+    <a class="btn btn-primary" ng-show="user" href="/#/potential-dogs">Potential Dogs</a>
+  </li>
+  <li>
+    <a class="btn btn-primary" ng-show="user"href="/#/rescue-dogs">Rescue Dogs</a>
+  </li>
+  <li>
+    <a class="btn btn-warning" ng-show="user" href="/#/logout">Logout</a>
+  </li>
+</nav>
