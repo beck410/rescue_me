@@ -5,7 +5,7 @@
     var vm = this;
     vm.dogGroup = 'rescue-dogs';
     vm.dogHeader = 'Rescue Dogs';
-    vm.removeButton = true;
+    vm.configButtons = true;
 
     dogListFactory.getDogList('rescueDogs',function(rescueDogs){
       vm.dogs = rescueDogs;

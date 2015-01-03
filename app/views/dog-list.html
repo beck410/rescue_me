@@ -1,5 +1,5 @@
 <h2>{{dogList.dogHeader}}</h2>
-<button class="new-dog-btn" ng-click="dogList.addNewDog()">+ Add New Dog</button>
+<button class="new-dog-btn" ng-show="dogList.configButtons" ng-click="dogList.addNewDog()">+ Add New Dog</button>
 <div class="dog-list">
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">
@@ -10,7 +10,7 @@
         <span class="state">Location: {{dog.shelterState}}</span>
         <a class="btn" ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a>
         <button class="btn" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button>
-        <button class="btn" ng-show="dogList.removeButton" ng-click="dogList.removeDog(id)">Remove</button>
+        <button class="btn" ng-show="dogList.configButtons" ng-click="dogList.removeDog(id)">Remove</button>
       </div>
       </li>
   </ul>

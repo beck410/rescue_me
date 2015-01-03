@@ -6,7 +6,7 @@
     vm.dogGroup = 'potential-dogs';
     vm.dogHeader = 'Potential Dogs';
     vm.nextDogGroup = 'Rescue';
-    vm.removeButton = true;
+    vm.configButtons = true;
 
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.dogs = dogs;
