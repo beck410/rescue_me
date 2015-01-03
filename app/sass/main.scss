@@ -2,5 +2,9 @@
   $thumbnail-height: 100px;
   $thumbnail-bg: whitesmoke;
 /* IMPORTS */
-@import 'shelter-dogs';
 @import 'dog-details';
+@import 'auth';
+@import 'dog-list';
+@import 'dog-details-form';
+@import 'landing';
+@import 'layout';
