@@ -17,4 +17,5 @@
   <li ng-show="dogDetails.ownNotes">Dog Summary: {{dogDetails.dog.animalSummary || 'N/A'}}</li>
   <li ng-show="dogDetails.ownNotes">Additional Notes: {{dogDetails.dog.animalNotes || 'N/A'}}</li>
 </ul>
+<button ng-click="dogDetails.editDogDetails(dogDetails.dog.name)">Edit Dog</button>
 

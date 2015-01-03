@@ -10,9 +10,14 @@
   </div>
   <div class="form-group">
     <label>Sex</label>
-        <input type="text" class="form-control" ng-model=dogList.dog.animalSex>
+    <input type="text" class="form-control" ng-model=dogList.dog.animalSex>
   </div>
-    <section ng-show="dogList.potentialDog">
+  <div class="form-group">
+    <label>Animal Pic(Thumbnail)</label>
+    <input type="text
+    " class="form-control" ng-model=dogList.dog.animalThumbnailUrl>
+  </div>
+  <section ng-show="dogList.potentialDog">
     <div class="form-group">
       <label>Kill Date</label>
       <input type="text" class="form-control" ng-model=dogList.dog.animalKillDate>
@@ -70,8 +75,9 @@
   </div>
   <div class="form-group">
     <label>Notes</label>
-    <input type="text" class="form-control" ng-model=dogList.dog.animalNotes">
+    <input type="text" class="form-control" ng-model="dogList.dog.animalNotes">
   </div>
-  <input class="btn btn-primary" type="submit" value="Add Dog">
+  <input class="btn btn-primary" type="submit" value="Add Dog"i>
   <a class="btn btn-warning" href="/#/{{dogList.dogGroup}}">Cancel</a>
 </form>
+
