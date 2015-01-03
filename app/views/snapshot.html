@@ -1,30 +1,43 @@
 <h2>{{snapshot.rescueOrg.org}}</h2>
 <p>{{snapshot.rescueOrg.summary}}</p>
-<section>
-  <p>Dogs Rescued: </span><span></p>
-  <p>Dogs Needing Fosters: {{snapshot.potentialDogsLength}}</p>
-  <ul ng-repeat="(key,dog) in snapshot.potentialDogs">
-    <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
-    <li>{{dog.animalName}}</li>
-  </ul>
+<section class="row">
+  <div class="col-md-6">
+    <p>Dogs Rescued:</p>
+    <p>Dogs Moving to Rescue: {{snapshot.potentialDogsLength}}</p>
+  </div>
+  <div class="snapshot-potential-dogs" class="col-md-6">
+    <p>URGENT: Dogs Needing Fosters</p>
+    <ul>
+      <li ng-repeat="(key,dog) in snapshot.potentialDogs">
+        <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+        <p>{{dog.animalName}}</p>
+      </li>
+    </ul>
+  </div>
 </section>
-<section>
-  <p>Urgent</p>
-</section>
-<section>
-  <p>Available Dogs: {{snapshot.rescueDogsLength}}</p>
-    <ul ng-repeat="(key,dog) in snapshot.rescueDogs">
-      <li><img ng-src="{{dog.animalThumbnailUrl}}"</li>
-      <li>{{dog.animalName}}</li>
+<section class="snapshot-rescue-dogs">
+  <p>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</p>
+    <ul>
+      <li ng-repeat="(key,dog) in snapshot.rescueDogs">
+        <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+        <p>{{dog.animalName}}</p>
+      </li>
     </ul>
 </section>
-<section>
-<h3>Contact Information</h3>
-  <ul>
-    <li><span>Location: <span>{{snapshot.rescueOrg.city}},{{snapshot.rescue.state}}</li>
-    <li><span>Email: </span>{{snapshot.rescueOrg.email}}</li>
-    <li><span>phone: </span>{{snapshot.rescueOrg.phone}}</li>
-    <li><span>website: </span>{{snapshot.rescueOrg.website}}</li>
-  </ul>
-<a href="#">Become a foster parent!</a>
+<section class="row">
+  <div class="col-md-6">
+    <h3>Contact Information</h3>
+      <ul>
+        <li><span>Location: </span>{{snapshot.rescueOrg.city}},{{snapshot.rescue.state}}</li>
+        <li><span>Email: </span>{{snapshot.rescueOrg.email}}</li>
+        <li><span>phone: </span>{{snapshot.rescueOrg.phone}}</li>
+        <li><span>website: </span>{{snapshot.rescueOrg.website}}</li>
+      </ul>
+  </div>
+  <div class="col-md-6">
+    <h4>Become a foster parent!</h4>
+    <button>Learn More</button>
+    <h4>Support This Rescue</h4>
+    <button>DONATE</button>
+  </div>
 </section>
