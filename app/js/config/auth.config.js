@@ -26,6 +26,11 @@
       needLogin: true
     });
   })
+  .run(function($rootScope,$location){
+    if(!$rootScope.user){
+      $location.path('/login');
+    }
+  })
   .run(function($rootScope,checkAccessFactory){
     $rootScope.$on('$routeChangeStart', function(event,nextRoute){
       if(nextRoute.$$route && nextRoute.$$route.needLogin){
