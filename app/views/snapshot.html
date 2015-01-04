@@ -23,10 +23,12 @@
   <div class="snapshot-rescue-dogs">
     <p>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</p>
       <ul class="row">
-        <li class="col-md-2" ng-repeat="(key,dog) in snapshot.rescueDogs">
+        <li class="prev col-md-1"><span ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()">Prev</span></li>
+        <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
           <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
+        <li class="next col-md-1"><span ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()">Next</span></li>
       </ul>
     </div>
 </section>
