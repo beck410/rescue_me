@@ -1,28 +1,32 @@
 <h2>{{snapshot.rescueOrg.org}}</h2>
 <p>{{snapshot.rescueOrg.summary}}</p>
 <section class="row">
-  <div class="dog-numbers col-md-6">
-    <p>Dogs Rescued:</p>
-    <p>Dogs Moving to Rescue: {{snapshot.potentialDogsLength}}</p>
+  <div class="col-md-6">
+    <div class="snapshot-dog-numbers">
+      <p>Dogs Rescued:</p>
+      <p>Dogs Moving to Rescue: {{snapshot.potentialDogsLength}}</p>
+    </div>
   </div>
-  <div class="snapshot-potential-dogs" class="col-md-6">
-    <p>URGENT: Dogs Needing Fosters</p>
-    <ul class="row">
-      <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.potentialEndIndex | limitTo: -(snapshot.potentialStartIndex)">
-        <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
-        <p>{{dog.animalName}}</p>
-      </li>
-    </ul>
-    <div class="row">
-      <div class="prev col-md-6"><span ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()>Prev</span></div>
-      <div class="next col-md-6"><span ng-hide="snapshot.nextPotentialDogButton()" ng-click="snapshot.nextPotentialDogs()">Next</span></div>
+  <div class="col-md-6">
+    <div class="snapshot-potential-dogs">
+      <p>URGENT: Dogs Needing Fosters</p>
+      <ul>
+        <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.potentialEndIndex | limitTo: -(snapshot.potentialStartIndex)">
+          <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+          <p>{{dog.animalName}}</p>
+        </li>
+      </ul>
+      <div>
+        <div class="prev col-md-6"><span ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()>Prev</span></div>
+        <div class="next col-md-6"><span ng-hide="snapshot.nextPotentialDogButton()" ng-click="snapshot.nextPotentialDogs()">Next</span></div>
+      </div>
     </div>
   </div>
 </section>
 <section class="row">
   <div class="snapshot-rescue-dogs">
     <p>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</p>
-      <ul class="row">
+      <ul>
         <li class="prev col-md-1"><span ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()">Prev</span></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
           <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
@@ -34,18 +38,22 @@
 </section>
 <section class="row">
   <div class="col-md-6">
-    <h3>Contact Information</h3>
-      <ul>
-        <li><span>Location: </span>{{snapshot.rescueOrg.city}},{{snapshot.rescue.state}}</li>
-        <li><span>Email: </span>{{snapshot.rescueOrg.email}}</li>
-        <li><span>phone: </span>{{snapshot.rescueOrg.phone}}</li>
-        <li><span>website: </span>{{snapshot.rescueOrg.website}}</li>
-      </ul>
+    <div class="snapshot-contact">
+      <h3>Contact Information</h3>
+        <ul>
+          <li><span>Location: </span>{{snapshot.rescueOrg.city}},{{snapshot.rescue.state}}</li>
+          <li><span>Email: </span>{{snapshot.rescueOrg.email}}</li>
+          <li><span>phone: </span>{{snapshot.rescueOrg.phone}}</li>
+          <li><span>website: </span>{{snapshot.rescueOrg.website}}</li>
+        </ul>
+      </div>
   </div>
   <div class="col-md-6">
-    <h4>Become a foster parent!</h4>
-    <button>Learn More</button>
-    <h4>Support This Rescue</h4>
-    <button>DONATE</button>
+    <div class="snapshot-support">
+      <h4>Become a foster parent!</h4>
+      <button>Learn More</button>
+      <h4>Support This Rescue</h4>
+      <button>DONATE</button>
+    </div>
   </div>
 </section>

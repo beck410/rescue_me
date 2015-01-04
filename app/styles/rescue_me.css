@@ -136,14 +136,22 @@ li {
   display: inline-block;
   padding: 0 5px; }
 
-.snapshot-potential-dogs, .snapshot-rescue-dogs, .dog-numbers {
+.snapshot-potential-dogs, .snapshot-rescue-dogs, .snapshot-dog-numbers {
   background: whitesmoke;
-  margin: 20px;
   overflow: hidden;
   height: 220px; }
+
+.snapshot-rescue-dogs {
+  margin: 15px; }
 
 .prev {
   text-align: right; }
 
 .next {
   text-align: left; }
+
+.snapshot-contact, .snapshot-support {
+  background: whitesmoke;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 20px; }
