@@ -12,10 +12,18 @@
         .error(function(err){
           console.log('get Dog list error:' + err);
        });
-
     }
+
+    function objToArray(obj){
+      var array = _.map(obj, function(el){
+            return el;
+      });
+      return array;
+    }
+
     return {
-      getDogList: getDogList
+      getDogList: getDogList,
+      objToArray: objToArray
     };
   });
 })();
