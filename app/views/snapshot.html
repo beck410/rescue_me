@@ -8,12 +8,12 @@
   <div class="snapshot-potential-dogs" class="col-md-6">
     <p>URGENT: Dogs Needing Fosters</p>
     <ul>
-      <li ng-click=snapshot.prevDogs()>Prev</li>
+      <li ng-hide="snapshot.prevDogButton();" ng-click=snapshot.prevDogs()>Prev</li>
       <li ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.endIndex | limitTo: -(snapshot.startIndex)">
         <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
         <p>{{dog.animalName}}</p>
       </li>
-      <li ng-click="snapshot.nextDogs()">Next</li>
+      <li ng-hide="snapshot.nextDogButton()" ng-click="snapshot.nextDogs()">Next</li>
     </ul>
   </div>
 </section>

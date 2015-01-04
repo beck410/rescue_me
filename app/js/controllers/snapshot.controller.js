@@ -16,6 +16,23 @@
       vm.endIndex = 4;
     });
 
+    vm.prevDogButton = function(){
+      if(vm.endIndex === 4){
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    vm.nextDogButton = function(){
+      if(vm.endIndex > vm.potentialDogsLength){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogs = dogs;
       vm.rescueDogsLength = (_.size(dogs));
