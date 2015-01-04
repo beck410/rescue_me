@@ -27,9 +27,11 @@
     text-align: left; }
   .dog-list button {
     width: 100%;
-    background: #295FA5;
+    background: #16a085;
     color: white;
-    border-radius: 0px; }
+    border-radius: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px; }
 
 .new-dog-btn {
   margin-bottom: 10px;
