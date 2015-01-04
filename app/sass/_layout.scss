@@ -11,6 +11,17 @@ body{
   background: $primary-button-color;
 }
 
+.btn:hover {
+  background: $primary-button-color;
+  opacity: 0.7;
+  color: white;
+}
+
+.btn:active {
+  background: $primary-button-color;
+  color: white;
+}
+
 .main{
   padding: $site-padding-height $site-padding-width;
   background:white;

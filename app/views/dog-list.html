@@ -4,7 +4,7 @@
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">
       <div class="dog-list-info">
-        <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}" alt="Dog needing foster">
+        <div class="dog-img-wrapper"><img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}" alt="Dog needing foster"></div>
         <span><strong>{{dog.animalName}}</strong></span>
         <span class="breed">{{dog.animalBreed}}</span>
         <span class="state">Location: {{dog.shelterState}}</span>
