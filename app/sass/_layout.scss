@@ -6,6 +6,10 @@ body{
   background:whitesmoke;
 }
 
+.btn {
+  background: $primary-button-color;
+}
+
 .main{
   padding: $site-padding-height $site-padding-width;
   background:white;

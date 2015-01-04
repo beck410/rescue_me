@@ -26,9 +26,11 @@
 
   button {
     width: 100%;
-    background: #295FA5;
+    background: $primary-button-color;
     color: white;
     border-radius: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
 

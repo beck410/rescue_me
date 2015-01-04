@@ -51,6 +51,9 @@ body {
   margin: 0 auto;
   background: whitesmoke; }
 
+.btn {
+  background: #16a085; }
+
 .main {
   padding: 0.7em 0.7em;
   background: white;
