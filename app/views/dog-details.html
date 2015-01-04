@@ -1,21 +1,35 @@
 <h2>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h2>
-<ul>
-  <li><img class="dog-details-thumb" ng-src="{{dogDetails.dog.animalThumbnailUrl || 'images/default-dog.png'}}" /></li>
-  <li>Breed: {{dogDetails.dog.animalBreed || 'N/A'}}</li>
-  <li>Sex: {{dogDetails.dog.animalSex || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Kill Date: {{dogDetails.dog.animalKillDate || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Shelter City: {{dogDetails.dog.shelterCity || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Shelter State: {{dogDetails.dog.shelterState || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter" >Shelter Name: {{dogDetails.dog.shelterName || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Shelter Email: {{dogDetails.dog.shelterEmail || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Shelter Phone: {{dogDetails.dog.shelterPhone || 'N/A'}}</li>
-  <li ng-show="dogDetails.shelter">Shelter Website: {{dogDetails.dog.shelterWebsite || 'N/A'}}</li>
-  <li ng-show="dogDetails.foster">Foster Name: {{dogDetails.dog.fosterName || 'N/A'}}</li>
-  <li ng-show="dogDetails.foster">Foster Phone: {{dogDetails.dog.fosterPhone || 'N/A'}}</li>
-  <li ng-show="dogDetails.foster">Foster Email: {{dogDetails.dog.fosterEmail || 'N/A'}}</li>
-  <li ng-show="dogDetails.foster">Foster Address: {{dogDetails.dog.fosterAddress || 'N/A'}}</li>
-  <li ng-show="dogDetails.ownNotes">Dog Summary: {{dogDetails.dog.animalSummary || 'N/A'}}</li>
-  <li ng-show="dogDetails.ownNotes">Additional Notes: {{dogDetails.dog.animalNotes || 'N/A'}}</li>
-</ul>
+<section class="dog-details-img-wrapper">
+  <ul>
+    <li><img class="dog-details-thumb" ng-src="{{dogDetails.dog.animalThumbnailUrl || 'images/default-dog.png'}}" /></li>
+  </ul>
+</section>
+<section class="dog-details-main">
+  <ul>
+    <li>Breed: {{dogDetails.dog.animalBreed || 'N/A'}}</li>
+    <li>Sex: {{dogDetails.dog.animalSex || 'N/A'}}</li>
+  </ul>
+</section>
+<section class="dog-details-shelter">
+  <ul>
+    <li ng-show="dogDetails.shelter">Kill Date: {{dogDetails.dog.animalKillDate || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter">Shelter City: {{dogDetails.dog.shelterCity || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter">Shelter State: {{dogDetails.dog.shelterState || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter" >Shelter Name: {{dogDetails.dog.shelterName || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter">Shelter Email: {{dogDetails.dog.shelterEmail || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter">Shelter Phone: {{dogDetails.dog.shelterPhone || 'N/A'}}</li>
+    <li ng-show="dogDetails.shelter">Shelter Website: {{dogDetails.dog.shelterWebsite || 'N/A'}}</li>
+  </ul>
+</section>
+<section class="dog-details-foster">
+  <ul>
+    <li ng-show="dogDetails.foster">Foster Name: {{dogDetails.dog.fosterName || 'N/A'}}</li>
+    <li ng-show="dogDetails.foster">Foster Phone: {{dogDetails.dog.fosterPhone || 'N/A'}}</li>
+    <li ng-show="dogDetails.foster">Foster Email: {{dogDetails.dog.fosterEmail || 'N/A'}}</li>
+    <li ng-show="dogDetails.foster">Foster Address: {{dogDetails.dog.fosterAddress || 'N/A'}}</li>
+    <li ng-show="dogDetails.ownNotes">Dog Summary: {{dogDetails.dog.animalSummary || 'N/A'}}</li>
+    <li ng-show="dogDetails.ownNotes">Additional Notes: {{dogDetails.dog.animalNotes || 'N/A'}}</li>
+  </ul>
+</section>
 <button ng-click="dogDetails.editDogDetails(dogDetails.dog.name)">Edit Dog</button>
 
