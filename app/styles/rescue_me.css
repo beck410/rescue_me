@@ -62,12 +62,16 @@ body {
   font-family: 'Noto Sans', sans-serif; }
 
 .btn {
-  background: #16a085; }
+  background: #16a085;
+  border: none;
+  border-color: none; }
 
-.btn:hover {
+.btn:hover, .btn:focus {
   background: #16a085;
   opacity: 0.7;
-  color: white; }
+  color: white;
+  border-color: none;
+  border: none; }
 
 .btn:active {
   background: #16a085;
