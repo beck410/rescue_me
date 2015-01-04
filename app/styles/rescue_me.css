@@ -135,3 +135,15 @@ li {
 .snapshot-potential-dogs li, .snapshot-rescue-dogs li {
   display: inline-block;
   padding: 0 5px; }
+
+.snapshot-potential-dogs, .snapshot-rescue-dogs, .dog-numbers {
+  background: whitesmoke;
+  margin: 20px;
+  overflow: hidden;
+  height: 220px; }
+
+.prev {
+  text-align: right; }
+
+.next {
+  text-align: left; }

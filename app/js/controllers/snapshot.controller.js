@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory){
     var vm = this;
 
     rescueDetailsFactory.getDetails(function(details){
@@ -12,38 +12,31 @@
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.potentialDogsArray = dogListFactory.objToArray(dogs);
       vm.potentialDogsLength = (_.size(dogs));
-      vm.startIndex = 4;
-      vm.endIndex = 4;
+      vm.potentialStartIndex = 3;
+      vm.potentialEndIndex = 3;
+
+      vm.prevPotentialDogButton = function(){
+        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 3)
+      };
+
+      vm.nextPotentialDogButton = function(){
+       return slideshowFactory.nextDogButton(vm.potentialEndIndex,vm.potentialDogsLength);
+      };
+
+      vm.nextPotentialDogs = function(){
+        vm.potentialEndIndex += 3;
+      }
+
+      vm.prevPotentialDogs = function(){
+        vm.potentialEndIndex -= 3;
+      }
+
     });
-
-    vm.prevDogButton = function(){
-      if(vm.endIndex === 4){
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    vm.nextDogButton = function(){
-      if(vm.endIndex > vm.potentialDogsLength){
-        return true;
-      } else {
-        return false;
-      }
-    }
-
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogs = dogs;
       vm.rescueDogsLength = (_.size(dogs));
     });
 
-    vm.nextDogs = function(){
-      vm.endIndex += 4;
-    }
-
-    vm.prevDogs = function(){
-      vm.endIndex -= 4;
-    }
-  });
+      });
 })();
