@@ -40,8 +40,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-          'animalID', 'animalName', 'animalSpecies', 'animalBreed', 'animalThumbnailUrl', 'animalSummary', 'animalSex', 'animalNeedsFoster', 'animalDescription', 'animalKillDate', 'locationName'
-
+          'animalID', 'animalName', 'animalSpecies','animalPic1', 'animalBreed', 'animalThumbnailUrl', 'animalSummary', 'animalSex', 'animalNeedsFoster', 'animalKillDate', 'animalDogs', 'animalCats', 'animalKids', 'animalHousetrained','animalSpecialNeeds', 'animalAltered', 'animalUptodate', 'locationZipcode','animalOkwithAdults','animalEneryLevel','animalGroomingNeeds','yardRequired','animalFence', 'animalLeashTrained', 'animalCrateTrained','animalProtective','animalHasallergies','animalSpecialDiet','animalOngoingMedical', 'animalPic2', 'animalPic3'
           ],
           'filters':[
             {
