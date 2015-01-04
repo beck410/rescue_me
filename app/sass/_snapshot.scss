@@ -6,7 +6,7 @@
 }
 
 .snapshot-potential-dogs, .snapshot-rescue-dogs, .snapshot-dog-numbers {
-  background: whitesmoke;
+  background: $block-color;
   overflow: hidden;
   height: 220px;
 
@@ -25,7 +25,7 @@
 }
 
 .snapshot-contact, .snapshot-support {
-  background: whitesmoke;
+  background: $block-color;
   height: 200px;
   overflow: hidden;
   margin-bottom: 20px;
