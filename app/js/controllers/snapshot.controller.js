@@ -14,11 +14,11 @@
       vm.potentialDogsArray = dogListFactory.objToArray(dogs);
 
       vm.potentialDogsLength = (_.size(dogs));
-      vm.potentialStartIndex = 3;
-      vm.potentialEndIndex = 3;
+      vm.potentialStartIndex = 2;
+      vm.potentialEndIndex = 2;
 
       vm.prevPotentialDogButton = function(){
-        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 3)
+        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2)
       };
 
       vm.nextPotentialDogButton = function(){
@@ -26,13 +26,12 @@
       };
 
       vm.nextPotentialDogs = function(){
-        vm.potentialEndIndex += 3;
+        vm.potentialEndIndex += 2;
       }
 
       vm.prevPotentialDogs = function(){
-        vm.potentialEndIndex -= 3;
+        vm.potentialEndIndex -= 2;
       }
-
     });
 
     //RESCUE DOGS
