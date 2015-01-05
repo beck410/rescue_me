@@ -4,7 +4,7 @@
     <div class="snapshot-dog-numbers">
       <h3>About:</h3>
       <p>{{snapshot.rescueOrg.summary}}</p>
-      <h3>Dogs Rescued:</h3>
+      <h3 ng-show="snapshot.dogsRescued">Dogs Rescued:</h3><span ng-show="snapshot.dogsRescued">{{snapshot.dogsRescued}}</span>
     </div>
   </div>
   <div class="col-md-6">

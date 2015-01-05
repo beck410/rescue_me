@@ -1,8 +1,12 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter){
     var vm = this;
+    rescuedDogsCounter.getCounter(function(count){
+      console.log('count: ' + count);
+      vm.dogsRescued = count
+    })
 
     rescueDetailsFactory.getDetails(function(details){
       var completeDetails = completeDogDetails.fillEmptyDetails(details);
@@ -18,7 +22,7 @@
       vm.potentialEndIndex = 2;
 
       vm.prevPotentialDogButton = function(){
-        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2)
+        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2);
       };
 
       vm.nextPotentialDogButton = function(){
@@ -27,11 +31,11 @@
 
       vm.nextPotentialDogs = function(){
         vm.potentialEndIndex += 2;
-      }
+      };
 
       vm.prevPotentialDogs = function(){
         vm.potentialEndIndex -= 2;
-      }
+      };
     });
 
     //RESCUE DOGS
@@ -44,19 +48,19 @@
 
     vm.prevRescueDogButton = function(){
        return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
-    }
+    };
 
     vm.nextRescueDogButton =function(){
       return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
-    }
+    };
 
     vm.nextRescueDogs = function(){
       vm.rescueEndIndex += 5;
-    }
+    };
 
     vm.prevRescueDogs = function(){
       vm.rescueEndIndex -= 5;
-    }
+    };
     });
-  })
+  });
 })();
