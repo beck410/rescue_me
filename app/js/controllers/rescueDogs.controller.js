@@ -37,7 +37,7 @@
      $location.path('/rescue-dogs/' + id + '/edit');
     };
   })
-  .controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location){
+  .controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location,rescuedDogsCounter){
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'potential-dogs';
@@ -49,6 +49,7 @@
 
     vm.submitDogDetails = function(){
       moveDogFactory.addDogToList('rescueDogs','potentialDogs',id,vm.dog,function(){
+        rescuedDogsCounter.updateCounter();
         $location.path('/rescue-dogs/');
       });
     };
@@ -65,20 +66,21 @@
 
     vm.submitDogDetails = function(){
       editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
+        rescuedDogsCounter.updateCounter();
         $location.path('rescue-dogs/');
       });
     };
 
   })
-  .controller('addRescueDog',function(addNewDogFactory,$location){
+  .controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location){
     var vm = this;
     vm.dogGroup = 'rescue-dogs';
     vm.rescueDog = true;
 
     vm.submitDogDetails = function(){
       addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
+        rescuedDogsCounter.updateCounter();
         vm.dogs = vm.dogs || {};
-        console.log(vm.dogs);
         vm.dogs[dog.name] = vm.dog;
         vm.dog = {};
         $location.path('/rescue-dogs');
