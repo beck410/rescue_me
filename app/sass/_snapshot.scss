@@ -13,9 +13,7 @@
 }
 
 .snapshot-dog-numbers span{
-  color: #3F4C4D;
-  display: block;
-  color: white;
+  color: #e67e22;
   padding-top: 5px;
   margin-left: 30px;
 }
@@ -30,11 +28,18 @@
 }
 
 .prev{
-  text-align: right;
+  text-align: right;  background-image: url('../images/left-arrow.svg'),none;
 }
 
 .next{
-  text-align: left;
+  text-align: left;  background-image: url('../images/right-arrow.svg'),none;
+}
+
+.next, .prev {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: auto;
 }
 
 .snapshot-contact, .snapshot-support {

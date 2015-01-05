@@ -4,19 +4,19 @@
     <div class="snapshot-dog-numbers">
       <h3>About:</h3>
       <p>{{snapshot.rescueOrg.summary}}</p>
-      <h3 ng-show="snapshot.dogsRescued">Dogs Rescued:</h3><span ng-show="snapshot.dogsRescued">{{snapshot.dogsRescued}}</span>
+      <h3 ng-show="snapshot.dogsRescued">Total Dogs Rescued:<span ng-show="snapshot.dogsRescued">{{snapshot.dogsRescued}}</span></h3>
     </div>
   </div>
   <div class="col-md-6">
     <div class="snapshot-potential-dogs">
       <h3>URGENT: Dogs Needing Fosters</h3>
       <ul>
-        <li class="prev col-md-2"><span ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()>Prev</span></li>
+        <li class="col-md-2"><div class="prev" ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()></div></li>
         <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.potentialEndIndex | limitTo: -(snapshot.potentialStartIndex)">
           <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
-        <li class="next col-md-2"><span ng-hide="snapshot.nextPotentialDogButton()" ng-click="snapshot.nextPotentialDogs()">Next</span></li>
+        <li class="col-md-2"><div class="next" ng-hide="snapshot.nextPotentialDogButton()" ng-click="snapshot.nextPotentialDogs()"></div></li>
       </ul>
     </div>
   </div>
@@ -25,12 +25,12 @@
   <div class="snapshot-rescue-dogs">
     <h3>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</h3>
       <ul>
-        <li class="prev col-md-1"><span ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()">Prev</span></li>
+        <li class="col-md-1"><div class="prev" ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()"></div></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
           <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
-        <li class="next col-md-1"><span ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()">Next</span></li>
+        <li class="col-md-1"><div class="next" ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()"></div></li>
       </ul>
     </div>
 </section>
