@@ -38,7 +38,7 @@
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = dogListFactory.objToArray(dogs);
-      var _rescueDogsLength = (_.size(dogs));
+      vm.rescueDogsLength = (_.size(dogs));
     vm.rescueStartIndex = 5;
     vm.rescueEndIndex = 5;
 
@@ -47,7 +47,7 @@
     }
 
     vm.nextRescueDogButton =function(){
-      return slideshowFactory.nextDogButton(vm.rescueEndIndex,_rescueDogsLength);
+      return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
     }
 
     vm.nextRescueDogs = function(){
