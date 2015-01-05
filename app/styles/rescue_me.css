@@ -14,7 +14,8 @@
   overflow: hidden;
   margin-bottom: 20px;
   min-height: 200px;
-  padding: 10px; }
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3); }
   .dog-details-summary li, .dog-details-summary p, .dog-details-main li, .dog-details-main p, .dog-details-shelter li, .dog-details-shelter p, .dog-details-foster li, .dog-details-foster p, .dog-details-extra li, .dog-details-extra p {
     margin-left: 5px;
     padding-start: 0; }
