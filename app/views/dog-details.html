@@ -1,18 +1,18 @@
 <div class="dog-details-wrapper">
   <section class="dog-details-header row">
     <span><img class="dog-details-thumb" ng-src="{{dogDetails.dog.animalThumbnailUrl || 'images/default-dog.png'}}" /></li></span>
-    <span><h2>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h2></span>
+    <span><h1>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h1></span>
   </section>
   <section class="row">
     <div class="col-md-6">
       <div class="dog-details-main">
         <h3>Dog Details</h3>
         <ul>
-          <li>Breed: {{dogDetails.dog.animalBreed || 'N/A'}}</li>
-          <li>Sex: {{dogDetails.dog.animalSex || 'N/A'}}</li>
-          <li>Age: {{dogDetails.dog.animalAge || 'N/A'}}</li>
-          <li>Spayed: {{dogDetails.dog.animalAltered || 'N/A'}}</li>
-          <li>Up To Date on Shots: {{dogDetails.dog.animalUptodate || 'N/A'}}</li>
+          <li><span>Breed: </span>{{dogDetails.dog.animalBreed || 'N/A'}}</li>
+          <li><span>Sex: </span>{{dogDetails.dog.animalSex || 'N/A'}}</li>
+          <li><span>Age: </span>{{dogDetails.dog.animalAge || 'N/A'}}</li>
+          <li><span>Spayed: </span>{{dogDetails.dog.animalAltered || 'N/A'}}</li>
+          <li><span>Up To Date on Shots: </span>{{dogDetails.dog.animalUptodate || 'N/A'}}</li>
         </ul>
       </div>
     </div>
@@ -28,13 +28,13 @@
       <div class="dog-details-shelter">
         <h3>Shelter Info</h3>
         <ul>
-          <li>Kill Date: {{dogDetails.dog.animalKillDate || 'N/A'}}</li>
-          <li>Shelter City: {{dogDetails.dog.shelterCity || 'N/A'}}</li>
-          <li>Shelter State: {{dogDetails.dog.shelterState || 'N/A'}}</li>
-          <li>Shelter Name: {{dogDetails.dog.shelterName || 'N/A'}}</li>
-          <li>Shelter Email: {{dogDetails.dog.shelterEmail || 'N/A'}}</li>
-          <li>Shelter Phone: {{dogDetails.dog.shelterPhone || 'N/A'}}</li>
-          <li>Shelter Website: {{dogDetails.dog.shelterWebsite || 'N/A'}}</li>
+          <li><span>Kill Date: {{dogDetails.dog.animalKillDate || 'N/A'}}</span></li>
+          <li><span>Shelter City: {{dogDetails.dog.shelterCity || 'N/A'}}</span></li>
+          <li><span>Shelter State: {{dogDetails.dog.shelterState || 'N/A'}}</span></li>
+          <li><span>Shelter Name: {{dogDetails.dog.shelterName || 'N/A'}}</span></li>
+          <li><span>Shelter Email: {{dogDetails.dog.shelterEmail || 'N/A'}}</span></li>
+          <li><span>Shelter Phone: {{dogDetails.dog.shelterPhone || 'N/A'}}</span></li>
+          <li><span>Shelter Website: {{dogDetails.dog.shelterWebsite || 'N/A'}}</span></li>
         </ul>
       </div>
     </div>
@@ -42,10 +42,10 @@
       <div class="dog-details-foster">
         <h3>Foster Details</h3>
         <ul>
-          <li>Foster Name: {{dogDetails.dog.fosterName || 'N/A'}}</li>
-          <li>Foster Phone: {{dogDetails.dog.fosterPhone || 'N/A'}}</li>
-          <li>Foster Email: {{dogDetails.dog.fosterEmail || 'N/A'}}</li>
-          <li>Foster Address: {{dogDetails.dog.fosterAddress || 'N/A'}}</li>
+          <li><span>Foster Name: {{dogDetails.dog.fosterName || 'N/A'}}</span></li>
+          <li><span>Foster Phone: {{dogDetails.dog.fosterPhone || 'N/A'}}</span></li>
+          <li><span>Foster Email: {{dogDetails.dog.fosterEmail || 'N/A'}}</span></li>
+          <li><span>Foster Address: {{dogDetails.dog.fosterAddress || 'N/A'}}</span></li>
         </ul>
       </div>
     </div>
