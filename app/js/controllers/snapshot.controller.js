@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location){
     var vm = this;
     rescuedDogsCounter.getCounter(function(count){
       console.log('count: ' + count);
@@ -61,6 +61,12 @@
     vm.prevRescueDogs = function(){
       vm.rescueEndIndex -= 5;
     };
+
+    vm.editSnapshot = function(){
+      $location.path('snapshot/edit');
+    }
     });
+  })
+  .controller('editRescueController',function($location){
   });
 })();
