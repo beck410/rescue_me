@@ -33,7 +33,7 @@
       vm.dog = completeRescueDog;
     });
 
-    vm.editDogDetails = function(){
+    vm.editDetailsDetails = function(){
      $location.path('/rescue-dogs/' + id + '/edit');
     };
   })
@@ -54,7 +54,7 @@
       });
     };
   })
-  .controller('editRescueDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('editRescueDog',function(editDetailsFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'rescue-dogs';
@@ -65,7 +65,7 @@
     });
 
     vm.submitDogDetails = function(){
-      editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
+      editDetailsFactory.editDetails('rescueDogs',id,vm.dog,function(){
         rescuedDogsCounter.updateCounter();
         $location.path('rescue-dogs/');
       });

@@ -59,7 +59,7 @@
       });
     };
   })
-  .controller('editPotentialDog',function(US_STATES,editDogFactory,dogDetailsFactory,$routeParams,$location){
+  .controller('editPotentialDog',function(US_STATES,editDetailsFactory,dogDetailsFactory,$routeParams,$location){
     var vm = this;
     var id = $routeParams.id;
     vm.dogGroup = 'potential-dogs';
@@ -71,7 +71,7 @@
     });
 
     vm.submitDogDetails = function(){
-      editDogFactory.editDog('potentialDogs',id,vm.dog,function(){
+      editDetailsFactory.editDetails('potentialDogs',id,vm.dog,function(){
         $location.path('potential-dogs');
       });
     };
