@@ -1,27 +1,27 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('editDogFactory',function(requestURL,FIREBASE_URL,$http){
+  .factory('editDetailsFactory',function(requestURL,FIREBASE_URL,$http){
 
-    function editDog(dogDB,id,dog,cb){
-      _postDog(dogDB,id,dog,cb);
+    function editDetails(dataset,id,details,cb){
+      _postDog(dataset,id,details,cb);
     }
 
-    function _postDog(newDogDB,id,dog,cb){
-      var url = requestURL.url(newDogDB,id);
-      $http.put(url,dog)
-        .success(function(dog){
+    function _postDetails(dataset,id,details,cb){
+      var url = requestURL.url(dataset,id);
+      $http.put(url,details)
+        .success(function(details){
           if(cb){
-            cb(dog);
+            cb(details);
           }
         })
         .error(function(err){
-          console.log('post dog error: ' + err);
+          console.log('post details error: ' + err);
         });
     }
 
     return {
-      editDog: editDog
+      editDetails: editDetails
     };
   });
 })();

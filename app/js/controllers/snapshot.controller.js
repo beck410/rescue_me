@@ -67,6 +67,18 @@
     }
     });
   })
-  .controller('editRescueController',function($location){
+  .controller('editRescueController',function($location,rescueDetailsFactory){
+    var vm = this;
+    vm.header = 'Change Rescue Details';
+
+    rescueDetailsFactory.getDetails(function(details){
+      vm.user = details;
+    });
+
+    vm.addDetails = function(){
+      rescueDetailsFactory.editDetails(vm.user,function(){
+        $location.path('/snapshot');
+      });
+    };
   });
 })();

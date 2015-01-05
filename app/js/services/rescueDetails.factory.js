@@ -11,11 +11,23 @@
       })
       .error(function(err){
         console.log('get rescue details error:' + err);
+      });
+    }
+
+    function editDetails(details,cb){
+      var url = requestURL.url('rescueDetails');
+      $http.put(url,details)
+      .success(function(){
+        cb();
       })
+      .error(function(){
+        console.log(err);
+      });
     }
 
     return {
-     getDetails : getDetails
+      getDetails : getDetails,
+      editDetails: editDetails
     };
   });
 })();

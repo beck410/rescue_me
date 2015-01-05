@@ -37,7 +37,7 @@
       vm.dog = completePotentialDog;
     });
 
-    vm.editDogDetails = function(){
+    vm.editDetailsDetails = function(){
       $location.path('/potential-dogs/' + dog + '/edit');
     };
 

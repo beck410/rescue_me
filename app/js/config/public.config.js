@@ -15,7 +15,7 @@
     .when('/snapshot/edit',{
       templateUrl: 'views/auth/register.html',
       controller: 'editRescueController',
-      controllerAs: 'editRescue',
+      controllerAs: 'details',
       needLogin: true
     })
     .otherwise({

@@ -22,7 +22,10 @@
   })
   .controller('registerController', function($scope,$location,registerFactory,$timeout){
     var vm = this;
-    vm.addUser = function(){
+    vm.registration = true;
+    vm.header = 'Register'
+
+    vm.addDetails = function(){
       console.log(vm.user);
       registerFactory.register(vm.user,function(){
         $timeout(function(){

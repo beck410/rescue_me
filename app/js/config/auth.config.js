@@ -6,7 +6,7 @@
     .when('/register',{
       templateUrl: 'views/auth/register.html',
       controller: 'registerController',
-      controllerAs: 'register'
+      controllerAs: 'details'
     })
     .when('/login',{
       templateUrl: 'views/auth/login.html',

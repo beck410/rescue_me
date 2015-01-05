@@ -1,38 +1,38 @@
-<h1>Register Page</h1>
-<form name="registerForm" ng-submit="register.addUser()" novalidate>
-<div class="form-group">
+<h1>{{details.header}}</h1>
+<form name="details-form" ng-submit="details.addDetails()" novalidate>
+<div class="form-group" ng-show="details.registration">
   <label>Email</label>
-  <input class="form-control" type="email" ng-model="register.user.email" required>
+  <input class="form-control" type="email" ng-model="details.user.email" required>
 </div>
-<div class="form-group">
+<div class="form-group" ng-show="details.registration">
   <label>Password</label>
-  <input class="form-control" type="password" ng-model="register.user.password" required>
+  <input class="form-control" type="password" ng-model="details.user.password" required>
 </div>
 <section>
   <h2>About your rescue...</h2>
 <div class="form-group">
   <label>Rescue Organization</label>
-  <input class="form-control" type="text" ng-model="register.user.org" required>
+  <input class="form-control" type="text" ng-model="details.user.org" required>
 </div>
   <label class="form-group">Summary of Rescue Group</label>
-    <textarea class="form-control" ng-model="register.user.summary"></textarea>
+    <textarea class="form-control" ng-model="details.user.summary"></textarea>
   </div>
   <div class="form-group">
     <label>City</label>
-    <input class="form-control" type="text" ng-model="register.user.city" required>
+    <input class="form-control" type="text" ng-model="details.user.city" required>
   </div>
  <div class="form-group">
     <label>State</label>
-    <input class="form-control" type="text" ng-model="register.user.state" required>
+    <input class="form-control" type="text" ng-model="details.user.state" required>
   </div>
   <div class="form-group">
     <label>Phone</label>
-    <input class="form-control" type="text" ng-model="register.user.phone" required>
+    <input class="form-control" type="text" ng-model="details.user.phone" required>
   </div>
   <div class="form-group">
     <label>Website</label>
-    <input class="form-control" type="text" ng-model="register.user.website" required>
+    <input class="form-control" type="text" ng-model="details.user.website" required>
   </div>
 </section>
-<input type="submit" class="btn btn-primary btn-block" value="Register">
+<input type="submit" class="btn btn-primary btn-block" value="{{details.header}}">
 </form>
