@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory){
     var vm = this;
 
     rescueDetailsFactory.getDetails(function(details){
@@ -11,7 +11,7 @@
 
     //POTENTIAL DOGS
     dogListFactory.getDogList('potentialDogs',function(dogs){
-      vm.potentialDogsArray = dogListFactory.objToArray(dogs);
+      vm.potentialDogsArray = objToArrayFactory.objToArray(dogs);
 
       vm.potentialDogsLength = (_.size(dogs));
       vm.potentialStartIndex = 2;
@@ -37,7 +37,7 @@
     //RESCUE DOGS
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
-      vm.rescueDogsArray = dogListFactory.objToArray(dogs);
+      vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
       vm.rescueDogsLength = (_.size(dogs));
     vm.rescueStartIndex = 5;
     vm.rescueEndIndex = 5;
