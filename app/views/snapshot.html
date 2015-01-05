@@ -3,13 +3,13 @@
 <section class="row">
   <div class="col-md-6">
     <div class="snapshot-dog-numbers">
-      <p>Dogs Rescued:</p>
-      <p>Dogs Moving to Rescue: {{snapshot.potentialDogsLength}}</p>
+      <h3>Dogs Rescued:</h3>
+      <h3>Dogs Moving to Rescue: <span>{{snapshot.potentialDogsLength}} Dogs</span></h3>
     </div>
   </div>
   <div class="col-md-6">
     <div class="snapshot-potential-dogs">
-      <p>URGENT: Dogs Needing Fosters</p>
+      <h3>URGENT: Dogs Needing Fosters</h3>
       <ul>
         <li class="prev col-md-2"><span ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()>Prev</span></li>
         <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.potentialEndIndex | limitTo: -(snapshot.potentialStartIndex)">
@@ -23,7 +23,7 @@
 </section>
 <section class="row">
   <div class="snapshot-rescue-dogs">
-    <p>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</p>
+    <h3>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</h3>
       <ul>
         <li class="prev col-md-1"><span ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()">Prev</span></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
@@ -49,9 +49,9 @@
   <div class="col-md-6">
     <div class="snapshot-support">
       <h4>Become a foster parent!</h4>
-      <button>Learn More</button>
+      <button class="btn">Learn More</button>
       <h4>Support This Rescue</h4>
-      <button>DONATE</button>
+      <button class="btn">DONATE</button>
     </div>
   </div>
 </section>
