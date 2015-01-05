@@ -1,0 +1,40 @@
+;(function(){
+  'use strict';
+  angular.module('rescue_me')
+  .factory('rescuedDogsCounter',function($http,requestURL){
+
+    var _url = requestURL.url('rescuedDogsCounter');
+    var currentCount;
+
+    function getCounter(cb){
+      console.log(_url)
+      $http.get(_url)
+      .success(function(number){
+        cb(number);
+      })
+      .error(function(err){
+        console.log(err);
+      });
+    };
+
+
+
+    var updateCounter = function(){
+      getCounter(function(currentCount){
+        var newCount = currentCount + 1
+        $http.put(_url, newCount)
+        .success(function(number){
+          console.log('rescued dogs number: ' + number);
+        })
+        .error(function(err){
+          console.log('change rescued dogs number error'+ err);
+        });
+      });  
+    }
+
+    return {
+      getCounter: getCounter,
+      updateCounter: updateCounter
+    };
+  });
+})();
