@@ -1,1 +1,28 @@
+.dog-details-wrapper {
+  .dog-details-thumb {
+    padding: 0 15px;
+  }
+}
 
+.dog-details-header {
+  margin-bottom: 20px;
+}
+
+.dog-details-summary, .dog-details-main, .dog-details-shelter, .dog-details-foster, .dog-details-extra {
+  background: $block-color;
+  overflow:hidden;
+  margin-bottom: 20px;
+  min-height: 200px;
+  padding: 10px;
+
+  li, p{
+    margin-left: 5px;
+    padding-start: 0;
+  }
+}
+
+.dog-details-header{
+  span{
+    display: inline-block;
+  }
+}

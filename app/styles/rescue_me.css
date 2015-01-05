@@ -1,5 +1,24 @@
 /* GLOBAL VARIABLES */
 /* IMPORTS */
+.dog-details-wrapper .dog-details-thumb {
+  padding: 0 15px; }
+
+.dog-details-header {
+  margin-bottom: 20px; }
+
+.dog-details-summary, .dog-details-main, .dog-details-shelter, .dog-details-foster, .dog-details-extra {
+  background: rgba(41, 182, 100, 0.3);
+  overflow: hidden;
+  margin-bottom: 20px;
+  min-height: 200px;
+  padding: 10px; }
+  .dog-details-summary li, .dog-details-summary p, .dog-details-main li, .dog-details-main p, .dog-details-shelter li, .dog-details-shelter p, .dog-details-foster li, .dog-details-foster p, .dog-details-extra li, .dog-details-extra p {
+    margin-left: 5px;
+    padding-start: 0; }
+
+.dog-details-header span {
+  display: inline-block; }
+
 .login-wrapper {
   display: inline-block;
   width: 250px;
@@ -18,7 +37,8 @@
     height: auto;
     width: auto;
     margin: 0 auto;
-    height: 100px; }
+    height: 100px;
+    margin-top: 5px; }
     .dog-list .dog-img-wrapper img {
       border: 3px solid #16a085; }
   .dog-list ul {
@@ -53,18 +73,26 @@
   text-align: center;
   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3); }
 
+* {
+  -webkit-padding-start: 0px; }
+
+a, a:hover {
+  color: #16a085; }
+
 body {
   font-size: 16px;
   line-height: 1.375em;
   max-width: 1080px;
   margin: 0 auto;
   background: whitesmoke;
-  font-family: 'Noto Sans', sans-serif; }
+  font-family: 'Noto Sans', sans-serif;
+  color: #3F4C4D; }
 
 .btn {
   background: #16a085;
   border: none;
-  border-color: none; }
+  border-color: none;
+  color: white; }
 
 .btn:hover, .btn:focus {
   background: #16a085;
@@ -81,6 +109,9 @@ body {
   padding: 0.7em 0.7em;
   background: white;
   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3); }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #7f8c8d; }
 
 h1 {
   font-size: 3em;
@@ -164,10 +195,18 @@ li {
 .snapshot-potential-dogs, .snapshot-rescue-dogs, .snapshot-dog-numbers {
   background: rgba(41, 182, 100, 0.3);
   overflow: hidden;
-  height: 220px; }
+  height: 220px;
+  padding: 0 10px; }
+
+.snapshot-dog-numbers span {
+  color: #3F4C4D; }
+
+.snapshot-potential-dogs {
+  text-align: center; }
 
 .snapshot-rescue-dogs {
-  margin: 15px; }
+  margin: 15px;
+  text-align: center; }
 
 .prev {
   text-align: right; }
@@ -179,4 +218,11 @@ li {
   background: rgba(41, 182, 100, 0.3);
   height: 200px;
   overflow: hidden;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding: 0 10px; }
+  .snapshot-contact ul, .snapshot-support ul {
+    padding-left: 10px; }
+
+.snapshot-support {
+  margin: 0 auto;
+  text-align: center; }

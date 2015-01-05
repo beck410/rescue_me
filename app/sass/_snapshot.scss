@@ -9,11 +9,20 @@
   background: $block-color;
   overflow: hidden;
   height: 220px;
+  padding: 0 10px;
+}
 
+.snapshot-dog-numbers span{
+  color: #3F4C4D;
+}
+
+.snapshot-potential-dogs {
+  text-align: center;
 }
 
 .snapshot-rescue-dogs {
   margin: 15px;
+  text-align: center;
 }
 
 .prev{
@@ -29,4 +38,14 @@
   height: 200px;
   overflow: hidden;
   margin-bottom: 20px;
+  padding: 0 10px;
+
+  ul {
+    padding-left: 10px;
+  }
+}
+
+.snapshot-support {
+  margin: 0 auto;
+  text-align: center;
 }
