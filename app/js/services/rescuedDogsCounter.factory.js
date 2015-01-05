@@ -4,7 +4,6 @@
   .factory('rescuedDogsCounter',function($http,requestURL){
 
     var _url = requestURL.url('rescuedDogsCounter');
-    var currentCount;
 
     function getCounter(cb){
       $http.get(_url)
@@ -14,21 +13,21 @@
       .error(function(err){
         console.log(err);
       });
-    };
+    }
 
 
 
     var updateCounter = function(){
       getCounter(function(currentCount){
-        var newCount = currentCount + 1
+        var newCount = currentCount + 1;
         $http.put(_url, newCount)
-        .success(function(number){
+        .success(function(){
         })
         .error(function(err){
           console.log('change rescued dogs number error'+ err);
         });
-      });  
-    }
+      });
+    };
 
     return {
       getCounter: getCounter,
