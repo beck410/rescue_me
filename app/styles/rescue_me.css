@@ -215,6 +215,8 @@ li {
 .snapshot-rescue-dogs {
   margin: 15px;
   text-align: center; }
+  .snapshot-rescue-dogs h3 span {
+    color: #e67e22; }
 
 .prev {
   text-align: right;

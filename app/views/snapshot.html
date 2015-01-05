@@ -23,7 +23,7 @@
 </section>
 <section class="row">
   <div class="snapshot-rescue-dogs">
-    <h3>Dogs Available For Adoption: {{snapshot.rescueDogsLength}}</h3>
+    <h3>Dogs Available For Adoption: <span>{{snapshot.rescueDogsLength}}</span></h3>
       <ul>
         <li class="col-md-1"><div class="prev" ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()"></div></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
