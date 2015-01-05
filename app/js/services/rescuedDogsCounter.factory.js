@@ -7,7 +7,6 @@
     var currentCount;
 
     function getCounter(cb){
-      console.log(_url)
       $http.get(_url)
       .success(function(number){
         cb(number);
@@ -24,7 +23,6 @@
         var newCount = currentCount + 1
         $http.put(_url, newCount)
         .success(function(number){
-          console.log('rescued dogs number: ' + number);
         })
         .error(function(err){
           console.log('change rescued dogs number error'+ err);
