@@ -1,7 +1,8 @@
 /* GLOBAL VARIABLES */
 /* IMPORTS */
 .dog-details-wrapper .dog-details-thumb {
-  padding: 0 15px; }
+  padding: 0 15px;
+  max-height: 150px; }
 .dog-details-wrapper h2 {
   text-align: center; }
 
