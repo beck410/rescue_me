@@ -199,7 +199,11 @@ li {
   padding: 0 10px; }
 
 .snapshot-dog-numbers span {
-  color: #3F4C4D; }
+  color: #3F4C4D;
+  display: block;
+  color: white;
+  padding-top: 5px;
+  margin-left: 30px; }
 
 .snapshot-potential-dogs {
   text-align: center; }
