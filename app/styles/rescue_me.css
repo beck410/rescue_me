@@ -2,6 +2,8 @@
 /* IMPORTS */
 .dog-details-wrapper .dog-details-thumb {
   padding: 0 15px; }
+.dog-details-wrapper h2 {
+  text-align: center; }
 
 .dog-details-header {
   margin-bottom: 20px; }
@@ -15,6 +17,8 @@
   .dog-details-summary li, .dog-details-summary p, .dog-details-main li, .dog-details-main p, .dog-details-shelter li, .dog-details-shelter p, .dog-details-foster li, .dog-details-foster p, .dog-details-extra li, .dog-details-extra p {
     margin-left: 5px;
     padding-start: 0; }
+  .dog-details-summary li span, .dog-details-main li span, .dog-details-shelter li span, .dog-details-foster li span, .dog-details-extra li span {
+    font-weight: 700; }
 
 .dog-details-header span {
   display: inline-block; }
