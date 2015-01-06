@@ -17,8 +17,8 @@
     };
 
     vm.filteredShelterDogs = function(){
-      filterDogsFactory.addKeyFilters(vm.apiKeys,function(key){
-        console.log(key);
+      filterDogsFactory.addKeyFilters(vm.apiKeys,function(filterDogs){
+        vm.dogs = filterDogs;
       });
     }
   })
