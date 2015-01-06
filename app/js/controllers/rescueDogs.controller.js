@@ -6,6 +6,7 @@
     vm.dogGroup = 'rescue-dogs';
     vm.dogHeader = 'Rescue Dogs';
     vm.configButtons = true;
+    vm.newDogLink = '/#/rescue-dogs/add';
 
     dogListFactory.getDogList('rescueDogs',function(rescueDogs){
       vm.dogs = rescueDogs;

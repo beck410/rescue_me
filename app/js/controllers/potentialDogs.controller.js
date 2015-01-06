@@ -7,6 +7,7 @@
     vm.dogHeader = 'Potential Dogs';
     vm.nextDogGroup = 'Rescue';
     vm.configButtons = true;
+    vm.newDogLink = '/#/potential-dogs/add'
 
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.dogs = dogs;
@@ -20,10 +21,6 @@
 
     vm.addToNextList = function(potentialID){
         $location.path('/rescue-dogs/' + potentialID + '/move');
-    };
-
-    vm.addNewDog = function(){
-      $location.path('/potential-dogs/add');
     };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails){

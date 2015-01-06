@@ -66,12 +66,8 @@
     margin-top: 5px;
     margin-bottom: 5px; }
 
-.new-dog-btn {
-  margin-bottom: 10px;
-  background: none;
-  border: none;
-  color: #295FA5;
-  padding: 20px; }
+.new-dog-link {
+  margin-left: 15px; }
 
 .dog-list-info {
   background: rgba(41, 182, 100, 0.3);
@@ -82,7 +78,7 @@
 * {
   -webkit-padding-start: 0px; }
 
-a, a:hover {
+a, a:hover, a:active {
   color: #16a085; }
 
 body {
