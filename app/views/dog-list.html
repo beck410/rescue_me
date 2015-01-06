@@ -24,6 +24,14 @@
       <option value="Senior">Senior</option>
     </select>
   </div>
+  <div class="form-group">
+    <label class="control-label">Location (zipcode)</label>
+    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocation">
+  </div> 
+  <div class="form-group">
+    <label class="control-label">Radius to search</label>
+    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocationDistance">
+  </div>
   <!-- <div class="form-group"> -->
   <!--   <label class="control-label">Size</label> -->
   <!--   <select ng-model="dogList.apiKeys.size"> -->

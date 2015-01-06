@@ -50,7 +50,24 @@
           };
          filters.push(apiKey);
         }
+        if(filter === 'animalLocation'){
+          var apiKey = {
+            'fieldName':'animalLocation',
+            'operation':'equals',
+            'criteria':key
+          };
+          filters.push(apiKey);
+        }
+        if(filter === 'animalLocationDistance'){
+          var apiKey = {
+            'fieldName':'animalLocationDistance',
+            'operation':'radius',
+            'criteria': key
+          };
+        }
+         filters.push(apiKey);
       });
+      console.log(filters)
       return filters;
     }
 
