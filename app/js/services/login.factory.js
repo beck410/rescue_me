@@ -4,7 +4,6 @@
   .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
     var ref= new Firebase(FIREBASE_URL);
     $rootScope.user = ref.getAuth();
-    console.log($rootScope.user);
 
     function login(email,password,mainCB){
       ref.authWithPassword({

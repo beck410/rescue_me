@@ -1,22 +1,18 @@
 <h1>{{dogList.dogHeader}}</h1>
 <a ng-show="dogList.configButtons" class="new-dog-link" ng-href="{{dogList.newDogLink}}">+ Add New Dog</a>
-<form name="shelter-filter-form" ng-show="dogList.filterDogs" ng-submit="dogList.filteredShelterDogs()">
-  <h3>Filter Shelter Dogs</h3>
+<button class="btn shelter-filter-btn" ng-show="dogList.filterDogsHeader" ng-click="dogList.filterDogs = !dogList.filterDogs">Filter Shelter Dogs</button>
+<form name="shelter-filter-form" ng-show="dogList.filterDogs" ng-submit="dogList.filteredShelterDogs()" class="shelter-filter-form">
   <div class="form-group">
     <label class="control-label">Sex</label>
     <select ng-model="dogList.apiKeys.sex">
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </select>
-  </div>
-  <div class="form-group">
     <label class="control-label">Spayed</label>
     <select ng-model="dogList.apiKeys.altered">
       <option value="yes">yes</option>
       <option value="no">no</option>
     </select>
-  </div>
-  <div class="form-group">
     <label class="control-label">Age</label>
     <select ng-model="dogList.apiKeys.generalAge">
       <option value="Baby">Baby</option>
@@ -46,10 +42,8 @@
     <label class="control-label">Breed</label>
     <input type="text" class="form-control" ng-model="dogList.apiKeys.animalBreed">
   </div>
-
-  <input type="submit" value="get Dogs">
+  <input class="btn" type="submit" value="get Dogs">
 </form>
-<button class="new-dog-btn" ng-show="dogList.configButtons" ng-click="dogList.addNewDog()">+ Add New Dog</button>
 <div class="dog-list">
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">

@@ -7,7 +7,8 @@
     vm.dogGroup = 'find-dogs';
     vm.dogHeader = 'Find Shelter Dogs';
     vm.nextDogGroup = 'Potential';
-    vm.filterDogs = true;
+    vm.filterDogs = false;
+    vm.filterDogsHeader = true;
 
     dogListFactory.getDogList('shelterDogs',function(shelterDogs){
       vm.dogs = shelterDogs;
@@ -20,6 +21,7 @@
     vm.filteredShelterDogs = function(){
       filterDogsFactory.addKeyFilters(vm.apiKeys,function(filterDogs){
         vm.dogs = filterDogs;
+        vm.apiKeys = {};
       });
     }
   })
