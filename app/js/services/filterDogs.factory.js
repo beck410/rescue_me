@@ -18,55 +18,57 @@
     function _formatFilters(keys){
       var filters = [];
       _.forOwn(keys, function(key,filter){
-        if(filter === 'sex'){
-          var apiKey = {
-            'fieldName':'animalSex',
-            'operation':'equals',
-            'criteria':key
-          };
-         filters.push(apiKey);
+        switch(filter){
+          case 'sex':
+            var apiKey = {
+              'fieldName':'animalSex',
+              'operation':'equals',
+              'criteria':key
+            };
+            filters.push(apiKey);
+            break;
+          case 'size':
+            var apiKey = {
+              'fieldName':'animalSize',
+              'operation':'equal',
+              'criteria':key
+            };
+            filters.push(apiKey);
+            break;
+          case 'altered':
+            var apiKey = {
+              'fieldName':'animalAltered',
+              'operation':'equal',
+              'criteria':key
+            };
+            filters.push(apiKey);
+            break;
+          case 'generalAge':
+            var apiKey = {
+              'fieldName':'animalGeneralAge',
+              'operation':'equal',
+              'criteria':key
+            };
+            filters.push(apiKey);
+            break;
+          case 'animalLocation':
+            var apiKey = {
+              'fieldName':'animalLocation',
+              'operation':'equals',
+              'criteria':key
+            };
+            filters.push(apiKey);
+            break;
+          case 'animalLocationDistance':
+            var apiKey = {
+              'fieldName':'animalLocationDistance',
+              'operation':'radius',
+              'criteria': key
+            };
+            filters.push(apiKey);
+            break;
         }
-        if(filter === 'size'){
-          var apiKey = {
-            'fieldName':'animalSize',
-            'operation':'equal',
-            'criteria':key
-          };
-         filters.push(apiKey);
-        }
-        if(filter === 'altered'){
-          var apiKey = {
-            'fieldName':'animalAltered',
-            'operation':'equal',
-            'criteria':key
-          };
-         filters.push(apiKey);
-        }
-        if(filter === 'generalAge'){
-          var apiKey = {
-            'fieldName':'animalGeneralAge',
-            'operation':'equal',
-            'criteria':key
-          };
-         filters.push(apiKey);
-        }
-        if(filter === 'animalLocation'){
-          var apiKey = {
-            'fieldName':'animalLocation',
-            'operation':'equals',
-            'criteria':key
-          };
-          filters.push(apiKey);
-        }
-        if(filter === 'animalLocationDistance'){
-          var apiKey = {
-            'fieldName':'animalLocationDistance',
-            'operation':'radius',
-            'criteria': key
-          };
-         filters.push(apiKey);
-        }
-      });
+        });
       console.log(filters)
       return filters;
     }
@@ -82,7 +84,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate' 
+            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate'
           ],
           'filters':[
             {
