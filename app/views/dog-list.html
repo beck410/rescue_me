@@ -42,6 +42,11 @@
   <!--     <option value="X-Large">Extra Large</option> -->
   <!--   </select> -->
   <!-- </div> -->
+  <div class="form-group">
+    <label class="control-label">Breed</label>
+    <input type="text" class="form-control" ng-model="dogList.apiKeys.animalBreed">
+  </div>
+
   <input type="submit" value="get Dogs">
 </form>
 <button class="new-dog-btn" ng-show="dogList.configButtons" ng-click="dogList.addNewDog()">+ Add New Dog</button>

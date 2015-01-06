@@ -18,19 +18,12 @@
     function _formatFilters(keys){
       var filters = [];
       _.forOwn(keys, function(key,filter){
+        console.log('key: ' + key)
         switch(filter){
           case 'sex':
             var apiKey = {
               'fieldName':'animalSex',
               'operation':'equals',
-              'criteria':key
-            };
-            filters.push(apiKey);
-            break;
-          case 'size':
-            var apiKey = {
-              'fieldName':'animalSize',
-              'operation':'equal',
               'criteria':key
             };
             filters.push(apiKey);
@@ -67,9 +60,38 @@
             };
             filters.push(apiKey);
             break;
+          case 'animalBreed':
+            var apiKey = {
+              'fieldName':'animalBreed',
+              'operation':'contains',
+              'criteria': key
+            };
+            filters.push(apiKey);
+            break;
+          // case 'size':
+          //   filters.push(
+          //       {
+          //         'fieldName':'animalSizeCurrent',
+          //         'operation':'notblank'
+          //       })
+          //   filters.push(
+          //       {
+          //         'fieldName':'animalSizeCurrent',
+          //         'operation':'notequal',
+          //         'criteria':'0.0'
+          //       })
+          //   if(key === 'Small'){
+          //     var apiKey = {
+          //     'fieldName':'animalSizeCurrent',
+          //     'operation':'greaterthan',
+          //     'criteria': '100.0'
+          //     };
+          //    filters.push(apiKey);
+          //   }
+          //   break;
         }
-        });
-      console.log(filters)
+      });
+      console.log("filters: " + filters);
       return filters;
     }
 
@@ -113,6 +135,7 @@
     }
 
     function _getShelterDogs(keys,mainCB,cb){
+      console.log(keys)
       var encodedKeys = JSON.stringify(keys);
       var url = 'https://api.rescuegroups.org/http/json/?data=' + encodedKeys + '&callback=JSON_CALLBACK';
 
