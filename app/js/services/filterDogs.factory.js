@@ -68,27 +68,14 @@
             };
             filters.push(apiKey);
             break;
-          // case 'size':
-          //   filters.push(
-          //       {
-          //         'fieldName':'animalSizeCurrent',
-          //         'operation':'notblank'
-          //       })
-          //   filters.push(
-          //       {
-          //         'fieldName':'animalSizeCurrent',
-          //         'operation':'notequal',
-          //         'criteria':'0.0'
-          //       })
-          //   if(key === 'Small'){
-          //     var apiKey = {
-          //     'fieldName':'animalSizeCurrent',
-          //     'operation':'greaterthan',
-          //     'criteria': '100.0'
-          //     };
-          //    filters.push(apiKey);
-          //   }
-          //   break;
+          case 'size':
+            var apiKey = {
+            'fieldName':'animalGeneralSizePotential',
+            'operation':'equals',
+            'criteria': key
+            };
+            filters.push(apiKey);
+            break;
         }
       });
       console.log("filters: " + filters);
@@ -106,7 +93,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate'
+            'animalID','animalPictures','animalGeneralSizePotential','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate'
           ],
           'filters':[
             {

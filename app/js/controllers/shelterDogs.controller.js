@@ -20,7 +20,7 @@
     };
 
     vm.filteredShelterDogs = function(){
-      if(vm.apiKeys === {}){
+      if(vm.apiKeys !== {}){
         filterDogsFactory.addKeyFilters(vm.apiKeys,function(filterDogs){
           vm.dogs = filterDogs;
           vm.apiKeys = {};
