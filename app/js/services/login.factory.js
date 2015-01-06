@@ -29,7 +29,6 @@
     }
 
     function _getShelterDogs(mainCB, cb){
-      console.log('getShelterDogs');
       var keys ={
         'apikey':'pkF6l2hC',
         'objectType':'animals',

@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location){
+  .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location,filterDogsFactory){
 
     var vm = this;
     vm.dogGroup = 'find-dogs';
@@ -15,6 +15,12 @@
     vm.addToNextList = function(shelterID){
         $location.path('/potential-dogs/' + shelterID + '/move');
     };
+
+    vm.filteredShelterDogs = function(){
+      filterDogsFactory.addKeyFilters(vm.apiKeys,function(key){
+        console.log(key);
+      });
+    }
   })
   .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails){
     var vm = this;

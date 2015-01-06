@@ -1,4 +1,15 @@
 <h1>{{dogList.dogHeader}}</h1>
+<form name="shelter-filter-form" ng-submit="dogList.filteredShelterDogs()">
+  <h3>Filter Shelter Dogs</h3>
+  <div class="form-group">
+    <label class="control-label">Sex</label>
+    <select ng-model="dogList.apiKeys.sex">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+  <input type="submit" value="get Dogs">
+</form>
 <button class="new-dog-btn" ng-show="dogList.configButtons" ng-click="dogList.addNewDog()">+ Add New Dog</button>
 <div class="dog-list">
   <ul>
