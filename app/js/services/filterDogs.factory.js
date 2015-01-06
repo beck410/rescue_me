@@ -26,6 +26,30 @@
           };
          filters.push(apiKey);
         }
+        if(filter === 'size'){
+          var apiKey = {
+            'fieldName':'animalSize',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'altered'){
+          var apiKey = {
+            'fieldName':'animalAltered',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'generalAge'){
+          var apiKey = {
+            'fieldName':'animalGeneralAge',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
       });
       return filters;
     }
@@ -76,6 +100,7 @@
       $http.jsonp(url)
       .success(function(shelterDogs){
         console.log('shelter dogs api done');
+        console.log(shelterDogs)
         cb(mainCB,shelterDogs.data);
       })
       .error(function(err){
