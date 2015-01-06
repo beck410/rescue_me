@@ -64,8 +64,8 @@
             'operation':'radius',
             'criteria': key
           };
-        }
          filters.push(apiKey);
+        }
       });
       console.log(filters)
       return filters;
@@ -82,7 +82,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-          'animalID','animalSizeCurrent','animalGeneralAge', 'animalLocation','animalName', 'animalSpecies','animalPic1', 'animalBreed', 'animalThumbnailUrl', 'animalSummary', 'animalSex', 'animalNeedsFoster', 'animalKillDate', 'animalDogs', 'animalCats', 'animalKids', 'animalHousetrained','animalSpecialNeeds', 'animalAltered', 'animalUptodate', 'locationZipcode','animalOkwithAdults','animalEneryLevel','animalGroomingNeeds','yardRequired','animalFence', 'animalLeashTrained', 'animalCrateTrained','animalProtective','animalHasallergies','animalSpecialDiet','animalOngoingMedical', 'animalPic2', 'animalPic3'
+            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate' 
           ],
           'filters':[
             {
