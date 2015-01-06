@@ -1,49 +1,54 @@
 <h1>{{dogList.dogHeader}}</h1>
 <a ng-show="dogList.configButtons" class="new-dog-link" ng-href="{{dogList.newDogLink}}">+ Add New Dog</a>
 <button class="btn shelter-filter-btn" ng-show="dogList.filterDogsHeader" ng-click="dogList.filterDogs = !dogList.filterDogs">Filter Shelter Dogs</button>
-<form name="shelter-filter-form" ng-show="dogList.filterDogs" ng-submit="dogList.filteredShelterDogs()" class="shelter-filter-form">
-  <div class="form-group">
-    <label class="control-label">Sex</label>
-    <select ng-model="dogList.apiKeys.sex">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-    <label class="control-label">Spayed</label>
-    <select ng-model="dogList.apiKeys.altered">
-      <option value="yes">yes</option>
-      <option value="no">no</option>
-    </select>
-    <label class="control-label">Age</label>
-    <select ng-model="dogList.apiKeys.generalAge">
-      <option value="Baby">Baby</option>
-      <option value="Young">Young</option>
-      <option value="Adult">Adult</option>
-      <option value="Senior">Senior</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label class="control-label">Location (zipcode)</label>
-    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocation">
-  </div>
-  <div class="form-group">
-    <label class="control-label">Radius to search</label>
-    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocationDistance">
-  </div>
-  <!-- <div class="form-group"> -->
-  <!--   <label class="control-label">Size</label> -->
-  <!--   <select ng-model="dogList.apiKeys.size"> -->
-  <!--     <option value="Small">Small</option> -->
-  <!--     <option value="Medium">Medium</option> -->
-  <!--     <option value="Large">Large</option> -->
-  <!--     <option value="X-Large">Extra Large</option> -->
-  <!--   </select> -->
-  <!-- </div> -->
-  <div class="form-group">
-    <label class="control-label">Breed</label>
-    <input type="text" class="form-control" ng-model="dogList.apiKeys.animalBreed">
-  </div>
-  <input class="btn" type="submit" value="get Dogs">
-</form>
+<div class="shelter-filter-form" ng-show="dogList.filterDogs" >
+  <form name="shelter-filter-form" ng-submit="dogList.filteredShelterDogs()">
+    <h4>Search By:</h4>
+    <div class="form-group">
+      <label class="control-label">Sex</label>
+      <select ng-model="dogList.apiKeys.sex">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <label class="control-label">Spayed</label>
+      <select ng-model="dogList.apiKeys.altered">
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+      <label class="control-label">Age</label>
+      <select ng-model="dogList.apiKeys.generalAge">
+        <option value="Baby">Baby</option>
+        <option value="Young">Young</option>
+        <option value="Adult">Adult</option>
+        <option value="Senior">Senior</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Location (zipcode)</label>
+      <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocation">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Radius to search</label>
+      <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocationDistance">
+    </div>
+    <!-- <div class="form-group"> -->
+    <!--   <label class="control-label">Size</label> -->
+    <!--   <select ng-model="dogList.apiKeys.size"> -->
+    <!--     <option value="Small">Small</option> -->
+    <!--     <option value="Medium">Medium</option> -->
+    <!--     <option value="Large">Large</option> -->
+    <!--     <option value="X-Large">Extra Large</option> -->
+    <!--   </select> -->
+    <!-- </div> -->
+    <div class="form-group">
+      <label class="control-label">Breed</label>
+      <input type="text" class="form-control" ng-model="dogList.apiKeys.animalBreed">
+    </div>
+    <input class="btn" type="submit" value="Get Dogs">
+  </form>
+  <button class="btn" ng-click="dogList.clearForm()">Clear</button>
+  <p ng-show="dogList.emptyFilterMessage">Sorry, you haven't chosen an option to filter dogs by</p>
+</div>
 <div class="dog-list">
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">

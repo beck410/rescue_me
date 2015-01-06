@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location,filterDogsFactory){
+  .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location,filterDogsFactory,$timeout){
 
     var vm = this;
     vm.dogGroup = 'find-dogs';
@@ -9,6 +9,7 @@
     vm.nextDogGroup = 'Potential';
     vm.filterDogs = false;
     vm.filterDogsHeader = true;
+    vm.apiKeys = {};
 
     dogListFactory.getDogList('shelterDogs',function(shelterDogs){
       vm.dogs = shelterDogs;
@@ -19,10 +20,23 @@
     };
 
     vm.filteredShelterDogs = function(){
-      filterDogsFactory.addKeyFilters(vm.apiKeys,function(filterDogs){
-        vm.dogs = filterDogs;
-        vm.apiKeys = {};
-      });
+      if(vm.apiKeys === {}){
+        filterDogsFactory.addKeyFilters(vm.apiKeys,function(filterDogs){
+          vm.dogs = filterDogs;
+          vm.apiKeys = {};
+        });
+      } else {
+        vm.emptyFilterMessage = true;
+        $timeout(function(){
+          vm.emptyFilterMessage = false;
+        },3000)
+      } ;
+    }
+
+    vm.clearForm = function(){
+      console.log('working')
+      console.log(vm.apiKeys);
+      vm.apiKeys = {};
     }
   })
   .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails){
