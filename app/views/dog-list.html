@@ -1,5 +1,51 @@
 <h1>{{dogList.dogHeader}}</h1>
 <a ng-show="dogList.configButtons" class="new-dog-link" ng-href="{{dogList.newDogLink}}">+ Add New Dog</a>
+=======
+<form name="shelter-filter-form" ng-submit="dogList.filteredShelterDogs()">
+  <h3>Filter Shelter Dogs</h3>
+  <div class="form-group">
+    <label class="control-label">Sex</label>
+    <select ng-model="dogList.apiKeys.sex">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Spayed</label>
+    <select ng-model="dogList.apiKeys.altered">
+      <option value="yes">yes</option>
+      <option value="no">no</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Age</label>
+    <select ng-model="dogList.apiKeys.generalAge">
+      <option value="Baby">Baby</option>
+      <option value="Young">Young</option>
+      <option value="Adult">Adult</option>
+      <option value="Senior">Senior</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Location (zipcode)</label>
+    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocation">
+  </div>
+  <div class="form-group">
+    <label class="control-label">Radius to search</label>
+    <input type="number" class="form-control" ng-model="dogList.apiKeys.animalLocationDistance">
+  </div>
+  <!-- <div class="form-group"> -->
+  <!--   <label class="control-label">Size</label> -->
+  <!--   <select ng-model="dogList.apiKeys.size"> -->
+  <!--     <option value="Small">Small</option> -->
+  <!--     <option value="Medium">Medium</option> -->
+  <!--     <option value="Large">Large</option> -->
+  <!--     <option value="X-Large">Extra Large</option> -->
+  <!--   </select> -->
+  <!-- </div> -->
+  <input type="submit" value="get Dogs">
+</form>
+<button class="new-dog-btn" ng-show="dogList.configButtons" ng-click="dogList.addNewDog()">+ Add New Dog</button>
 <div class="dog-list">
   <ul>
       <li class ="col-md-3" ng-repeat="(id, dog) in dogList.dogs">

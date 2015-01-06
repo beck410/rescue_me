@@ -10,7 +10,8 @@
         <ul>
           <li><span>Breed: </span>{{dogDetails.dog.animalBreed || 'N/A'}}</li>
           <li><span>Sex: </span>{{dogDetails.dog.animalSex || 'N/A'}}</li>
-          <li><span>Age: </span>{{dogDetails.dog.animalAge || 'N/A'}}</li>
+          <li><span>Age: </span>{{dogDetails.dog.animalGeneralAge || 'N/A'}}</li>
+          <li><span>Weight: </span>{{dogDetails.dog.animalSizeCurrent || 'N/A'}}</li>
           <li><span>Spayed: </span>{{dogDetails.dog.animalAltered || 'N/A'}}</li>
           <li><span>Up To Date on Shots: </span>{{dogDetails.dog.animalUptodate || 'N/A'}}</li>
         </ul>
@@ -29,6 +30,7 @@
         <h3>Shelter Info</h3>
         <ul>
           <li><span>Kill Date: </span>{{dogDetails.dog.animalKillDate || 'N/A'}}</li>
+          <li><span>Location: </span>{{dogDetails.dog.animalLocation || 'N/A'}}</li>
           <li><span>Shelter City: </span>{{dogDetails.dog.shelterCity || 'N/A'}}</li>
           <li><span>Shelter State: </span>{{dogDetails.dog.shelterState || 'N/A'}}</li>
           <li><span>Shelter Name: </span>{{dogDetails.dog.shelterName || 'N/A'}}</li>

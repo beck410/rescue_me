@@ -1,34 +1,77 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
-    var ref= new Firebase(FIREBASE_URL);
-    $rootScope.user = ref.getAuth();
-    console.log($rootScope.user);
+  .factory('filterDogsFactory',function($http,requestURL){
 
-    function login(email,password,mainCB){
-      ref.authWithPassword({
-        email: email,
-        password: password,
-      }, function(error, authData){
-        if(error === null) {
-          console.log('user logged in');
-          $rootScope.user = authData;
-          ref.child('users').child(authData.uid).child('authData').set(authData);
-          _getShelterDogs(mainCB,function(mainCB,dogs){
-            _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
-              _addContactInfo(mainCB,dogs,orgs,function(mainCB){
-                _postDogsToFirebase(mainCB,dogs);
-              })
-            })
+    function addKeyFilters(keys,mainCB){
+      var formattedFilters = _formatFilters(keys);
+      var apiKey = _addToExistingKeys(formattedFilters);
+      _getShelterDogs(apiKey,mainCB,function(mainCB,dogs){
+        _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
+          _addContactInfo(mainCB,dogs,orgs,function(mainCB,dogs){
+            _postDogsToFirebase(mainCB,dogs);
           });
-       } else {
-          console.log('Error creating user:' + error);
-        }
+        });
       });
     }
 
-    function _getShelterDogs(mainCB, cb){
+    function _formatFilters(keys){
+      var filters = [];
+      _.forOwn(keys, function(key,filter){
+        if(filter === 'sex'){
+          var apiKey = {
+            'fieldName':'animalSex',
+            'operation':'equals',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'size'){
+          var apiKey = {
+            'fieldName':'animalSize',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'altered'){
+          var apiKey = {
+            'fieldName':'animalAltered',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'generalAge'){
+          var apiKey = {
+            'fieldName':'animalGeneralAge',
+            'operation':'equal',
+            'criteria':key
+          };
+         filters.push(apiKey);
+        }
+        if(filter === 'animalLocation'){
+          var apiKey = {
+            'fieldName':'animalLocation',
+            'operation':'equals',
+            'criteria':key
+          };
+          filters.push(apiKey);
+        }
+        if(filter === 'animalLocationDistance'){
+          var apiKey = {
+            'fieldName':'animalLocationDistance',
+            'operation':'radius',
+            'criteria': key
+          };
+        }
+         filters.push(apiKey);
+      });
+      console.log(filters)
+      return filters;
+    }
+
+    function _addToExistingKeys(newFilters){
       var keys ={
         'apikey':'pkF6l2hC',
         'objectType':'animals',
@@ -39,7 +82,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-          'animalID','animalSizeCurrent','animalGeneralAge', 'animalName', 'animalSpecies','animalPic1', 'animalBreed', 'animalThumbnailUrl', 'animalSummary', 'animalSex', 'animalNeedsFoster', 'animalKillDate', 'animalDogs', 'animalCats', 'animalKids', 'animalHousetrained','animalSpecialNeeds', 'animalAltered', 'animalUptodate', 'animalLocation','animalOkwithAdults','animalEneryLevel','animalGroomingNeeds','yardRequired','animalFence', 'animalLeashTrained', 'animalCrateTrained','animalProtective','animalHasallergies','animalSpecialDiet','animalOngoingMedical', 'animalPic2', 'animalPic3'
+          'animalID','animalSizeCurrent','animalGeneralAge', 'animalLocation','animalName', 'animalSpecies','animalPic1', 'animalBreed', 'animalThumbnailUrl', 'animalSummary', 'animalSex', 'animalNeedsFoster', 'animalKillDate', 'animalDogs', 'animalCats', 'animalKids', 'animalHousetrained','animalSpecialNeeds', 'animalAltered', 'animalUptodate', 'locationZipcode','animalOkwithAdults','animalEneryLevel','animalGroomingNeeds','yardRequired','animalFence', 'animalLeashTrained', 'animalCrateTrained','animalProtective','animalHasallergies','animalSpecialDiet','animalOngoingMedical', 'animalPic2', 'animalPic3'
           ],
           'filters':[
             {
@@ -60,18 +103,32 @@
           ]
         }
       };
+
+      _.forOwn(newFilters,function(filter){
+        keys.search.filters.push(filter);
+      })
+      return keys;
+    }
+
+    function _getShelterDogs(keys,mainCB,cb){
       var encodedKeys = JSON.stringify(keys);
       var url = 'https://api.rescuegroups.org/http/json/?data=' + encodedKeys + '&callback=JSON_CALLBACK';
 
       $http.jsonp(url)
       .success(function(shelterDogs){
         console.log('shelter dogs api done');
+        console.log(shelterDogs)
         cb(mainCB,shelterDogs.data);
       })
       .error(function(err){
         console.log('you got an error: ' + err);
       });
+
     }
+
+    return {
+      addKeyFilters: addKeyFilters
+    };
 
     function _getShelterOrgs(mainCB,dogs,cb){
       console.log('get shelter orgs');
@@ -126,6 +183,7 @@
           delete dogs[dog];
         }
       }
+      console.log(dogs);
       cb(mainCB,dogs);
     }
 
@@ -133,17 +191,15 @@
       var url = requestURL.url('shelterDogs');
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
-      .success(function(){
-        console.log('shelterDogs pushed to firebase');
-        cb();
+      .success(function(filterDogs){
+        console.log('filterDogs pushed to firebase');
+        cb(filterDogs);
       })
       .error(function(err){
-        console.log('firebase shelterDogs error: ' + err);
+        console.log('firebase filterDogs error: ' + err);
       });
     }
 
-    return {
-      login: login
-    };
+
   });
 })();
