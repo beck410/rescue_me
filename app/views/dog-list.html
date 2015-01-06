@@ -1,6 +1,6 @@
 <h1>{{dogList.dogHeader}}</h1>
 <a ng-show="dogList.configButtons" class="new-dog-link" ng-href="{{dogList.newDogLink}}">+ Add New Dog</a>
-<form name="shelter-filter-form" ng-submit="dogList.filteredShelterDogs()">
+<form name="shelter-filter-form" ng-show="dogList.filterDogs" ng-submit="dogList.filteredShelterDogs()">
   <h3>Filter Shelter Dogs</h3>
   <div class="form-group">
     <label class="control-label">Sex</label>

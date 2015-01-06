@@ -7,6 +7,7 @@
     vm.dogGroup = 'find-dogs';
     vm.dogHeader = 'Find Shelter Dogs';
     vm.nextDogGroup = 'Potential';
+    vm.filterDogs = true;
 
     dogListFactory.getDogList('shelterDogs',function(shelterDogs){
       vm.dogs = shelterDogs;
