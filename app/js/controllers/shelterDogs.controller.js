@@ -70,9 +70,7 @@
 
       vm.nextImg = function(){
         vm.imgEndIndex += 3;
-      }
-
-
+      };
     });
     vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
   });

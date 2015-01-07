@@ -23,7 +23,7 @@
         $location.path('/rescue-dogs/' + potentialID + '/move');
     };
   })
-  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails,slideshowFactory){
+  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails,slideshowFactory,$sanitize){
     var vm = this;
     var dog = $routeParams.id;
     vm.shelter = true;
@@ -58,6 +58,7 @@
           vm.imgEndIndex += 3;
         }
       });
+      vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     });
     vm.editDetailsDetails = function(){
       $location.path('/potential-dogs/' + dog + '/edit');

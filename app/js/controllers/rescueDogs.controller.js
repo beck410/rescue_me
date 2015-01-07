@@ -22,7 +22,7 @@
       $location.path('/rescue-dogs/add');
     };
   })
-.controller('showRescueController', function(dogDetailsFactory, $routeParams,$location,completeDogDetails,slideshowFactory){
+.controller('showRescueController', function(dogDetailsFactory, $routeParams,$location,completeDogDetails,slideshowFactory,$sanitize){
   var vm = this;
   var id = $routeParams.id;
   vm.ownNotes = true;
@@ -30,8 +30,8 @@
 
   dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
     var completeRescueDog = completeDogDetails.fillEmptyDetails(rescueDog)
-    console.log(completeRescueDog)
     vm.dog = completeRescueDog;
+    vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
       vm.dog.fullSizeImages = images;
     });
