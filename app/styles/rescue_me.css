@@ -3,7 +3,8 @@
 .dog-details-wrapper .dog-details-thumb {
   padding: 0 15px;
   max-height: 150px;
-  max-width: 100%; }
+  max-width: 100%;
+  margin-top: -100px; }
 .dog-details-wrapper h2 {
   text-align: center; }
 
@@ -12,8 +13,12 @@
   position: relative; }
   .dog-details-header .dog-details-header-left {
     display: inline-block; }
+    .dog-details-header .dog-details-header-left ul {
+      margin-top: 50px; }
     .dog-details-header .dog-details-header-left li {
       display: inline-block; }
+    .dog-details-header .dog-details-header-left .next, .dog-details-header .dog-details-header-left .prev {
+      width: 70px; }
   .dog-details-header .dog-details-img-main {
     position: relative;
     max-height: 350px;

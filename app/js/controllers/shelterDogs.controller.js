@@ -61,7 +61,6 @@
       }
 
       vm.prevImg = function(){
-        console.log('called')
         vm.imgEndIndex -= 3;
       }
 
@@ -70,7 +69,6 @@
       }
 
       vm.nextImg = function(){
-        console.log('called')
         vm.imgEndIndex += 3;
       }
 

@@ -4,10 +4,15 @@
     <div class="col-md-8 dog-details-header-left">
       <span><h1>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h1></span>
       <ul>
-        <li ng-repeat="img in dogDetails.dog.thumbnails"><img class="dog-details-thumb" ng-src="{{img}}" /></li>
+        <li>
+          <div class="prev" ng-hide="dogDetails.prevImgButton()" ng-click="dogDetails.prevImg()"></div>
+        </li>
+        <li ng-repeat="img in dogDetails.dog.thumbnails | limitTo: dogDetails.imgEndIndex | limitTo: -(dogDetails.imgStartIndex)"><img class="dog-details-thumb" ng-src="{{img}}" /></li>
+        <li><div class="next" ng-hide="dogDetails.nextImgButton()" ng-click="dogDetails.nextImg()"></div></li>
+
       </ul>
     </div>
-    </section>
+  </section>
   <section class="row">
     <div class="col-md-6">
       <div class="dog-details-main">
