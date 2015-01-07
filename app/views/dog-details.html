@@ -7,7 +7,7 @@
         <li>
           <div class="prev" ng-hide="dogDetails.prevImgButton()" ng-click="dogDetails.prevImg()"></div>
         </li>
-        <li ng-repeat="img in dogDetails.dog.thumbnails | limitTo: dogDetails.imgEndIndex | limitTo: -(dogDetails.imgStartIndex)"><img class="dog-details-thumb" ng-src="{{img}}" /></li>
+        <li ng-repeat="img in dogDetails.dog.thumbnails | limitTo: dogDetails.imgEndIndex | limitTo: -(dogDetails.imgStartIndex)"><img ng-class="{'arrows': dogDetails.thumbnailLength > 3}" class="dog-details-thumb" ng-src="{{img}}" /></li>
         <li><div class="next" ng-hide="dogDetails.nextImgButton()" ng-click="dogDetails.nextImg()"></div></li>
 
       </ul>

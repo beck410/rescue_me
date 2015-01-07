@@ -3,12 +3,19 @@
     padding: 0 15px;
     max-height: 150px;
     max-width: 100%;
-    margin-top: -100px;
   }
 
   h2 {
     text-align: center;
   }
+}
+
+.no-arrows {
+  margin-top: 0;
+}
+
+.arrows {
+  margin-top: -100px;
 }
 
 .dog-details-header {
