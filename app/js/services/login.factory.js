@@ -38,7 +38,7 @@
           'resultLimit':500,
           'resultSort':'animalID',
           'fields': [
-            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescriptionPlain','animalUpdatedDate'           ],
+            'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescription','animalUpdatedDate'           ],
           'filters':[
             {
               'fieldName':'animalStatus',
