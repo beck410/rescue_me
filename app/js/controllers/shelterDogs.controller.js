@@ -39,13 +39,15 @@
       vm.apiKeys = {};
     }
   })
-  .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails){
+  .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails,$sce,$sanitize){
     var vm = this;
     var id = $routeParams.id;
     vm.shelter = true;
+
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
       var completeShelterDog = completeDogDetails.fillEmptyDetails(shelterDog);
       vm.dog = completeShelterDog;
+      vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     });
   });
 })();
