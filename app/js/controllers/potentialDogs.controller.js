@@ -23,7 +23,7 @@
         $location.path('/rescue-dogs/' + potentialID + '/move');
     };
   })
-  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails){
+  .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails,slideshowFactory){
     var vm = this;
     var dog = $routeParams.id;
     vm.shelter = true;
@@ -32,8 +32,33 @@
     dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
       var completePotentialDog = completeDogDetails.fillEmptyDetails(potentialDog);
       vm.dog = completePotentialDog;
-    });
 
+      dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
+        vm.dog.fullSizeImages = images;
+      });
+      dogDetailsFactory.getThumbnailImages(vm.dog.animalPictures,function(images){
+        vm.dog.thumbnails = images;
+        vm.imgStartIndex = 3;
+        vm.imgEndIndex = 3;
+        vm.thumbnailLength = _.size(images);
+
+        vm.prevImgButton = function(){
+          return slideshowFactory.prevDogButton(vm.imgEndIndex, 3);
+        }
+
+        vm.prevImg = function(){
+          vm.imgEndIndex -= 3;
+        }
+
+        vm.nextImgButton = function(){
+          return slideshowFactory.nextDogButton(vm.imgEndIndex,vm.thumbnailLength);
+        }
+
+        vm.nextImg = function(){
+          vm.imgEndIndex += 3;
+        }
+      });
+    });
     vm.editDetailsDetails = function(){
       $location.path('/potential-dogs/' + dog + '/edit');
     };
