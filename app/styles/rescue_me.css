@@ -2,12 +2,24 @@
 /* IMPORTS */
 .dog-details-wrapper .dog-details-thumb {
   padding: 0 15px;
-  max-height: 150px; }
+  max-height: 150px;
+  max-width: 100%; }
 .dog-details-wrapper h2 {
   text-align: center; }
 
 .dog-details-header {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: relative; }
+  .dog-details-header .dog-details-header-left {
+    display: inline-block; }
+    .dog-details-header .dog-details-header-left li {
+      display: inline-block; }
+  .dog-details-header .dog-details-img-main {
+    position: relative;
+    max-height: 350px;
+    max-width: 100%;
+    padding: 0 15px;
+    top: 0; }
 
 .dog-details-summary, .dog-details-main, .dog-details-shelter, .dog-details-foster, .dog-details-extra, .dog-details-description {
   background: rgba(41, 182, 100, 0.3);

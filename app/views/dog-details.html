@@ -1,8 +1,13 @@
 <div class="dog-details-wrapper">
   <section class="dog-details-header row">
-    <span><img class="dog-details-thumb" ng-src="{{dogDetails.dog.animalThumbnailUrl || 'images/default-dog.png'}}" /></li></span>
-    <span><h1>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h1></span>
-  </section>
+    <span class="col-md-4"><img class="dog-details-img-main" ng-src="{{dogDetails.dog.animalPictures[0].urlSecureFullsize  || dogDetails.dog.animalThumbnailUrl ||'images/default-dog.png'}}" /></li></span>
+    <div class="col-md-8 dog-details-header-left">
+      <span><h1>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h1></span>
+      <ul>
+        <li ng-repeat="img in dogDetails.dog.thumbnails"><img class="dog-details-thumb" ng-src="{{img}}" /></li>
+      </ul>
+    </div>
+    </section>
   <section class="row">
     <div class="col-md-6">
       <div class="dog-details-main">

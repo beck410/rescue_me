@@ -13,8 +13,28 @@
         console.log('get shelter dog error: ' + err);
       });
     }
+
+    function getFullSizeImages(imageArray,cb){
+      var fullImageArray = [];
+      imageArray.forEach(function(image){
+        fullImageArray.push(image.urlSecureThumbnail);
+      })
+
+      cb(fullImageArray);
+    }
+
+    function getThumbnailImages(imageArray,cb){
+      var thumbnailArray = [];
+      imageArray.forEach(function(image){
+        thumbnailArray.push(image.urlSecureThumbnail);
+      })
+      cb(thumbnailArray);
+    }
+
     return {
-      getDogDetails: getDogDetails
+      getDogDetails: getDogDetails,
+      getFullSizeImages: getFullSizeImages,
+      getThumbnailImages: getThumbnailImages
     };
   });
 })();

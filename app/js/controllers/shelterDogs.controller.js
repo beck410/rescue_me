@@ -47,6 +47,14 @@
     dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
       var completeShelterDog = completeDogDetails.fillEmptyDetails(shelterDog);
       vm.dog = completeShelterDog;
+      dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
+        vm.dog.fullSizeImages = images;
+        console.log(vm.dog.fullSizeImages)
+      });
+      dogDetailsFactory.getThumbnailImages(vm.dog.animalPictures,function(images){
+        vm.dog.thumbnails = images;
+        console.log(vm.dog.thumbnails);
+      });
       vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     });
   });
