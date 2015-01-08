@@ -100,7 +100,7 @@
   };
 
 })
-.controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location){
+.controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location,$scope){
   var vm = this;
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
@@ -114,5 +114,34 @@
       $location.path('/rescue-dogs');
     });
   };
+
+  vm.fileSelected = function(event){
+    console.log(vm.files,event)
+    _setThumbnail();
+  }
+
+  vm.upload = function(){
+    console.log(vm.files);
+  }
+
+  function _setThumbnail(){
+    _imageToBase64(vm.files[0],function(base64){
+      console.log(base64)
+      vm.files[0].dataUrl = base64;
+      $scope.$apply();
+    })
+  }
+
+  function _imageToBase64(file,cb){
+    if(file && file.type.indexOf('image') > -1){
+      var fr = new FileReader();
+      console.log(fr)
+      fr.readAsDataURL(file);
+      fr.onload = function(e){
+        cb(e.target.result);
+      }
+    }
+  }
+
 });
 })();
