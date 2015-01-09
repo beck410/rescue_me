@@ -1,0 +1,36 @@
+;(function(){
+  'use strict';
+  angular.module('rescue_me')
+  .factory('uploadImage',function($upload){
+
+    function uploadToS3(filesArray,userID,fileName,cb){
+      var file = filesArray[0];
+      var numID = userID.match(/[0-9]+/);
+      console.log(numID[0]);
+
+      $upload.upload({
+        url: 'https://rescuemeimages.s3.amazonaws.com',
+        method: 'POST',
+        data: {
+          'Content-Type': file.type,
+          key: numID + '/' + fileName,
+          acl: 'public-read',
+          awsaccesskeyid: 'AKIAIMC5Y5S4NKCKEMVQ',
+          policy: "eyJleHBpcmF0aW9uIjoiMjAyMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJyZXNjdWVtZWltYWdlcyJ9LHsiYWNsIjogInB1YmxpYy1yZWFkIn0sWyJzdGFydHMtd2l0aCIsIiRDb250ZW50LVR5cGUiLCIiXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIiJdXX0=",
+        signature: "oiRkj3Tri/V5D6WSJ0kJ6B4evSQ="
+        },
+        file: file
+      })
+      .success(function(a,b,c){
+        cb('https://s3-us-west-2.amazonaws.com/rescuemeimages/' + numID + '/' + fileName);
+      })
+      .error(function(err){
+        console.log('upload to S3 error: ' + err);
+      })
+    }
+
+    return {
+      uploadToS3: uploadToS3
+    };
+  });
+})();

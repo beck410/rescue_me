@@ -100,11 +100,10 @@
   };
 
 })
-.controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope){
+.controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope,uploadImage){
   var vm = this;
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
-  var id = $routeParams.id;
 
   vm.submitDogDetails = function(){
     addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
@@ -122,28 +121,14 @@
   }
 
   vm.upload = function(){
-    var file = vm.files[0];
-    $upload.upload({
-      url: 'https://rescuemeimages.s3.amazonaws.com',
-      method: 'POST',
-      data: {
-        'Content-Type': file.type,
-        key: $rootScope.user.uid + '/' + id + '.jpg',
-        acl: 'public-read',
-        awsaccesskeyid: 'AKIAIMC5Y5S4NKCKEMVQ',
-        policy: "eyJleHBpcmF0aW9uIjoiMjAyMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJyZXNjdWVtZWltYWdlcyJ9LHsiYWNsIjogInB1YmxpYy1yZWFkIn0sWyJzdGFydHMtd2l0aCIsIiRDb250ZW50LVR5cGUiLCIiXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIiJdXX0=",
-      signature: "oiRkj3Tri/V5D6WSJ0kJ6B4evSQ="
-      },
-      file: file
-    })
-    .success(function(){
-      console.log('file sent to AWS');
+    uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
+        console.log(fileLink);
     })
   }
 
   function _setThumbnail(){
     _imageToBase64(vm.files[0],function(base64){
-      console.log(base64)
+      vm.fileName = vm.files[0].name;
       vm.files[0].dataUrl = base64;
       $scope.$apply();
     })
