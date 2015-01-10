@@ -10,6 +10,7 @@
 
     dogListFactory.getDogList('rescueDogs',function(rescueDogs){
       vm.dogs = rescueDogs;
+      console.log(vm.dogs);
     });
 
     vm.removeDog = function(dog){
