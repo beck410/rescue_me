@@ -20,7 +20,7 @@
     <label>Animal Pic(Thumbnail)</label>
     <input type="text" class="form-control" ng-model=dogList.dog.animalThumbnailUrl>
   </div>
-<div class="form-group">
+<div class="form-group dog-form-img">
     <label>Animal Photo Upload(Thumbnail)</label>
     <img ng-show="dogList.files[0].dataUrl" ng-src="{{dogList.files[0].dataUrl}}" />
     <input type="file" ng-model="dogList.files" ng-file-select ng-file-change="dogList.fileSelected($event)" accept="images/*">
