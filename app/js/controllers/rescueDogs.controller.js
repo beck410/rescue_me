@@ -116,34 +116,22 @@
   };
 
   vm.fileSelected = function(event){
-    console.log(vm.files,event)
-    _setThumbnail();
-  }
-
+  uploadImage.setThumbnail(vm.files[0],function(fileName,base64){
+    vm.fileName = fileName;
+    vm.files[0].dataUrl = base64;
+    $scope.$apply();
+  });
+  };
+  //NEXT STEP: add fileSelected functions to upload factory
+  //upload on callback of add dog submit and add link to firebase on callback of file upload
   vm.upload = function(){
     uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
         console.log(fileLink);
     })
   }
 
-  function _setThumbnail(){
-    _imageToBase64(vm.files[0],function(base64){
-      vm.fileName = vm.files[0].name;
-      vm.files[0].dataUrl = base64;
-      $scope.$apply();
-    })
-  }
 
-  function _imageToBase64(file,cb){
-    if(file && file.type.indexOf('image') > -1){
-      var fr = new FileReader();
-      console.log(fr)
-      fr.readAsDataURL(file);
-      fr.onload = function(e){
-        cb(e.target.result);
-      }
-    }
-  }
+
 
 });
 })();

@@ -17,14 +17,14 @@
     <input type="number" class="form-control" ng-model=dogList.dog.animalAge>
   </div>
   <div class="form-group">
-    <label>Animal Pic(Thumbnail)</label>
-    <input type="text" class="form-control" ng-model=dogList.dog.animalThumbnailUrl>
+    <label>Link to Dog Photo</label>
+    <input type="link" class="form-control" ng-model=dogList.dog.animalThumbnailUrl>
   </div>
-<div class="form-group dog-form-img">
-    <label>Animal Photo Upload(Thumbnail)</label>
+  <p>OR</p>
+  <div class="form-group dog-form-img">
+    <label>Upload Dog Photo</label>
     <img ng-show="dogList.files[0].dataUrl" ng-src="{{dogList.files[0].dataUrl}}" />
     <input type="file" ng-model="dogList.files" ng-file-select ng-file-change="dogList.fileSelected($event)" accept="images/*">
-    <button type="button" ng-click="dogList.upload()">Upload photo</button>
   </div>
 
   <section ng-show="dogList.potentialDog">

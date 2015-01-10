@@ -29,8 +29,26 @@
       })
     }
 
-    return {
-      uploadToS3: uploadToS3
+  function setThumbnail(file,cb){
+    _imageToBase64(file,function(base64){
+      var fileName = file.name;
+      cb(fileName,base64)
+    })
+  }
+
+  function _imageToBase64(file,cb){
+    if(file && file.type.indexOf('image') > -1){
+      var fr = new FileReader();
+      fr.readAsDataURL(file);
+      fr.onload = function(e){
+        cb(e.target.result);
+      }
+    }
+  }
+
+  return {
+    uploadToS3: uploadToS3,
+    setThumbnail: setThumbnail,
     };
   });
 })();
