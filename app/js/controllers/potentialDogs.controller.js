@@ -60,7 +60,7 @@
       });
       vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     });
-    vm.editDetailsDetails = function(){
+    vm.editDogDetails = function(){
       $location.path('/potential-dogs/' + dog + '/edit');
     };
 

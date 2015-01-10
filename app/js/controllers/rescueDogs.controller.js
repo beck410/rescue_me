@@ -61,7 +61,7 @@
 
   });
 
-  vm.editDetailsDetails = function(){
+  vm.editDogDetails = function(){
     $location.path('/rescue-dogs/' + id + '/edit');
   };
 })
