@@ -4,11 +4,6 @@
   .factory('editDogFactory',function(requestURL,FIREBASE_URL,$http){
 
     function editDog(dogDB,id,dog,cb){
-      console.log('dogDB: ' + dogDB)
-      console.log('id: ' + id)
-      console.log('dog: ' + dog)
-      console.log('cb: ' + cb)
-
       _postDog(dogDB,id,dog,cb);
     }
 

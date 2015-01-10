@@ -84,7 +84,7 @@
     });
   };
 })
-.controller('editRescueDog',function(editDetailsFactory,dogDetailsFactory,$routeParams,$location){
+.controller('editRescueDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location,uploadImage,$scope,$rootScope,rescuedDogsCounter){
   var vm = this;
   var id = $routeParams.id;
   vm.dogGroup = 'rescue-dogs';
@@ -96,11 +96,31 @@
 
   vm.submitDogDetails = function(){
     editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
-      rescuedDogsCounter.updateCounter();
-      $location.path('rescue-dogs/');
+      if(vm.files){
+        uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
+          var amazonLinks = [fileLink];
+          console.log(id);
+          var linkID = id + '/amazonImg';
+          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+            console.log('link added to fb: ' + fileLink);
+            rescuedDogsCounter.updateCounter();
+            $location.path('rescue-dogs/');
+          });
+        });
+      } else {
+        rescuedDogsCounter.updateCounter();
+        $location.path('rescue-dogs/');
+      }
     });
   };
 
+  vm.fileSelected = function(event){
+    uploadImage.setThumbnail(vm.files[0],function(fileName,base64){
+      vm.fileName = fileName;
+      vm.files[0].dataUrl = base64;
+      $scope.$apply();
+    });
+  };
 })
 .controller('addRescueDog',function(rescuedDogsCounter,editDogFactory,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope,uploadImage){
   var vm = this;
