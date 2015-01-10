@@ -107,18 +107,26 @@
 
   vm.submitDogDetails = function(){
     addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
-      uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
-        var amazonLinks = [fileLink];
-        var linkID = dog.name + '/amazonImg';
-        editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
-        console.log('link added to fb: ' + fileLink)
+      if(vm.files){
+        uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
+          var amazonLinks = [fileLink];
+          var linkID = dog.name + '/amazonImg';
+          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+            console.log('link added to fb: ' + fileLink);
+            rescuedDogsCounter.updateCounter();
+            vm.dogs = vm.dogs || {};
+            vm.dogs[dog.name] = vm.dog;
+            vm.dog = {};
+            $location.path('/rescue-dogs');
+          });
+        });
+      } else {
         rescuedDogsCounter.updateCounter();
         vm.dogs = vm.dogs || {};
         vm.dogs[dog.name] = vm.dog;
         vm.dog = {};
         $location.path('/rescue-dogs');
-        });
-      });
+      }
     });
   };
 
