@@ -5,10 +5,10 @@
       <span><h1>{{dogDetails.dog.animalName || 'N/A'}}'s Details</h1></span>
       <ul>
         <li>
-          <div class="prev" ng-hide="dogDetails.prevImgButton() || !dogDetails.dog.thumbnails" ng-click="dogDetails.prevImg()"></div>
+          <div class="prev" ng-hide="dogDetails.prevImgButton() || !dogDetails.dog.animalPictures" ng-click="dogDetails.prevImg()"></div>
         </li>
         <li ng-repeat="img in dogDetails.dog.thumbnails | limitTo: dogDetails.imgEndIndex | limitTo: -(dogDetails.imgStartIndex)"><img ng-class="{'arrows': dogDetails.thumbnailLength > 3}" class="dog-details-thumb" ng-src="{{img}}" /></li>
-        <li><div class="next" ng-hide="dogDetails.nextImgButton() || !dogDetails.dog.thumbnails" ng-click="dogDetails.nextImg()"></div></li>
+        <li><div class="next" ng-hide="dogDetails.nextImgButton() || !dogDetails.dog.animalPictures" ng-click="dogDetails.nextImg()"></div></li>
 
       </ul>
     </div>

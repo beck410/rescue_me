@@ -10,7 +10,6 @@
 
     dogListFactory.getDogList('rescueDogs',function(rescueDogs){
       vm.dogs = rescueDogs;
-      console.log(vm.dogs);
     });
 
     vm.removeDog = function(dog){
@@ -33,33 +32,35 @@
     var completeRescueDog = completeDogDetails.fillEmptyDetails(rescueDog)
     vm.dog = completeRescueDog;
     vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
-    dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
-      vm.dog.fullSizeImages = images;
-    });
+    
+    if(vm.dog.animalPictures){
+      dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
+        vm.dog.fullSizeImages = images;
+      });
 
-    dogDetailsFactory.getThumbnailImages(vm.dog.animalPictures,function(images){
-      vm.dog.thumbnails = images;
-      vm.imgStartIndex = 3;
-      vm.imgEndIndex = 3;
-      vm.thumbnailLength = _.size(images);
+      dogDetailsFactory.getThumbnailImages(vm.dog.animalPictures,function(images){
+        vm.dog.thumbnails = images;
+        vm.imgStartIndex = 3;
+        vm.imgEndIndex = 3;
+        vm.thumbnailLength = _.size(images);
 
-      vm.prevImgButton = function(){
-        return slideshowFactory.prevDogButton(vm.imgEndIndex, 3);
-      }
+        vm.prevImgButton = function(){
+          return slideshowFactory.prevDogButton(vm.imgEndIndex, 3);
+        }
 
-      vm.prevImg = function(){
-        vm.imgEndIndex -= 3;
-      }
+        vm.prevImg = function(){
+          vm.imgEndIndex -= 3;
+        }
 
-      vm.nextImgButton = function(){
-        return slideshowFactory.nextDogButton(vm.imgEndIndex,vm.thumbnailLength);
-      }
+        vm.nextImgButton = function(){
+          return slideshowFactory.nextDogButton(vm.imgEndIndex,vm.thumbnailLength);
+        }
 
-      vm.nextImg = function(){
-        vm.imgEndIndex += 3;
-      };
-    });
-
+        vm.nextImg = function(){
+          vm.imgEndIndex += 3;
+        };
+      })
+    };
   });
 
   vm.editDogDetails = function(){
