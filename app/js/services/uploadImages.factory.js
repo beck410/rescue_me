@@ -21,8 +21,8 @@
         },
         file: file
       })
-      .success(function(a,b,c){
-        cb('https://s3-us-west-2.amazonaws.com/rescuemeimages/' + numID + '/' + fileName);
+      .success(function(data,status,headers,config){
+        cb(config.file.name);
       })
       .error(function(err){
         console.log('upload to S3 error: ' + err);
