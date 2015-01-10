@@ -93,45 +93,41 @@
   });
 
   vm.submitDogDetails = function(){
-    editDetailsFactory.editDetails('rescueDogs',id,vm.dog,function(){
+    editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
       rescuedDogsCounter.updateCounter();
       $location.path('rescue-dogs/');
     });
   };
 
 })
-.controller('addRescueDog',function(rescuedDogsCounter,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope,uploadImage){
+.controller('addRescueDog',function(rescuedDogsCounter,editDogFactory,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope,uploadImage){
   var vm = this;
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
 
   vm.submitDogDetails = function(){
     addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
-      rescuedDogsCounter.updateCounter();
-      vm.dogs = vm.dogs || {};
-      vm.dogs[dog.name] = vm.dog;
-      vm.dog = {};
-      $location.path('/rescue-dogs');
+      uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
+        var amazonLinks = [fileLink];
+        var linkID = dog.name + '/amazonImg';
+        editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+        console.log('link added to fb: ' + fileLink)
+        rescuedDogsCounter.updateCounter();
+        vm.dogs = vm.dogs || {};
+        vm.dogs[dog.name] = vm.dog;
+        vm.dog = {};
+        $location.path('/rescue-dogs');
+        });
+      });
     });
   };
 
   vm.fileSelected = function(event){
-  uploadImage.setThumbnail(vm.files[0],function(fileName,base64){
-    vm.fileName = fileName;
-    vm.files[0].dataUrl = base64;
-    $scope.$apply();
-  });
+    uploadImage.setThumbnail(vm.files[0],function(fileName,base64){
+      vm.fileName = fileName;
+      vm.files[0].dataUrl = base64;
+      $scope.$apply();
+    });
   };
-  //NEXT STEP: add fileSelected functions to upload factory
-  //upload on callback of add dog submit and add link to firebase on callback of file upload
-  vm.upload = function(){
-    uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
-        console.log(fileLink);
-    })
-  }
-
-
-
-
 });
 })();
