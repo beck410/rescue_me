@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope){
 
 
     var vm = this;
@@ -44,40 +44,49 @@
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
-    vm.rescueDogsLength = (_.size(dogs));
-    vm.rescueStartIndex = 5;
-    vm.rescueEndIndex = 5;
+      vm.rescueDogsLength = (_.size(dogs));
+      vm.rescueStartIndex = 5;
+      vm.rescueEndIndex = 5;
 
-    vm.open = function(amazon,animalPic){
-      if(amazon){
-        console.log('amazon: ' + amazon);
-      } else if(animalPic) {
-      console.log('animalPic: ',animalPic);
-      } else {
-        console.log('images/default-dog.png');
+      vm.open = function(amazon,animalPic){
+
+        vm.modalRescueImg = animalPic;
+        console.log(animalPic)
+        var modalInstance = $modal.open({
+          templateUrl:'views/largeDogPic.html',
+          controller: 'snapshotModalsCtrl',
+          controllerAs: 'modal',
+          size: 'large',
+          scope: $scope,
+          backdrop: false,
+          windowTemplateUrl: 'views/window.html',
+          resolve: {
+            img: function(){
+              return 'images/default-dog.png'
+            }
+          }
+        })
       }
-    }
 
+      vm.prevRescueDogButton = function(){
+         return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
+      };
 
-    vm.prevRescueDogButton = function(){
-       return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
-    };
+      vm.nextRescueDogButton =function(){
+        return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
+      };
 
-    vm.nextRescueDogButton =function(){
-      return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
-    };
+      vm.nextRescueDogs = function(){
+        vm.rescueEndIndex += 5;
+      };
 
-    vm.nextRescueDogs = function(){
-      vm.rescueEndIndex += 5;
-    };
+      vm.prevRescueDogs = function(){
+        vm.rescueEndIndex -= 5;
+      };
 
-    vm.prevRescueDogs = function(){
-      vm.rescueEndIndex -= 5;
-    };
-
-    vm.editSnapshot = function(){
-      $location.path('snapshot/edit');
-    }
+      vm.editSnapshot = function(){
+        $location.path('snapshot/edit');
+      }
     });
   })
   .controller('editRescueController',function($location,rescueDetailsFactory){
@@ -93,5 +102,13 @@
         $location.path('/snapshot');
       });
     };
-  });
+  })
+  .controller('snapshotModalsCtrl',function($modalInstance,img){
+    var vm = this;
+    vm.img = img;
+
+    vm.cancel = function() {
+      $modalInstance.dismiss('cancel');
+    };
+  })
 })();
