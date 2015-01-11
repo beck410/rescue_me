@@ -10,7 +10,7 @@
       templateUrl: 'views/snapshot.html',
       controller: 'snapshotController',
       controllerAs: 'snapshot',
-      needLogin: true
+      smallHeader: true
     })
     .when('/snapshot/edit',{
       templateUrl: 'views/auth/register.html',
@@ -24,7 +24,7 @@
   })
   .run(function($rootScope,checkAccessFactory){
     $rootScope.$on('$routeChangeStart', function(event,nextRoute){
-      if(nextRoute.$$route && nextRoute.$$route.needLogin){
+      if(nextRoute.$$route && nextRoute.$$route.needLogin || nextRoute.$$route && nextRoute.$$route.smallHeader){
         $('.main-header').css('background','url("../images/header-img-2.png")');
         $('.main-header').css('height','200px');
         $('.nav-main').css('padding-top','160px');
