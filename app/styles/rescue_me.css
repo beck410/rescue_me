@@ -110,6 +110,12 @@
   margin-left: 20px;
   margin-bottom: 10px; }
 
+.dog-form-img img {
+  max-height: 200px;
+  width: auto;
+  display: block;
+  margin: 5px 10px; }
+
 * {
   -webkit-padding-start: 0px; }
 
