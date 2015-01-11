@@ -3,7 +3,6 @@
   angular.module('rescue_me')
   .factory('addNewDogFactory',function(requestURL,$http,FIREBASE_URL){
     function addDog(dog,dogDB,cb){
-      console.log(dog);
       var url = requestURL.url(dogDB);
       $http.post(url,dog)
       .success(function(dog){

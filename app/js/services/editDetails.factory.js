@@ -9,6 +9,8 @@
 
     function _postDog(newDogDB,id,dog,cb){
       var url = requestURL.url(newDogDB,id);
+      console.log(url);
+      console.log(typeof dog)
       $http.put(url,dog)
         .success(function(dog){
           if(cb){
@@ -16,7 +18,7 @@
           }
         })
         .error(function(err){
-          console.log('post dog error: ' + err);
+          console.log(err);
         });
     }
 
