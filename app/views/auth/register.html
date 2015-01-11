@@ -6,6 +6,7 @@
 </div>
 <div class="form-group" ng-show="details.registration">
   <label>Password</label>
+          console.log('called')
   <input class="form-control" type="password" ng-model="details.user.password" required>
 </div>
 <section>
@@ -32,6 +33,10 @@
   <div class="form-group">
     <label>Website</label>
     <input class="form-control" type="text" ng-model="details.user.website" required>
+  </div>
+  <div class="form-group">
+    <label>Link To Donations Page</label>
+    <input class="form-control" type="link" ng-model="details.user.donations" required>
   </div>
 </section>
 <input type="submit" class="btn btn-primary btn-block" value="{{details.header}}">

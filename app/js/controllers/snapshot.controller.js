@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window){
     var vm = this;
     rescuedDogsCounter.getCounter(function(count){
       console.log('count: ' + count);
