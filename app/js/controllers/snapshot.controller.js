@@ -44,9 +44,20 @@
 
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
-      vm.rescueDogsLength = (_.size(dogs));
+    vm.rescueDogsLength = (_.size(dogs));
     vm.rescueStartIndex = 5;
     vm.rescueEndIndex = 5;
+
+    vm.open = function(amazon,animalPic){
+      if(amazon){
+        console.log('amazon: ' + amazon);
+      } else if(animalPic) {
+      console.log('animalPic: ',animalPic);
+      } else {
+        console.log('images/default-dog.png');
+      }
+    }
+
 
     vm.prevRescueDogButton = function(){
        return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);

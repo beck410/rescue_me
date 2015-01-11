@@ -27,7 +27,7 @@
       <ul>
         <li class="col-md-1"><div class="prev" ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()"></div></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
-          <img class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+        <img ng-click="snapshot.open(dog.amazonImg,dog.animalPictures[0].urlSecureFullsize)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
         <li class="col-md-1"><div class="next" ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()"></div></li>
