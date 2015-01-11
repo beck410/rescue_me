@@ -13,7 +13,7 @@
       <ul>
         <li class="col-md-2"><div class="prev" ng-hide="snapshot.prevPotentialDogButton()" ng-click=snapshot.prevPotentialDogs()></div></li>
         <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | limitTo: snapshot.potentialEndIndex | limitTo: -(snapshot.potentialStartIndex)">
-          <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+          <img class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
         <li class="col-md-2"><div class="next" ng-hide="snapshot.nextPotentialDogButton()" ng-click="snapshot.nextPotentialDogs()"></div></li>
@@ -27,7 +27,7 @@
       <ul>
         <li class="col-md-1"><div class="prev" ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()"></div></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
-          <img class="dog-thumbnail" ng-src="{{dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+          <img class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
         <li class="col-md-1"><div class="next" ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()"></div></li>

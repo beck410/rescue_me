@@ -1,11 +1,13 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope){
+
+
     var vm = this;
     rescuedDogsCounter.getCounter(function(count){
       console.log('count: ' + count);
-      vm.dogsRescued = count
+      vm.dogsRescued = count;
     })
 
     rescueDetailsFactory.getDetails(function(details){
