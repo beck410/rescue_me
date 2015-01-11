@@ -32,7 +32,7 @@
     var completeRescueDog = completeDogDetails.fillEmptyDetails(rescueDog)
     vm.dog = completeRescueDog;
     vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
-    
+
     if(vm.dog.animalPictures){
       dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){
         vm.dog.fullSizeImages = images;
@@ -61,6 +61,7 @@
         };
       })
     };
+    vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
   });
 
   vm.editDogDetails = function(){
@@ -82,7 +83,6 @@
       if(vm.files){
         uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
           var amazonLinks = [fileLink];
-          console.log('called')
           var linkID = dog.name + '/amazonImg';
           editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
             console.log('link added to fb: ' + fileLink);
