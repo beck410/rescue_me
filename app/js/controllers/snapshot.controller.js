@@ -56,17 +56,23 @@
           templateUrl:'views/largeDogPic.html',
           controller: 'snapshotModalsCtrl',
           controllerAs: 'modal',
-          size: 'large',
+          size: 'lg',
           scope: $scope,
           backdrop: false,
           windowTemplateUrl: 'views/window.html',
           resolve: {
             img: function(){
-              return 'images/default-dog.png'
+              if(amazon){
+                return amazon[0];
+              } else if(animalPic){
+                return animalPic;
+              } else {
+                return 'images/default-dog.png';
+              }
             }
           }
-        })
-      }
+        });
+      };
 
       vm.prevRescueDogButton = function(){
          return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
