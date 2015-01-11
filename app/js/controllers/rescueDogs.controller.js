@@ -67,7 +67,7 @@
     $location.path('/rescue-dogs/' + id + '/edit');
   };
 })
-.controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location,rescuedDogsCounter){
+.controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location,rescuedDogsCounter,$rootScope,$scope,uploadImage,editDogFactory){
   var vm = this;
   var id = $routeParams.id;
   vm.dogGroup = 'potential-dogs';
@@ -78,9 +78,30 @@
   });
 
   vm.submitDogDetails = function(){
-    moveDogFactory.addDogToList('rescueDogs','potentialDogs',id,vm.dog,function(){
-      rescuedDogsCounter.updateCounter();
-      $location.path('/rescue-dogs/');
+     moveDogFactory.addDogToList('rescueDogs','potentialDogs',id,vm.dog,function(dog){
+      if(vm.files){
+        uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
+          var amazonLinks = [fileLink];
+          console.log('called')
+          var linkID = dog.name + '/amazonImg';
+          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+            console.log('link added to fb: ' + fileLink);
+            rescuedDogsCounter.updateCounter();
+            $location.path('rescue-dogs/');
+          });
+        });
+      } else {
+        rescuedDogsCounter.updateCounter();
+        $location.path('/rescue-dogs/');
+       }
+    });
+  };
+
+  vm.fileSelected = function(event){
+    uploadImage.setThumbnail(vm.files[0],function(fileName,base64){
+      vm.fileName = fileName;
+      vm.files[0].dataUrl = base64;
+      $scope.$apply();
     });
   };
 })

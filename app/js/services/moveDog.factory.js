@@ -5,7 +5,7 @@
 
     function addDogToList(newDogDB,oldDogDB,dogID,dog,cb){
       _postDog(newDogDB,dog,cb);
-      _deleteDog(oldDogDB,dogID,dog,cb);
+      _deleteDog(oldDogDB,dogID,dog);
     }
 
     function _postDog(newDogDB,dog,cb){
@@ -25,7 +25,6 @@
       var url = requestURL.url(oldDogDB,dogID);
       $http.delete(url)
       .success(function(){
-        cb(dog);
       })
       .error(function(err){
         console.log('delete dog error: ' + err);
