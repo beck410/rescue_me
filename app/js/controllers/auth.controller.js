@@ -6,10 +6,7 @@
 
     vm.login= function(){
       loginFactory.login(vm.email, vm.password, function(){
-        $timeout(function(){
-          $location.path('/snapshot');
-          $scope.$apply();
-        });
+        console.log('finished logging in');
       });
     };
 
