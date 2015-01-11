@@ -249,6 +249,14 @@ li {
 .snapshot-potential-dogs {
   text-align: center; }
 
+.modal-dog-img {
+  text-align: center;
+  margin: 0 auto; }
+
+.modal-dog-img img {
+  max-width: 700px;
+  padding: 40px; }
+
 .snapshot-rescue-dogs {
   margin: 15px;
   text-align: center; }
