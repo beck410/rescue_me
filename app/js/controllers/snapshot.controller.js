@@ -17,26 +17,29 @@
     //POTENTIAL DOGS
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.potentialDogsArray = objToArrayFactory.objToArray(dogs);
+      vm.currentPotentialDogPage = 0;
+      vm.potentialDogPageSize = 2;
 
-      // vm.potentialDogsLength = (_.size(dogs));
-      // vm.potentialStartIndex = 2;
-      // vm.potentialEndIndex = 2;
+      vm.hidePotentialPrevArrow = function(){
+        return vm.currentPotentialDogPage === 0 ? true : false;
+      };
 
-      // vm.prevPotentialDogButton = function(){
-      //   return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2);
-      // };
+      vm.hidePotentialNextArrow =function(){
+        return vm.currentPotentialDogPage >= vm.potentialDogsArray.length/vm.potentialDogPageSize-1 ? true : false;
+      };
 
-      // vm.nextPotentialDogButton = function(){
-      //  return slideshowFactory.nextDogButton(vm.potentialEndIndex,vm.potentialDogsLength);
-      // };
+      vm.nextPotentialDogs = function(){
+        vm.currentPotentialDogPage += 1;
+      };
 
-      // vm.nextPotentialDogs = function(){
-      //   vm.potentialEndIndex += 2;
-      // };
+      vm.prevPotentialDogs = function(){
+        vm.currentPotentialDogPage -= 1;
+      };
 
-      // vm.prevPotentialDogs = function(){
-      //   vm.potentialEndIndex -= 2;
-      // };
+      vm.editSnapshot = function(){
+        $location.path('snapshot/edit');
+      }
+
     });
 
     //RESCUE DOGS
