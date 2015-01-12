@@ -48,11 +48,13 @@
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
 
-      vm.open = function(amazon,animalPic,index){
+      vm.open = function(index){
+        if(vm.currentRescueDogPage > 0){
+          index += 5 * vm.currentRescueDogPage;
+        }
+
         console.log(index);
 
-        vm.modalRescueImg = animalPic;
-        console.log(animalPic);
         var modalInstance = $modal.open({
           templateUrl:'views/largeDogPic.html',
           controller: 'snapshotModalsCtrl',
@@ -62,14 +64,8 @@
           backdrop: false,
           windowTemplateUrl: 'views/window.html',
           resolve: {
-            img: function(){
-              if(amazon){
-                return amazon[0];
-              } else if(animalPic){
-                return animalPic;
-              } else {
-                return 'images/default-dog.png';
-              }
+            dog: function(){
+              return vm.rescueDogsArray[index];
             }
           }
         });
@@ -110,9 +106,10 @@
       });
     };
   })
-  .controller('snapshotModalsCtrl',function($modalInstance,img){
+  .controller('snapshotModalsCtrl',function($modalInstance,dog){
     var vm = this;
-    vm.img = img;
+    vm.dog = dog;
+    console.log('dog',dog)
 
     vm.cancel = function() {
       $modalInstance.dismiss('cancel');

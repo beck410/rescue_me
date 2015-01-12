@@ -27,7 +27,7 @@
       <ul>
         <li class="col-md-1"><div class="prev" ng-hide="snapshot.hidePrevArrow()" ng-click="snapshot.prevRescueDogs()"></div></li>
         <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | pagination: snapshot.currentRescueDogPage * snapshot.rescueDogPageSize | limitTo: snapshot.rescueDogPageSize">
-        <img ng-click="snapshot.open(dog.amazonImg,dog.animalPictures[0].urlSecureFullsize,$index)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}" />
+        <img ng-click="snapshot.open($index)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}" />
           <p>{{dog.animalName}}</p>
         </li>
         <li class="col-md-1"><div class="next" ng-hide="snapshot.hideNextArrow()" ng-click="snapshot.nextRescueDogs()"></div></li>

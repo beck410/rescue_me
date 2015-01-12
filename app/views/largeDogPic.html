@@ -1,4 +1,4 @@
 <section class="modal-dog-img">
-  <img ng-src="{{modal.img}}" />
+  <img ng-src="{{modal.dog.amazonImg[0] || modal.dog.animalPictures[0].urlSecureFullsize}} || 'images/default-dog.png'}}" />
   <p ng-click="modal.cancel()">Close</p>
 </section>
