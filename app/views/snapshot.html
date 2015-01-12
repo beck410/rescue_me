@@ -25,12 +25,12 @@
   <div class="snapshot-rescue-dogs">
     <h3>Dogs Available For Adoption: <span>{{snapshot.rescueDogsLength}}</span></h3>
       <ul>
-        <li class="col-md-1"><div class="prev" ng-hide="snapshot.prevRescueDogButton()" ng-click="snapshot.prevRescueDogs()"></div></li>
-        <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | limitTo: snapshot.rescueEndIndex | limitTo: -(snapshot.rescueStartIndex)">
-        <img ng-click="snapshot.open(dog.amazonImg,dog.animalPictures[0].urlSecureFullsize)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+        <li class="col-md-1"><div class="prev" ng-hide="snapshot.hidePrevArrow()" ng-click="snapshot.prevRescueDogs()"></div></li>
+        <li class="col-md-2" ng-repeat="dog in snapshot.rescueDogsArray | pagination: snapshot.currentRescueDogPage * snapshot.rescueDogPageSize | limitTo: snapshot.rescueDogPageSize">
+        <img ng-click="snapshot.open(dog.amazonImg,dog.animalPictures[0].urlSecureFullsize,$index)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}" />
           <p>{{dog.animalName}}</p>
         </li>
-        <li class="col-md-1"><div class="next" ng-hide="snapshot.nextRescueDogButton()" ng-click="snapshot.nextRescueDogs()"></div></li>
+        <li class="col-md-1"><div class="next" ng-hide="snapshot.hideNextArrow()" ng-click="snapshot.nextRescueDogs()"></div></li>
       </ul>
     </div>
 </section>

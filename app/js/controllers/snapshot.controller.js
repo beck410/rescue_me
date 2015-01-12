@@ -6,7 +6,6 @@
 
     var vm = this;
     rescuedDogsCounter.getCounter(function(count){
-      console.log('count: ' + count);
       vm.dogsRescued = count;
     })
 
@@ -19,39 +18,38 @@
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.potentialDogsArray = objToArrayFactory.objToArray(dogs);
 
-      vm.potentialDogsLength = (_.size(dogs));
-      vm.potentialStartIndex = 2;
-      vm.potentialEndIndex = 2;
+      // vm.potentialDogsLength = (_.size(dogs));
+      // vm.potentialStartIndex = 2;
+      // vm.potentialEndIndex = 2;
 
-      vm.prevPotentialDogButton = function(){
-        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2);
-      };
+      // vm.prevPotentialDogButton = function(){
+      //   return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2);
+      // };
 
-      vm.nextPotentialDogButton = function(){
-       return slideshowFactory.nextDogButton(vm.potentialEndIndex,vm.potentialDogsLength);
-      };
+      // vm.nextPotentialDogButton = function(){
+      //  return slideshowFactory.nextDogButton(vm.potentialEndIndex,vm.potentialDogsLength);
+      // };
 
-      vm.nextPotentialDogs = function(){
-        vm.potentialEndIndex += 2;
-      };
+      // vm.nextPotentialDogs = function(){
+      //   vm.potentialEndIndex += 2;
+      // };
 
-      vm.prevPotentialDogs = function(){
-        vm.potentialEndIndex -= 2;
-      };
+      // vm.prevPotentialDogs = function(){
+      //   vm.potentialEndIndex -= 2;
+      // };
     });
 
     //RESCUE DOGS
-
+    vm.currentRescueDogPage = 0;
+    vm.rescueDogPageSize = 5;
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
-      vm.rescueDogsLength = (_.size(dogs));
-      vm.rescueStartIndex = 5;
-      vm.rescueEndIndex = 5;
 
-      vm.open = function(amazon,animalPic){
+      vm.open = function(amazon,animalPic,index){
+        console.log(index);
 
         vm.modalRescueImg = animalPic;
-        console.log(animalPic)
+        console.log(animalPic);
         var modalInstance = $modal.open({
           templateUrl:'views/largeDogPic.html',
           controller: 'snapshotModalsCtrl',
@@ -74,20 +72,20 @@
         });
       };
 
-      vm.prevRescueDogButton = function(){
-         return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
+      vm.hidePrevArrow = function(){
+         return vm.currentRescueDogPage === 0 ? true : false;
       };
 
-      vm.nextRescueDogButton =function(){
-        return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
+      vm.hideNextArrow =function(){
+        return vm.currentRescueDogPage >= vm.rescueDogsArray.length/vm.rescueDogPageSize-1 ? true : false;
       };
 
       vm.nextRescueDogs = function(){
-        vm.rescueEndIndex += 5;
+        vm.currentRescueDogPage += 1;
       };
 
       vm.prevRescueDogs = function(){
-        vm.rescueEndIndex -= 5;
+        vm.currentRescueDogPage -= 1;
       };
 
       vm.editSnapshot = function(){
