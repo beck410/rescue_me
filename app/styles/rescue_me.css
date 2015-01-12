@@ -253,8 +253,17 @@ li {
   text-align: center;
   margin: 0 auto; }
 
+.modal-close-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px; }
+
+.modal-dog-header {
+  text-align: center;
+  margin: 10px 0; }
+
 .modal-dog-img img {
-  max-width: 700px;
+  max-width: 400px;
   padding: 40px; }
 
 .snapshot-rescue-dogs {

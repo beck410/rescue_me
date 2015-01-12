@@ -1,4 +1,11 @@
-<section class="modal-dog-img">
-  <img ng-src="{{modal.dog.amazonImg[0] || modal.dog.animalPictures[0].urlSecureFullsize}} || 'images/default-dog.png'}}" />
-  <p ng-click="modal.cancel()">Close</p>
+<div class="modal-close-btn" ng-click="modal.cancel()">Close</div>
+<h2 class="modal-dog-header">{{modal.dog.animalName}}</h2>
+<section class="row">
+  <div class="modal-dog-img col-md-6">
+    <img ng-src="{{modal.dog.amazonImg[0] || modal.dog.animalPictures[0].urlSecureFullsize || 'images/default-dog.png'}}" />
+  </div>
+  <div class="modal-dog-info col-md-6">
+    <p>{{modal.dog.animalBreed}}</p>
+  </div>
+
 </section>
