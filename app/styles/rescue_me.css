@@ -264,7 +264,10 @@ li {
 
 .modal-dog-img img {
   max-width: 400px;
-  padding: 40px; }
+  padding: 20px; }
+
+.modal-dog-info {
+  padding: 20px; }
 
 .snapshot-rescue-dogs {
   margin: 15px;

@@ -13,7 +13,7 @@
       <ul>
         <li class="col-md-2"><div class="prev" ng-hide="snapshot.hidePotentialPrevArrow()" ng-click=snapshot.prevPotentialDogs()></div></li>
         <li class="col-md-4" ng-repeat="dog in snapshot.potentialDogsArray | pagination: snapshot.currentPotentialDogPage * snapshot.potentialDogPageSize | limitTo: snapshot.potentialDogPageSize">
-          <img class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
+          <img ng-click="snapshot.potentialOpen($index)" class="dog-thumbnail" ng-src="{{dog.amazonImg[0] || dog.animalThumbnailUrl || 'images/default-dog.png'}}"</li>
           <p>{{dog.animalName}}</p>
         </li>
         <li class="col-md-2"><div class="next" ng-hide="snapshot.hidePotentialNextArrow()" ng-click="snapshot.nextPotentialDogs()"></div></li>

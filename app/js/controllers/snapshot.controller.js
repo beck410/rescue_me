@@ -20,6 +20,29 @@
       vm.currentPotentialDogPage = 0;
       vm.potentialDogPageSize = 2;
 
+        vm.potentialOpen = function(index){
+          if(vm.currentpotentialDogPage > 0){
+            index += 5 * vm.currentRescueDogPage;
+          }
+
+          var modalInstance = $modal.open({
+            templateUrl:'views/largeDogPic.html',
+            controller: 'snapshotModalsCtrl',
+            controllerAs: 'modal',
+            size: 'lg',
+            scope: $scope,
+            backdrop: false,
+            windowTemplateUrl: 'views/window.html',
+            resolve: {
+              dog: function(){
+                return vm.potentialDogsArray[index];
+              }
+            }
+          });
+        };
+
+
+
       vm.hidePotentialPrevArrow = function(){
         return vm.currentPotentialDogPage === 0 ? true : false;
       };
@@ -47,6 +70,7 @@
     vm.rescueDogPageSize = 5;
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
+      console.log(vm.rescueDogsArray);
 
       vm.open = function(index){
         if(vm.currentRescueDogPage > 0){
