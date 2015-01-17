@@ -1,20 +1,21 @@
-<nav class='nav-main'>
+<nav class='nav-main' ng-controller="mainMenuController as menu">
+  
   <li>
     <a class="btn btn-primary" ng-show="user" href="/#/">About</a>
   </li>
   <li>
-    <a class="btn btn-primary" ng-show="user" href="/#/snapshot">Snapshot</a>
+  <a class="btn btn-primary" ng-show="user" href="/#/{{menu.rescueName}}/snapshot">Snapshot</a>
   </li>
   <li>
-    <a class="btn btn-primary" ng-show="user"href="/#/find-dogs">Find Shelter Dogs</a>
+  <a class="btn btn-primary" ng-show="user"href="/#/{{menu.rescueName}}/find-dogs">Find Shelter Dogs</a>
   </li>
   <li>
-    <a class="btn btn-primary" ng-show="user" href="/#/potential-dogs">Potential Dogs</a>
+  <a class="btn btn-primary" ng-show="user" href="/#/{{menu.rescueName}}/potential-dogs">Potential Dogs</a>
   </li>
   <li>
-    <a class="btn btn-primary" ng-show="user"href="/#/rescue-dogs">Rescue Dogs</a>
+  <a class="btn btn-primary" ng-show="user"href="/#/{{menu.rescueName}}/rescue-dogs">Rescue Dogs</a>
   </li>
   <li>
-    <a class="btn btn-warning" ng-show="user" href="/#/logout">Logout</a>
+  <a class="btn btn-warning" ng-show="user" href="/#/{{menu.rescueName}}}logout">Logout</a>
   </li>
 </nav>

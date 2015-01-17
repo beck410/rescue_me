@@ -20,12 +20,8 @@
       });
     }
 
-    // function _getAuthToken(){
-    //   var url = FIREBASE_URL + 
-    // }
-
     function _addRescueDetails(rescue,cb){
-      var url = FIREBASE_URL + 'rescues/' + rescue.userName + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
+      var url = FIREBASE_URL + 'users/' + $rootScope.user.uid + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
       console.log(url);
       $http.put(url,rescue)
       .success(function(){

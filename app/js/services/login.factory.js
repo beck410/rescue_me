@@ -1,11 +1,13 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
+  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL){
     var ref= new Firebase(FIREBASE_URL);
     $rootScope.user = ref.getAuth();
 
     function login(email,password,rescueName,mainCB){
+      $rootScope.rescueName = rescueName;
+      console.log(rescueName)
       ref.authWithPassword({
         email: email,
         password: password,
@@ -128,7 +130,7 @@
     }
 
     function _postDogsToFirebase(cb,dogs,rescueName){
-      var url = requestURL.url('shelterDogs',rescueName);
+      var url = FIREBASE_URL + 'users/' + $rootScope.user.uid + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
 
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
