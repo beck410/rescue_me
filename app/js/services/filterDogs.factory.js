@@ -211,7 +211,5 @@
         console.log('firebase filterDogs error: ' + err);
       });
     }
-
-
   });
 })();

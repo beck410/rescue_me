@@ -1,27 +1,31 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('registerFactory',function(loginFactory,requestURL,FIREBASE_URL,$http){
+  .factory('registerFactory',function(loginFactory,requestURL,FIREBASE_URL,$http,$rootScope){
     var ref = new Firebase(FIREBASE_URL);
 
     function register(user,cb){
       ref.createUser({
         email: user.email,
         password: user.password
-      },function(error,authData){
+      },function(error){
         if(error === null){
-          console.log('user created successfully', authData);
-          loginFactory.login(user.email, user.password, function(){
-            _addRescueDetails(user,authData.uid,cb);
-          });
+          loginFactory.login(user.email,user.password,user.userName,function(){
+            console.log($rootScope.users);
+            _addRescueDetails(user,cb);
+          }) ;         
         } else{
           console.log('Error creating user: ' + error);
         }
       });
     }
 
-    function _addRescueDetails(rescue,id,cb){
-      var url = requestURL.url('rescueDetails');
+    // function _getAuthToken(){
+    //   var url = FIREBASE_URL + 
+    // }
+
+    function _addRescueDetails(rescue,cb){
+      var url = FIREBASE_URL + 'rescues/' + rescue.userName + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
       console.log(url);
       $http.put(url,rescue)
       .success(function(){

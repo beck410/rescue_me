@@ -1,13 +1,15 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope,$routeParams){
 
 
     var vm = this;
+    var rescueName = $routeParams.rescueName;
+
     rescuedDogsCounter.getCounter(function(count){
       vm.dogsRescued = count;
-    })
+    });
 
     rescueDetailsFactory.getDetails(function(details){
       var completeDetails = completeDogDetails.fillEmptyDetails(details);
@@ -60,8 +62,8 @@
       };
 
       vm.editSnapshot = function(){
-        $location.path('snapshot/edit');
-      }
+        $location.path(rescueName + 'snapshot/edit');
+      };
 
     });
 
@@ -112,12 +114,13 @@
       };
 
       vm.editSnapshot = function(){
-        $location.path('snapshot/edit');
-      }
+        $location.path(rescueName + 'snapshot/edit');
+      };
     });
   })
-  .controller('editRescueController',function($location,rescueDetailsFactory){
+  .controller('editRescueController',function($location,rescueDetailsFactory,$routeParams){
     var vm = this;
+    var rescueName = $routeParams.rescueName;
     vm.header = 'Change Rescue Details';
 
     rescueDetailsFactory.getDetails(function(details){
@@ -126,17 +129,17 @@
 
     vm.addDetails = function(){
       rescueDetailsFactory.editDetails(vm.user,function(){
-        $location.path('/snapshot');
+        $location.path(rescueName + '/snapshot');
       });
     };
   })
   .controller('snapshotModalsCtrl',function($modalInstance,dog){
     var vm = this;
     vm.dog = dog;
-    console.log('dog',dog)
+    console.log('dog',dog);
 
     vm.cancel = function() {
       $modalInstance.dismiss('cancel');
     };
-  })
+  });
 })();

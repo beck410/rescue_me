@@ -5,8 +5,12 @@
   <input class="form-control" type="email" ng-model="details.user.email" required>
 </div>
 <div class="form-group" ng-show="details.registration">
-  <label>Password</label>
-          console.log('called')
+  <label>Username</label>
+  <input class="form-control" type="input" ng-model="details.user.userName" required>
+</div>
+
+<div class="form-group" ng-show="details.registration">
+  <label>Password</label> 
   <input class="form-control" type="password" ng-model="details.user.password" required>
 </div>
 <section>

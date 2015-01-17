@@ -249,6 +249,9 @@ li {
 .snapshot-potential-dogs {
   text-align: center; }
 
+.modal-content {
+  background: #BEE8D0; }
+
 .modal-dog-img {
   text-align: center;
   margin: 0 auto; }

@@ -6,7 +6,6 @@
 
     vm.login= function(){
       loginFactory.login(vm.email, vm.password, function(){
-        console.log('finished logging in')
       });
     };
 
@@ -15,18 +14,19 @@
     logoutFactory.logout(function(){
       $location.path('/');
       $scope.$apply();
-    })
+    });
   })
-  .controller('registerController', function($scope,$location,registerFactory,$timeout){
+  .controller('registerController', function($scope,$location,registerFactory,$timeout,$routeParams){
     var vm = this;
     vm.registration = true;
-    vm.header = 'Register'
+    vm.header = 'Register';
+    var rescueName = $routeParams.rescueName;
 
     vm.addDetails = function(){
       console.log(vm.user);
       registerFactory.register(vm.user,function(){
         $timeout(function(){
-          $location.path('/snapshot');
+          $location.path(rescueName + '/snapshot');
           $scope.$apply();
         });
       });
