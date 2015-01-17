@@ -1,0 +1,19 @@
+<div class="modal-close-btn" ng-click="modal.cancel()">Close</div>
+<h2 class="modal-dog-header">{{modal.dog.animalName}}</h2>
+<section class="row">
+  <div class="modal-dog-img col-md-6">
+    <img ng-src="{{modal.dog.amazonImg[0] || modal.dog.animalPictures[0].urlSecureFullsize || 'images/default-dog.png'}}" />
+  </div>
+  <div class="modal-dog-info col-md-6">
+    <p><strong>Breed: </strong>{{modal.dog.animalBreed}}</p>
+    <p><strong>Sex: </strong>{{modal.dog.animalAltered}}</p>
+    <p><strong>Spayed: </strong>{{modal.dog.animalAltered}}</p>
+    <p><strong>Vaccinated(UTD): </strong>{{modal.dog.animalUpTodate}}</p>
+    <p><strong>Weight: </strong>{{modal.dog.animalSizeCurrent}}</p>
+    <p><strong>Foster Name: </strong>{{modal.dog.fosterName}}</p>
+    <p><strong>Foster Email: </strong>{{modal.dog.fosterEmail}}</p>
+    <p><strong>Weight: </strong>{{modal.dog.animalSizeCurrent}}</p>
+    <p><strong>Summary: </strong>{{modal.dog.animalSummary}}</p>
+  </div>
+
+</section>

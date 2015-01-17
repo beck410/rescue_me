@@ -15,8 +15,8 @@
           key: numID + '/' + fileName,
           acl: 'public-read',
           awsaccesskeyid: 'AKIAIMC5Y5S4NKCKEMVQ',
-          policy: "eyJleHBpcmF0aW9uIjoiMjAyMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJyZXNjdWVtZWltYWdlcyJ9LHsiYWNsIjogInB1YmxpYy1yZWFkIn0sWyJzdGFydHMtd2l0aCIsIiRDb250ZW50LVR5cGUiLCIiXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIiJdXX0=",
-        signature: "oiRkj3Tri/V5D6WSJ0kJ6B4evSQ="
+          policy: 'eyJleHBpcmF0aW9uIjoiMjAyMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJyZXNjdWVtZWltYWdlcyJ9LHsiYWNsIjogInB1YmxpYy1yZWFkIn0sWyJzdGFydHMtd2l0aCIsIiRDb250ZW50LVR5cGUiLCIiXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsIiJdXX0=',
+        signature: 'oiRkj3Tri/V5D6WSJ0kJ6B4evSQ='
         },
         file: file
       })
@@ -26,14 +26,14 @@
       })
       .error(function(err){
         console.log('upload to S3 error: ' + err);
-      })
+      });
     }
 
   function setThumbnail(file,cb){
     _imageToBase64(file,function(base64){
       var fileName = file.name;
-      cb(fileName,base64)
-    })
+      cb(fileName,base64);
+    });
   }
 
   function _imageToBase64(file,cb){
@@ -42,7 +42,7 @@
       fr.readAsDataURL(file);
       fr.onload = function(e){
         cb(e.target.result);
-      }
+      };
     }
   }
 

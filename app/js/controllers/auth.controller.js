@@ -6,7 +6,7 @@
 
     vm.login= function(){
       loginFactory.login(vm.email, vm.password, function(){
-        console.log('finished logging in');
+        console.log('finished logging in')
       });
     };
 

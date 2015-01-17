@@ -1,12 +1,11 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope){
 
 
     var vm = this;
     rescuedDogsCounter.getCounter(function(count){
-      console.log('count: ' + count);
       vm.dogsRescued = count;
     })
 
@@ -18,55 +17,103 @@
     //POTENTIAL DOGS
     dogListFactory.getDogList('potentialDogs',function(dogs){
       vm.potentialDogsArray = objToArrayFactory.objToArray(dogs);
+      vm.currentPotentialDogPage = 0;
+      vm.potentialDogPageSize = 2;
 
-      vm.potentialDogsLength = (_.size(dogs));
-      vm.potentialStartIndex = 2;
-      vm.potentialEndIndex = 2;
+        vm.potentialOpen = function(index){
+          if(vm.currentpotentialDogPage > 0){
+            index += 5 * vm.currentRescueDogPage;
+          }
 
-      vm.prevPotentialDogButton = function(){
-        return slideshowFactory.prevDogButton(vm.potentialEndIndex, 2);
+          var modalInstance = $modal.open({
+            templateUrl:'views/largeDogPic.html',
+            controller: 'snapshotModalsCtrl',
+            controllerAs: 'modal',
+            size: 'lg',
+            scope: $scope,
+            backdrop: false,
+            windowTemplateUrl: 'views/window.html',
+            resolve: {
+              dog: function(){
+                return vm.potentialDogsArray[index];
+              }
+            }
+          });
+        };
+
+
+
+      vm.hidePotentialPrevArrow = function(){
+        return vm.currentPotentialDogPage === 0 ? true : false;
       };
 
-      vm.nextPotentialDogButton = function(){
-       return slideshowFactory.nextDogButton(vm.potentialEndIndex,vm.potentialDogsLength);
+      vm.hidePotentialNextArrow =function(){
+        return vm.currentPotentialDogPage >= vm.potentialDogsArray.length/vm.potentialDogPageSize-1 ? true : false;
       };
 
       vm.nextPotentialDogs = function(){
-        vm.potentialEndIndex += 2;
+        vm.currentPotentialDogPage += 1;
       };
 
       vm.prevPotentialDogs = function(){
-        vm.potentialEndIndex -= 2;
+        vm.currentPotentialDogPage -= 1;
       };
+
+      vm.editSnapshot = function(){
+        $location.path('snapshot/edit');
+      }
+
     });
 
     //RESCUE DOGS
-
+    vm.currentRescueDogPage = 0;
+    vm.rescueDogPageSize = 5;
     dogListFactory.getDogList('rescueDogs',function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
-      vm.rescueDogsLength = (_.size(dogs));
-    vm.rescueStartIndex = 5;
-    vm.rescueEndIndex = 5;
+      console.log(vm.rescueDogsArray);
 
-    vm.prevRescueDogButton = function(){
-       return slideshowFactory.prevDogButton(vm.rescueEndIndex, 5);
-    };
+      vm.open = function(index){
+        if(vm.currentRescueDogPage > 0){
+          index += 5 * vm.currentRescueDogPage;
+        }
 
-    vm.nextRescueDogButton =function(){
-      return slideshowFactory.nextDogButton(vm.rescueEndIndex,vm.rescueDogsLength);
-    };
+        console.log(index);
 
-    vm.nextRescueDogs = function(){
-      vm.rescueEndIndex += 5;
-    };
+        var modalInstance = $modal.open({
+          templateUrl:'views/largeDogPic.html',
+          controller: 'snapshotModalsCtrl',
+          controllerAs: 'modal',
+          size: 'lg',
+          scope: $scope,
+          backdrop: false,
+          windowTemplateUrl: 'views/window.html',
+          resolve: {
+            dog: function(){
+              return vm.rescueDogsArray[index];
+            }
+          }
+        });
+      };
 
-    vm.prevRescueDogs = function(){
-      vm.rescueEndIndex -= 5;
-    };
+      vm.hidePrevArrow = function(){
+         return vm.currentRescueDogPage === 0 ? true : false;
+      };
 
-    vm.editSnapshot = function(){
-      $location.path('snapshot/edit');
-    }
+      vm.hideNextArrow =function(){
+        return vm.currentRescueDogPage >= vm.rescueDogsArray.length/vm.rescueDogPageSize-1 ? true : false;
+      };
+
+      vm.nextRescueDogs = function(){
+        vm.currentRescueDogPage += 1;
+      };
+
+      vm.prevRescueDogs = function(){
+        vm.currentRescueDogPage -= 1;
+      };
+
+      vm.editSnapshot = function(){
+        $location.path('snapshot/edit');
+      }
     });
   })
   .controller('editRescueController',function($location,rescueDetailsFactory){
@@ -82,5 +129,14 @@
         $location.path('/snapshot');
       });
     };
-  });
+  })
+  .controller('snapshotModalsCtrl',function($modalInstance,dog){
+    var vm = this;
+    vm.dog = dog;
+    console.log('dog',dog)
+
+    vm.cancel = function() {
+      $modalInstance.dismiss('cancel');
+    };
+  })
 })();
