@@ -115,26 +115,25 @@
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
 
-  dogDetailsFactory.getDogDetails('rescueDogs',id,function(dogDetails){
+  dogDetailsFactory.getDogDetails('rescueDogs',vm.rescueName,id,function(dogDetails){
     vm.dog = dogDetails;
   });
 
   vm.submitDogDetails = function(){
-    editDogFactory.editDog('rescueDogs',id,vm.dog,function(){
+    editDogFactory.editDog('rescueDogs',vm.rescueName,id,vm.dog,function(){
       if(vm.files){
         uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
           var amazonLinks = [fileLink];
           console.log(id);
           var linkID = id + '/amazonImg';
-          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+          editDogFactory.editDog('rescueDogs',vm.rescueName,linkID,amazonLinks,function(){
             console.log('link added to fb: ' + fileLink);
             rescuedDogsCounter.updateCounter();
-            $location.path(vm.rescueName + 'rescue-dogs/');
+            $location.path(vm.rescueName + '/rescue-dogs/');
           });
         });
       } else {
-        rescuedDogsCounter.updateCounter();
-        $location.path(vm.rescueName + 'rescue-dogs/');
+        $location.path(vm.rescueName + '/rescue-dogs/');
       }
     });
   };
