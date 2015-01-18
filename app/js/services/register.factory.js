@@ -24,10 +24,10 @@
 
     function _addRescueDetails(details,url,cb){
       $http.put(url,details)
-      .success(function(){
+      .success(function(details){
         console.log('Rescue details added');
         if(cb){
-          cb();
+          cb(details.userName);
         }
       })
       .error(function(err){

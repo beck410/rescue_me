@@ -1,12 +1,18 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('loginController', function($scope, $location,$timeout,loginFactory,$routeParams){
+  .controller('loginController', function($scope, $rootScope, $location,$timeout,loginFactory,$routeParams,rescueName){
     var vm = this;
-    var rescueName = $routeParams.rescueName;
+    
+    if($rootScope.user){
+      rescueName.getRescueName(function(details){
+        console.log(details.userName);
+        vm.rescueName = details.userName
+      })
+    }
 
     vm.login = function(){
-      loginFactory.login(vm.email, vm.password, rescueName, function(){
+      loginFactory.login(vm.email, vm.password, vm.rescueName, function(){
     console.log('login finished');
       });
     };
@@ -22,11 +28,10 @@
     var vm = this;
     vm.registration = true;
     vm.header = 'Register';
-    var rescueName = $routeParams.rescueName;
 
     vm.addDetails = function(){
       console.log(vm.user);
-      registerFactory.register(vm.user,function(){
+      registerFactory.register(vm.user,function(rescueName){
         $timeout(function(){
           $location.path(rescueName + '/snapshot');
           $scope.$apply();
