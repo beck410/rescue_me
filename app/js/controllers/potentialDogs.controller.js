@@ -8,9 +8,9 @@
     vm.nextDogGroup = 'Rescue';
     vm.configButtons = true;
     vm.newDogLink = '/#/potential-dogs/add';
-    var rescueName = $routeParams.rescueName;
+    vm.rescueName = $routeParams.rescueName;
 
-    dogListFactory.getDogList('potentialDogs',function(dogs){
+    dogListFactory.getDogList('potentialDogs',vm.rescueName,function(dogs){
       vm.dogs = dogs;
     });
 
