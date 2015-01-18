@@ -21,7 +21,7 @@
     };
 
     vm.addToNextList = function(potentialID){
-        $location.path(rescueName + '/rescue-dogs/' + potentialID + '/move');
+        $location.path(vm.rescueName + '/rescue-dogs/' + potentialID + '/move');
     };
   })
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails,slideshowFactory,$sanitize){
@@ -71,28 +71,27 @@
   .controller('movePotentialDog',function(US_STATES,moveDogFactory,dogDetailsFactory,$routeParams,$location,editDogFactory,$rootScope,$scope,uploadImage){
     var vm = this;
     var id = $routeParams.id;
-    var rescueName = $routeParams.rescueName;
+    vm.rescueName = $routeParams.rescueName;
     vm.dogGroup = 'rescue-dogs';
     vm.potentialDog = true;
     vm.states = US_STATES;
-
-    dogDetailsFactory.getDogDetails('shelterDogs',rescueName,id,function(dogDetails){
+    dogDetailsFactory.getDogDetails('shelterDogs',vm.rescueName,id,function(dogDetails){
       vm.dog = dogDetails;
     });
 
     vm.submitDogDetails = function(){
-      moveDogFactory.addDogToList('potentialDogs', rescueName,'shelterDogs',id,vm.dog,function(dog){
+      moveDogFactory.addDogToList('potentialDogs', vm.rescueName,'shelterDogs',id,vm.dog,function(dog){
         if(vm.files){
           uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
             var amazonLinks = [fileLink];
             var linkID = dog.name + '/amazonImg';
-            editDogFactory.editDog('potentialDogs',rescueName,linkID,amazonLinks,function(){
+            editDogFactory.editDog('potentialDogs',vm.rescueName,linkID,amazonLinks,function(){
               console.log('link added to fb: ' + fileLink);
-              $location.path(rescueName + '/potential-dogs/');
+              $location.path(vm.rescueName + '/potential-dogs/');
             });
           });
         } else {
-          $location.path(rescueName + '/potential-dogs/');
+          $location.path(vm.rescueName + '/potential-dogs/');
         }
       });
     };

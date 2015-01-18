@@ -2,8 +2,8 @@
   'use strict';
   angular.module('rescue_me')
   .controller('rescueDogsController',function(removeDogFactory,dogListFactory,$location,$routeParams){
-    var vm = this;
-    var rescueName = $routeParams.rescueName;
+    var vm =  this;
+    vm.rescueName = $routeParams.rescueName;
     vm.dogGroup = 'rescue-dogs';
     vm.dogHeader = 'Rescue Dogs';
     vm.configButtons = true;
@@ -19,13 +19,13 @@
     };
 
     vm.addNewDog = function(){
-      $location.path(rescueName + '/rescue-dogs/add');
+      $location.path(vm.rescueName + '/rescue-dogs/add');
     };
   })
 .controller('showRescueController', function(dogDetailsFactory, $routeParams,$location,completeDogDetails,slideshowFactory,$sanitize){
-  var vm = this;
+  var vm =  this;
   var id = $routeParams.id;
-  var rescueName = $routeParams.rescueName;
+  vm.rescueName = $routeParams.rescueName;
   vm.ownNotes = true;
   vm.foster = true;
 
@@ -66,35 +66,35 @@
   });
 
   vm.editDogDetails = function(){
-    $location.path(rescueName + '/rescue-dogs/' + id + '/edit');
+    $location.path(vm.rescueName + '/rescue-dogs/' + id + '/edit');
   };
 })
 .controller('moveRescueDog',function(moveDogFactory, dogDetailsFactory,$routeParams,$location,rescuedDogsCounter,$rootScope,$scope,uploadImage,editDogFactory){
-  var vm = this;
+  var vm =  this;
   var id = $routeParams.id;
-  var rescueName = $routeParams.rescueName;
+  vm.rescueName = $routeParams.rescueName;
   vm.dogGroup = 'potential-dogs';
   vm.rescueDog = true;
 
-  dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
+  dogDetailsFactory.getDogDetails('potentialDogs',vm.rescueName,id,function(dogDetails){
     vm.dog = dogDetails;
   });
 
   vm.submitDogDetails = function(){
-     moveDogFactory.addDogToList('rescueDogs','potentialDogs',id,vm.dog,function(dog){
+     moveDogFactory.addDogToList('rescueDogs',vm.rescueName,'potentialDogs',id,vm.dog,function(dog){
       if(vm.files){
         uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
           var amazonLinks = [fileLink];
           var linkID = dog.name + '/amazonImg';
-          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+          editDogFactory.editDog('rescueDogs',vm.rescueName,linkID,amazonLinks,function(){
             console.log('link added to fb: ' + fileLink);
             rescuedDogsCounter.updateCounter();
-            $location.path(rescueName + 'rescue-dogs/');
+            $location.path(vm.rescueName + 'rescue-dogs/');
           });
         });
       } else {
         rescuedDogsCounter.updateCounter();
-        $location.path(rescueName + '/rescue-dogs/');
+        $location.path(vm.rescueName + '/rescue-dogs/');
        }
     });
   };
@@ -108,9 +108,9 @@
   };
 })
 .controller('editRescueDog',function(editDogFactory,dogDetailsFactory,$routeParams,$location,uploadImage,$scope,$rootScope,rescuedDogsCounter){
-  var vm = this;
+  var vm =  this;
   var id = $routeParams.id;
-  var rescueName = $routeParams.rescueName;
+  vm.rescueName = $routeParams.rescueName;
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
 
@@ -128,12 +128,12 @@
           editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
             console.log('link added to fb: ' + fileLink);
             rescuedDogsCounter.updateCounter();
-            $location.path(rescueName + 'rescue-dogs/');
+            $location.path(vm.rescueName + 'rescue-dogs/');
           });
         });
       } else {
         rescuedDogsCounter.updateCounter();
-        $location.path(rescueName + 'rescue-dogs/');
+        $location.path(vm.rescueName + 'rescue-dogs/');
       }
     });
   };
@@ -147,8 +147,8 @@
   };
 })
 .controller('addRescueDog',function(rescuedDogsCounter,editDogFactory,addNewDogFactory,$location,$scope,$upload,$routeParams,$rootScope,uploadImage){
-  var vm = this;
-  var rescueName = $routeParams.rescueName;
+  var vm =  this;
+  vm.rescueName = $routeParams.rescueName;
   vm.dogGroup = 'rescue-dogs';
   vm.rescueDog = true;
 
@@ -164,7 +164,7 @@
             vm.dogs = vm.dogs || {};
             vm.dogs[dog.name] = vm.dog;
             vm.dog = {};
-            $location.path(rescueName + '/rescue-dogs');
+            $location.path(vm.rescueName + '/rescue-dogs');
           });
         });
       } else {
@@ -172,7 +172,7 @@
         vm.dogs = vm.dogs || {};
         vm.dogs[dog.name] = vm.dog;
         vm.dog = {};
-        $location.path(rescueName + '/rescue-dogs');
+        $location.path(vm.rescueName + '/rescue-dogs');
       }
     });
   };

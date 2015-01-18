@@ -5,6 +5,7 @@
 
     function getDogDetails(dogDB,rescueName,id,cb){
       var url = requestURL.url(dogDB,rescueName,id);
+      debugger;
       $http.get(url)
       .success(function(dog){
         cb(dog);
