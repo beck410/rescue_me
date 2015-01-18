@@ -27,11 +27,11 @@
   .controller('showPotentialDogController', function(dogDetailsFactory, $routeParams,$location, completeDogDetails,slideshowFactory,$sanitize){
     var vm = this;
     var dog = $routeParams.id;
-    var rescueName = $routeParams.rescueName;
+    vm.rescueName = $routeParams.rescueName;
     vm.shelter = true;
     vm.ownNotes = true;
 
-    dogDetailsFactory.getDogDetails('potentialDogs',dog,function(potentialDog){
+    dogDetailsFactory.getDogDetails('potentialDogs',vm.rescueName,dog,function(potentialDog){
       var completePotentialDog = completeDogDetails.fillEmptyDetails(potentialDog);
       vm.dog = completePotentialDog;
       if(vm.dog.animalPictures){
