@@ -10,7 +10,7 @@
         cb(dog);
       })
       .error(function(err){
-        console.log('get shelter dog error: ' + err);
+        console.log('get shelter dog error: ',err);
       });
     }
 
@@ -18,7 +18,7 @@
       var fullImageArray = [];
       imageArray.forEach(function(image){
         fullImageArray.push(image.urlSecureThumbnail);
-      })
+      });
 
       cb(fullImageArray);
     }
@@ -27,7 +27,7 @@
       var thumbnailArray = [];
       imageArray.forEach(function(image){
         thumbnailArray.push(image.urlSecureThumbnail);
-      })
+      });
       cb(thumbnailArray);
     }
 

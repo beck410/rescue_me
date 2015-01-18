@@ -3,12 +3,12 @@
   angular.module('rescue_me')
   .factory('editDogFactory',function(requestURL,FIREBASE_URL,$http){
 
-    function editDog(dogDB,id,dog,cb){
-      _postDog(dogDB,id,dog,cb);
+    function editDog(dogDB,rescueName,id,dog,cb){
+      _postDog(dogDB,rescueName,id,dog,cb);
     }
 
-    function _postDog(newDogDB,id,dog,cb){
-      var url = requestURL.url(newDogDB,id);
+    function _postDog(newDogDB,rescueName,id,dog,cb){
+      var url = requestURL.url(newDogDB,rescueName,id);
       console.log(url);
       console.log(typeof dog)
       $http.put(url,dog)

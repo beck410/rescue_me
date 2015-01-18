@@ -76,24 +76,22 @@
     vm.potentialDog = true;
     vm.states = US_STATES;
 
-    dogDetailsFactory.getDogDetails('shelterDogs',id,function(dogDetails){
+    dogDetailsFactory.getDogDetails('shelterDogs',rescueName,id,function(dogDetails){
       vm.dog = dogDetails;
     });
 
     vm.submitDogDetails = function(){
-      moveDogFactory.addDogToList('potentialDogs','shelterDogs',id,vm.dog,function(dog){
+      moveDogFactory.addDogToList('potentialDogs', rescueName,'shelterDogs',id,vm.dog,function(dog){
         if(vm.files){
           uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
             var amazonLinks = [fileLink];
-            console.log('called')
             var linkID = dog.name + '/amazonImg';
-            editDogFactory.editDog('potentialDogs',linkID,amazonLinks,function(){
+            editDogFactory.editDog('potentialDogs',rescueName,linkID,amazonLinks,function(){
               console.log('link added to fb: ' + fileLink);
               $location.path(rescueName + '/potential-dogs/');
             });
           });
         } else {
-          rescuedDogsCounter.updateCounter();
           $location.path(rescueName + '/potential-dogs/');
         }
       });

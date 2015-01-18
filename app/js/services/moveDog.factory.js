@@ -3,13 +3,13 @@
   angular.module('rescue_me')
   .factory('moveDogFactory',function(requestURL,FIREBASE_URL,$http){
 
-    function addDogToList(newDogDB,oldDogDB,dogID,dog,cb){
-      _postDog(newDogDB,dog,cb);
-      _deleteDog(oldDogDB,dogID,dog);
+    function addDogToList(newDogDB,rescueName,oldDogDB,dogID,dog,cb){
+      _postDog(newDogDB,rescueName,dog,cb);
+      _deleteDog(oldDogDB,rescueName,dogID);
     }
 
-    function _postDog(newDogDB,dog,cb){
-      var url = requestURL.url(newDogDB);
+    function _postDog(newDogDB,rescueName,dog,cb){
+      var url = requestURL.url(newDogDB,rescueName);
       $http.post(url,dog)
         .success(function(dog){
           if(cb){
@@ -21,8 +21,8 @@
         });
     }
 
-    function _deleteDog(oldDogDB,dogID,dog,cb){
-      var url = requestURL.url(oldDogDB,dogID);
+    function _deleteDog(oldDogDB,rescueName,dogID){
+      var url = requestURL.url(oldDogDB,rescueName,dogID);
       $http.delete(url)
       .success(function(){
       })
