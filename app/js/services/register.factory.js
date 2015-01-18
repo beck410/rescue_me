@@ -1,32 +1,34 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('registerFactory',function(loginFactory,requestURL,FIREBASE_URL,$http){
+  .factory('registerFactory',function(loginFactory,requestURL,FIREBASE_URL,$http,$rootScope){
     var ref = new Firebase(FIREBASE_URL);
-
+    
     function register(user,cb){
       ref.createUser({
         email: user.email,
         password: user.password
-      },function(error,authData){
+      },function(error){
         if(error === null){
-          console.log('user created successfully', authData);
-          loginFactory.login(user.email, user.password, function(){
-            _addRescueDetails(user,authData.uid,cb);
-          });
+          loginFactory.login(user.email,user.password,user.userName,function(){
+            var userURL = FIREBASE_URL + 'users/' + $rootScope.user.uid + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
+            var rescueURL = FIREBASE_URL + 'rescueOrgs/' + $rootScope.rescueName + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
+            _addRescueDetails(user,userURL);
+            _addRescueDetails(user,rescueURL,cb);
+          }) ;         
         } else{
           console.log('Error creating user: ' + error);
         }
       });
     }
 
-    function _addRescueDetails(rescue,id,cb){
-      var url = requestURL.url('rescueDetails');
-      console.log(url);
-      $http.put(url,rescue)
-      .success(function(){
+    function _addRescueDetails(details,url,cb){
+      $http.put(url,details)
+      .success(function(details){
         console.log('Rescue details added');
-        cb();
+        if(cb){
+          cb(details.userName);
+        }
       })
       .error(function(err){
         console.log('adding rescue details error: ' + err);

@@ -1,10 +1,11 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('rescueDetailsFactory', function(requestURL,$http,FIREBASE_URL){
+  .factory('rescueDetailsFactory', function(requestURL,$http,FIREBASE_URL,$routeParams){
+    var rescueName = $routeParams.rescueName;
 
     function getDetails(cb){
-      var url = requestURL.url('rescueDetails');
+      var url = requestURL.url('rescueDetails',rescueName);
       $http.get(url)
       .success(function(details){
         cb(details);
@@ -14,13 +15,13 @@
       });
     }
 
-    function editDetails(details,cb){
-      var url = requestURL.url('rescueDetails');
+    function editDetails(details,rescueName,cb){
+      var url = requestURL.url('rescueDetails',rescueName);
       $http.put(url,details)
       .success(function(){
         cb();
       })
-      .error(function(){
+      .error(function(err){
         console.log(err);
       });
     }

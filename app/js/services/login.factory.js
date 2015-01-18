@@ -1,11 +1,13 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL, $location){
+  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL){
     var ref= new Firebase(FIREBASE_URL);
     $rootScope.user = ref.getAuth();
 
-    function login(email,password,mainCB){
+    function login(email,password,rescueName,mainCB){
+      $rootScope.rescueName = rescueName;
+      console.log(rescueName)
       ref.authWithPassword({
         email: email,
         password: password,
@@ -17,9 +19,9 @@
           _getShelterDogs(mainCB,function(mainCB,dogs){
             _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
               _addContactInfo(mainCB,dogs,orgs,function(mainCB){
-                _postDogsToFirebase(mainCB,dogs);
-              })
-            })
+                _postDogsToFirebase(mainCB,dogs,rescueName);
+              });
+            });
           });
        } else {
           console.log('Error creating user:' + error);
@@ -127,8 +129,9 @@
       cb(mainCB,dogs);
     }
 
-    function _postDogsToFirebase(cb,dogs){
-      var url = requestURL.url('shelterDogs');
+    function _postDogsToFirebase(cb,dogs,rescueName){
+      var url = FIREBASE_URL + 'rescueOrgs/' + rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
+
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
       .success(function(){

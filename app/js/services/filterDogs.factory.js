@@ -1,7 +1,7 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('filterDogsFactory',function($http,requestURL){
+  .factory('filterDogsFactory',function($http,requestURL,$rootScope){
 
     function addKeyFilters(keys,mainCB){
       var formattedFilters = _formatFilters(keys);
@@ -200,7 +200,8 @@
     }
 
     function _postDogsToFirebase(cb,dogs){
-      var url = requestURL.url('shelterDogs');
+      console.log("un: " + $rootScope.rescueName)
+      var url = requestURL.url('shelterDogs',$rootScope.rescueName);
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
       .success(function(filterDogs){
@@ -211,7 +212,5 @@
         console.log('firebase filterDogs error: ' + err);
       });
     }
-
-
   });
 })();

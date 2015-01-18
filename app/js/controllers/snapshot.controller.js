@@ -1,13 +1,15 @@
-;(function(){
+(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope){
+  .controller('snapshotController',function(rescueDetailsFactory,dogListFactory, completeDogDetails,slideshowFactory,objToArrayFactory,rescuedDogsCounter,$location,$window,$rootScope,$modal,$scope,$routeParams){
 
 
     var vm = this;
+    vm.rescueName = $routeParams.rescueName;
+
     rescuedDogsCounter.getCounter(function(count){
       vm.dogsRescued = count;
-    })
+    });
 
     rescueDetailsFactory.getDetails(function(details){
       var completeDetails = completeDogDetails.fillEmptyDetails(details);
@@ -15,7 +17,7 @@
     });
 
     //POTENTIAL DOGS
-    dogListFactory.getDogList('potentialDogs',function(dogs){
+    dogListFactory.getDogList('potentialDogs',vm.rescueName,function(dogs){
       vm.potentialDogsArray = objToArrayFactory.objToArray(dogs);
       vm.currentPotentialDogPage = 0;
       vm.potentialDogPageSize = 2;
@@ -60,15 +62,15 @@
       };
 
       vm.editSnapshot = function(){
-        $location.path('snapshot/edit');
-      }
+        $location.path(vm.rescueName + '/snapshot/edit');
+      };
 
     });
 
     //RESCUE DOGS
     vm.currentRescueDogPage = 0;
     vm.rescueDogPageSize = 5;
-    dogListFactory.getDogList('rescueDogs',function(dogs){
+    dogListFactory.getDogList('rescueDogs',vm.rescueName,function(dogs){
       vm.rescueDogsArray = objToArrayFactory.objToArray(dogs);
       console.log(vm.rescueDogsArray);
 
@@ -110,14 +112,12 @@
       vm.prevRescueDogs = function(){
         vm.currentRescueDogPage -= 1;
       };
-
-      vm.editSnapshot = function(){
-        $location.path('snapshot/edit');
-      }
     });
+
   })
-  .controller('editRescueController',function($location,rescueDetailsFactory){
+  .controller('editRescueController',function($location,rescueDetailsFactory,$routeParams){
     var vm = this;
+    vm.rescueName = $routeParams.rescueName;
     vm.header = 'Change Rescue Details';
 
     rescueDetailsFactory.getDetails(function(details){
@@ -125,18 +125,18 @@
     });
 
     vm.addDetails = function(){
-      rescueDetailsFactory.editDetails(vm.user,function(){
-        $location.path('/snapshot');
+      rescueDetailsFactory.editDetails(vm.user,vm.rescueName,function(){
+        $location.path(vm.rescueName + '/snapshot');
       });
     };
   })
   .controller('snapshotModalsCtrl',function($modalInstance,dog){
     var vm = this;
     vm.dog = dog;
-    console.log('dog',dog)
+    console.log('dog',dog);
 
     vm.cancel = function() {
       $modalInstance.dismiss('cancel');
     };
-  })
+  });
 })();

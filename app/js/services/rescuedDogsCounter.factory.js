@@ -1,11 +1,13 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('rescuedDogsCounter',function($http,requestURL){
-
-    var _url = requestURL.url('rescuedDogsCounter');
+  .factory('rescuedDogsCounter',function($http,requestURL,$routeParams){
+  var rescueName = $routeParams.rescueName;
+  var _url = requestURL.url('rescuedDogsCounter',rescueName);
+  console.log(_url)
 
     function getCounter(cb){
+      console.log("url: " + _url)
       $http.get(_url)
       .success(function(number){
         cb(number);
@@ -14,8 +16,6 @@
         console.log(err);
       });
     }
-
-
 
     var updateCounter = function(){
       getCounter(function(currentCount){

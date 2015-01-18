@@ -56,7 +56,7 @@
         <span><strong>{{dog.animalName}}</strong></span>
         <span class="breed">{{dog.animalBreed}}</span>
         <span class="state">Location: {{dog.shelterState}}</span>
-        <a ng-href="/#/{{dogList.dogGroup}}/details/{{id}}">More Details</a>
+        <a ng-href="/#/{{dogList.rescueName}}/{{dogList.dogGroup}}/details/{{id}}">More Details</a>
         <button class="btn" ng-show="dogList.nextDogGroup" ng-click="dogList.addToNextList(id,dog)">Add To {{dogList.nextDogGroup}} Dogs</button>
         <button class="btn" ng-show="dogList.configButtons" ng-click="dogList.removeDog(id)">Remove</button>
       </div>
