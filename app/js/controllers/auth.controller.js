@@ -6,14 +6,15 @@
     
     if($rootScope.user){
       rescueName.getRescueName(function(details){
-        console.log(details.userName);
-        vm.rescueName = details.userName
-      })
+        $rootScope.rescueName = details.userName;
+        vm.rescueName = details.userName;
+      });
     }
 
     vm.login = function(){
       loginFactory.login(vm.email, vm.password, vm.rescueName, function(){
     console.log('login finished');
+      $rootScope.rescueName = vm.rescueName;
       });
     };
 
@@ -24,7 +25,7 @@
       $scope.$apply();
     });
   })
-  .controller('registerController', function($scope,$location,registerFactory,$timeout,$routeParams){
+  .controller('registerController', function($scope,$location,registerFactory,$timeout){
     var vm = this;
     vm.registration = true;
     vm.header = 'Register';
