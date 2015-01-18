@@ -7,8 +7,8 @@
     vm.dogHeader = 'Potential Dogs';
     vm.nextDogGroup = 'Rescue';
     vm.configButtons = true;
-    vm.newDogLink = '/#/potential-dogs/add';
     vm.rescueName = $routeParams.rescueName;
+    vm.newDogLink = '/#/' + vm.rescueName + '/potential-dogs/add';
 
     dogListFactory.getDogList('potentialDogs',vm.rescueName,function(dogs){
       vm.dogs = dogs;
@@ -149,12 +149,12 @@
     var rescueName = $routeParams.rescueName;
 
     vm.submitDogDetails = function(){
-      addNewDogFactory.addDog(vm.dog,'potentialDogs',function(dog){
+      addNewDogFactory.addDog(vm.dog,rescueName,'potentialDogs',function(dog){
         if(vm.files){
           uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
             var amazonLinks = [fileLink];
             var linkID = dog.name + '/amazonImg';
-            editDogFactory.editDog('potentialDogs',linkID,amazonLinks,function(){
+            editDogFactory.editDog('potentialDogs',rescueName,linkID,amazonLinks,function(){
               console.log('link added to fb: ' + fileLink);
               vm.dogs = vm.dogs || {};
               vm.dogs[dog.name] = vm.dog;
