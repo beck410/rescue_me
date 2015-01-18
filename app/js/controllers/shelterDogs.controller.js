@@ -4,7 +4,7 @@
   .controller('shelterDogsController',function(moveDogFactory,dogListFactory,$location,filterDogsFactory,$timeout,$routeParams){
 
     var vm = this;
-    var rescueName = $routeParams.rescueName;
+    vm.rescueName = $routeParams.rescueName;
     vm.dogGroup = 'find-dogs';
     vm.dogHeader = 'Find Shelter Dogs';
     vm.nextDogGroup = 'Potential';
@@ -12,12 +12,12 @@
     vm.filterDogsHeader = true;
     vm.apiKeys = {};
 
-    dogListFactory.getDogList('shelterDogs',rescueName,function(shelterDogs){
+    dogListFactory.getDogList('shelterDogs',vm.rescueName,function(shelterDogs){
       vm.dogs = shelterDogs;
     });
 
     vm.addToNextList = function(shelterID){
-      $location.path(rescueName + '/potential-dogs/' + shelterID + '/move');
+      $location.path(vm.rescueName + '/potential-dogs/' + shelterID + '/move');
     };
 
     vm.filteredShelterDogs = function(){
@@ -43,10 +43,10 @@
 .controller('showShelterController', function(dogDetailsFactory,$routeParams,completeDogDetails,$sce,$sanitize,slideshowFactory){
   var vm = this;
   var id = $routeParams.id;
-  var rescueName = $routeParams.rescueName;
+  vm.rescueName = $routeParams.rescueName;
   vm.shelter = true;
 
-  dogDetailsFactory.getDogDetails('shelterDogs',id,function(shelterDog){
+  dogDetailsFactory.getDogDetails('shelterDogs',vm.rescueName,id,function(shelterDog){
     var completeShelterDog = completeDogDetails.fillEmptyDetails(shelterDog);
     vm.dog = completeShelterDog;
     dogDetailsFactory.getFullSizeImages(vm.dog.animalPictures,function(images){

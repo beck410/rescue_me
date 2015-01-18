@@ -3,8 +3,8 @@
   angular.module('rescue_me')
   .factory('dogDetailsFactory',function($http, FIREBASE_URL,requestURL){
 
-    function getDogDetails(dogDB,id,cb){
-      var url = requestURL.url(dogDB,id);
+    function getDogDetails(dogDB,rescueName,id,cb){
+      var url = requestURL.url(dogDB,rescueName,id);
       $http.get(url)
       .success(function(dog){
         cb(dog);
