@@ -3,8 +3,8 @@
   angular.module('rescue_me')
   .factory('removeDogFactory',function(requestURL,$http,FIREBASE_URL){
 
-    function removeDog(dogDB,dog,cb){
-    var url =  requestURL.url(dogDB,dog)
+    function removeDog(dogDB,rescueName,dog,cb){
+    var url =  requestURL.url(dogDB,rescueName,dog)
     $http.delete(url)
       .success(function(){
         cb(dog);

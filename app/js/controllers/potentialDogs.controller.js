@@ -15,7 +15,7 @@
     });
 
     vm.removeDog = function(dog){
-      removeDogFactory.removeDog('potentialDogs',dog,function(potentialDog){
+      removeDogFactory.removeDog('potentialDogs',vm.rescueName,dog,function(potentialDog){
         delete vm.dogs[potentialDog];
       });
     };
