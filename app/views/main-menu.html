@@ -1,7 +1,7 @@
 <nav class='nav-main' ng-controller="mainMenuController as menu">
   
   <li>
-    <a class="btn btn-primary" ng-show="user" href="/#/">About</a>
+    <a class="btn btn-primary" ng-show="user" href="/">About</a>
   </li>
   <li>
   <a class="btn btn-primary" ng-show="user" href="/#/{{menu.rescueName}}/snapshot">Snapshot</a>
@@ -16,6 +16,6 @@
   <a class="btn btn-primary" ng-show="user"href="/#/{{menu.rescueName}}/rescue-dogs">Rescue Dogs</a>
   </li>
   <li>
-  <a class="btn btn-warning" ng-show="user" href="/#/{{menu.rescueName}}}logout">Logout</a>
+  <a class="btn btn-warning" ng-show="user" href="/#/{{menu.rescueName}}/logout">Logout</a>
   </li>
 </nav>

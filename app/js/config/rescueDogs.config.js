@@ -3,31 +3,31 @@
   angular.module('rescue_me')
   .config(function($routeProvider){
     $routeProvider
-    .when(':rescueName/rescue-dogs',{
+    .when('/:rescueName/rescue-dogs',{
       templateUrl: 'views/dog-list.html',
       controller: 'rescueDogsController',
       controllerAs: 'dogList',
       needLogin: true
     })
-    .when(':rescueName/rescue-dogs/details/:id',{
+    .when('/:rescueName/rescue-dogs/details/:id',{
       templateUrl: 'views/dog-details.html',
       controller: 'showRescueController',
       controllerAs: 'dogDetails',
       needLogin: true
     })
-    .when(':rescueName/rescue-dogs/:id/move',{
+    .when('/:rescueName/rescue-dogs/:id/move',{
       templateUrl: 'views/dog-details-form.html',
       controller: 'moveRescueDog',
       controllerAs: 'dogList',
       needLogin: true
     })
-    .when(':rescueName/rescue-dogs/:id/edit',{
+    .when('/:rescueName/rescue-dogs/:id/edit',{
       templateUrl: 'views/dog-details-form.html',
       controller: 'editRescueDog',
       controllerAs: 'dogList',
       needLogin: true
     })
-    .when(':rescueName/rescue-dogs/add',{
+    .when('/:rescueName/rescue-dogs/add',{
       templateUrl: 'views/dog-details-form.html',
       controller: 'addRescueDog',
       controllerAs: 'dogList',

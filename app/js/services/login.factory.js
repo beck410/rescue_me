@@ -130,7 +130,7 @@
     }
 
     function _postDogsToFirebase(cb,dogs,rescueName){
-      var url = FIREBASE_URL + 'users/' + $rootScope.user.uid + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
+      var url = FIREBASE_URL + 'rescueOrgs/' + rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
 
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)

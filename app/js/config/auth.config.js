@@ -13,13 +13,13 @@
       controller: 'loginController',
       controllerAs: 'login'
     })
-    .when('rescueName/logout',{
+    .when('/:rescueName/logout',{
       template: '',
       controller: 'logoutController',
       controllerAs: 'logout',
       needLogin: true
     })
-    .when(':rescueName/changepassword',{
+    .when('/:rescueName/changepassword',{
       templateUrl: 'views/auth/changepassword.html',
       controller: 'changePasswordController',
       controllerAs: 'changepw',

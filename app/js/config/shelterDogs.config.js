@@ -3,13 +3,13 @@
   angular.module('rescue_me')
   .config(function($routeProvider){
     $routeProvider
-    .when(':rescueName/find-dogs',{
+    .when('/:rescueName/find-dogs',{
       templateUrl: 'views/dog-list.html',
       controller: 'shelterDogsController',
       controllerAs: 'dogList',
       needLogin: true
     })
-    .when(':rescueName/find-dogs/details/:id',{
+    .when('/:rescueName/find-dogs/details/:id',{
       templateUrl: 'views/dog-details.html',
       controller: 'showShelterController',
       controllerAs: 'dogDetails',
