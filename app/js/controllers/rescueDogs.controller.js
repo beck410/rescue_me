@@ -153,12 +153,12 @@
   vm.rescueDog = true;
 
   vm.submitDogDetails = function(){
-    addNewDogFactory.addDog(vm.dog,'rescueDogs',function(dog){
+    addNewDogFactory.addDog(vm.dog,vm.rescueName,'rescueDogs',function(dog){
       if(vm.files){
         uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
           var amazonLinks = [fileLink];
           var linkID = dog.name + '/amazonImg';
-          editDogFactory.editDog('rescueDogs',linkID,amazonLinks,function(){
+          editDogFactory.editDog('rescueDogs',vm.rescueName,linkID,amazonLinks,function(){
             console.log('link added to fb: ' + fileLink);
             rescuedDogsCounter.updateCounter();
             vm.dogs = vm.dogs || {};
