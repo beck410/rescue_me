@@ -30,7 +30,7 @@
   vm.ownNotes = true;
   vm.foster = true;
 
-  dogDetailsFactory.getDogDetails('rescueDogs',id,function(rescueDog){
+  dogDetailsFactory.getDogDetails('rescueDogs',vm.rescueName,id,function(rescueDog){
     var completeRescueDog = completeDogDetails.fillEmptyDetails(rescueDog)
     vm.dog = completeRescueDog;
     vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
