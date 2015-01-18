@@ -64,7 +64,7 @@
       vm.dog.sanitizedAnimalDescription = $sanitize(vm.dog.animalDescription);
     });
     vm.editDogDetails = function(){
-      $location.path(rescueName + '/potential-dogs/' + dog + '/edit');
+      $location.path(vm.rescueName + '/potential-dogs/' + dog + '/edit');
     };
 
   })
@@ -108,31 +108,30 @@
   .controller('editPotentialDog',function(US_STATES,editDogFactory,dogDetailsFactory,$routeParams,$location,uploadImage,$scope,$rootScope){
     var vm = this;
     var id = $routeParams.id;
-    var rescueName = $routeParams.rescueName;
+    vm.rescueName = $routeParams.rescueName;
     vm.dogGroup = 'potential-dogs';
     vm.potentialDog = true;
     vm.states = US_STATES;
 
-    dogDetailsFactory.getDogDetails('potentialDogs',id,function(dogDetails){
+    dogDetailsFactory.getDogDetails('potentialDogs',vm.rescueName,id,function(dogDetails){
       vm.dog = dogDetails;
     });
 
     vm.submitDogDetails = function(){
-      editDogFactory.editDog('potentialDogs',id,vm.dog,function(){
+      editDogFactory.editDog('potentialDogs',vm.rescueName,id,vm.dog,function(){
         if(vm.files){
           uploadImage.uploadToS3(vm.files,$rootScope.user.uid,vm.fileName,function(fileLink){
             var amazonLinks = [fileLink];
             console.log(id);
             var linkID = id + '/amazonImg';
 
-            editDogFactory.editDog('potentialDogs',linkID,amazonLinks,function(){
+            editDogFactory.editDog('potentialDogs',vm.rescueName,linkID,amazonLinks,function(){
               console.log('link added to fb: ' + fileLink);
               $location.path(rescueName + '/potential-dogs/');
             });
           });
         } else {
-          rescuedDogsCounter.updateCounter();
-          $location.path(rescueName + '/potential-dogs/');
+          $location.path(vm.rescueName + '/potential-dogs/');
         }
       });
     };
