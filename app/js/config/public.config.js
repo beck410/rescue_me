@@ -6,13 +6,13 @@
     .when('/',{
       templateUrl: 'views/landing.html'
     })
-    .when('/snapshot',{
+    .when('/:rescueName/snapshot',{
       templateUrl: 'views/snapshot.html',
       controller: 'snapshotController',
       controllerAs: 'snapshot',
       smallHeader: true
     })
-    .when('/snapshot/edit',{
+    .when('/:rescueName/snapshot/edit',{
       templateUrl: 'views/auth/register.html',
       controller: 'editRescueController',
       controllerAs: 'details',
