@@ -15,13 +15,13 @@
       });
     }
 
-    function editDetails(details,cb){
-      var url = requestURL.url('rescueDetails');
+    function editDetails(details,rescueName,cb){
+      var url = requestURL.url('rescueDetails',rescueName);
       $http.put(url,details)
       .success(function(){
         cb();
       })
-      .error(function(){
+      .error(function(err){
         console.log(err);
       });
     }
