@@ -8,7 +8,8 @@
     vm.dogHeader = 'Rescue Dogs';
     vm.configButtons = true; 
     vm.newDogLink = '/#/' + vm.rescueName + '/rescue-dogs/add';
-    dogListFactory.getDogList('rescueDogs',function(rescueDogs){
+
+    dogListFactory.getDogList('rescueDogs',vm.rescueName,function(rescueDogs){
       vm.dogs = rescueDogs;
     });
 
