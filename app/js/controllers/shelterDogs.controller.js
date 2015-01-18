@@ -12,7 +12,7 @@
     vm.filterDogsHeader = true;
     vm.apiKeys = {};
 
-    dogListFactory.getDogList('shelterDogs',function(shelterDogs){
+    dogListFactory.getDogList('shelterDogs',rescueName,function(shelterDogs){
       vm.dogs = shelterDogs;
     });
 
