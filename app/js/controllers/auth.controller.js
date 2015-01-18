@@ -1,11 +1,13 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .controller('loginController', function($scope, $location,$timeout,loginFactory){
+  .controller('loginController', function($scope, $location,$timeout,loginFactory,$routeParams){
     var vm = this;
+    var rescueName = $routeParams.rescueName;
 
-    vm.login= function(){
-      loginFactory.login(vm.email, vm.password, function(){
+    vm.login = function(){
+      loginFactory.login(vm.email, vm.password, rescueName, function(){
+    console.log('login finished');
       });
     };
 
