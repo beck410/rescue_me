@@ -12,7 +12,7 @@
         if(error === null){
           loginFactory.login(user.email,user.password,user.userName,function(){
             var userURL = FIREBASE_URL + 'users/' + $rootScope.user.uid + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
-            var rescueURL = FIREBASE_URL + 'rescueOrgs/' + $rootScope.rescueName + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
+            var rescueURL = FIREBASE_URL + 'rescueOrgs/' + user.userName + '/rescueDetails/' + '.json?auth=' + $rootScope.user.token;
             _addRescueDetails(user,userURL);
             _addRescueDetails(user,rescueURL,cb);
           }) ;         

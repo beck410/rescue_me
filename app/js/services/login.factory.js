@@ -5,23 +5,20 @@
     var ref= new Firebase(FIREBASE_URL);
     $rootScope.user = ref.getAuth();
 
-    function login(email,password,mainCB){
+    function login(email,password,rescueName,mainCB){
       ref.authWithPassword({
         email: email,
         password: password,
       }, function(error, authData){
         if(error === null) {
-         
+          $rootScope.rescueName = rescueName;
           console.log('user logged in');
           $rootScope.user = authData;
           ref.child('users').child(authData.uid).child('authData').set(authData);
-          rescueName.getRescueName(function(details){
-            $rootScope.rescueName = details.userName;
             _getShelterDogs(mainCB,function(mainCB,dogs){
               _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
                 _addContactInfo(mainCB,dogs,orgs,function(mainCB){
-                  _postDogsToFirebase(mainCB,dogs,rescueName);
-                });
+                  _postDogsToFirebase(mainCB,dogs);
               });
             });
           });
@@ -132,17 +129,17 @@
     }
 
     function _postDogsToFirebase(cb,dogs){
-      var url = FIREBASE_URL + 'rescueOrgs/' + $rootScope.rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
+        var url = FIREBASE_URL + 'rescueOrgs/' + $rootScope.rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
 
-      var jsonData = angular.toJson(dogs);
-      $http.put(url,jsonData)
-      .success(function(){
-        console.log('shelterDogs pushed to firebase');
-        cb();
-      })
-      .error(function(err){
-        console.log('firebase shelterDogs error: ' + err);
-      });
+        var jsonData = angular.toJson(dogs);
+        $http.put(url,jsonData)
+        .success(function(){
+          console.log('shelterDogs pushed to firebase');
+          cb();
+        })
+        .error(function(err){
+          console.log('firebase shelterDogs error: ' + err);
+        });
     }
 
     return {

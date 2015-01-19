@@ -9,6 +9,7 @@
       
       $http.get(url)
       .success(function(details){
+        $rootScope.rescueName = details.userName;
         cb(details);
       })
       .error(function(err){

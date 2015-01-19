@@ -4,6 +4,7 @@
   .factory('logoutFactory',function($rootScope,FIREBASE_URL){
 
     function logout(cb){
+      console.log('log out called')
       var ref = new Firebase(FIREBASE_URL);
       ref.unauth(function(){
         $rootScope.user = null;
