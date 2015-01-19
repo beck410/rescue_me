@@ -3,18 +3,10 @@
   angular.module('rescue_me')
   .controller('loginController', function($scope, $rootScope, $location,$timeout,loginFactory,$routeParams,rescueName){
     var vm = this;
-    
-    if($rootScope.user){
-      rescueName.getRescueName(function(details){
-        $rootScope.rescueName = details.userName;
-        vm.rescueName = details.userName;
-      });
-    }
 
     vm.login = function(){
-      loginFactory.login(vm.email, vm.password, vm.rescueName, function(){
-    console.log('login finished');
-      $rootScope.rescueName = vm.rescueName;
+      loginFactory.login(vm.email, vm.password, function(){
+        console.log('login finished');
       });
     };
 

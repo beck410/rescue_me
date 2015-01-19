@@ -1,29 +1,31 @@
 ;(function(){
   'use strict';
   angular.module('rescue_me')
-  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL){
+  .factory('loginFactory', function(requestURL,$rootScope,$http,RESCUE_GROUPS_URL, FIREBASE_URL,rescueName){
     var ref= new Firebase(FIREBASE_URL);
     $rootScope.user = ref.getAuth();
 
-    function login(email,password,rescueName,mainCB){
-      $rootScope.rescueName = rescueName;
-      console.log(rescueName)
+    function login(email,password,mainCB){
       ref.authWithPassword({
         email: email,
         password: password,
       }, function(error, authData){
         if(error === null) {
+         
           console.log('user logged in');
           $rootScope.user = authData;
           ref.child('users').child(authData.uid).child('authData').set(authData);
-          _getShelterDogs(mainCB,function(mainCB,dogs){
-            _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
-              _addContactInfo(mainCB,dogs,orgs,function(mainCB){
-                _postDogsToFirebase(mainCB,dogs,rescueName);
+          rescueName.getRescueName(function(details){
+            $rootScope.rescueName = details.userName;
+            _getShelterDogs(mainCB,function(mainCB,dogs){
+              _getShelterOrgs(mainCB,dogs,function(mainCB,dogs,orgs){
+                _addContactInfo(mainCB,dogs,orgs,function(mainCB){
+                  _postDogsToFirebase(mainCB,dogs,rescueName);
+                });
               });
             });
           });
-       } else {
+        } else {
           console.log('Error creating user:' + error);
         }
       });
@@ -41,8 +43,8 @@
           'resultSort':'animalID',
           'fields': [
             'animalID','animalPictures','animalSizeCurrent','animalBreed','animalThumbnailUrl','animalLocation','animalName', 'animalSummary','animalSex','animalKillDate','animalAltered','animalUptodate','animalFence','animalProtective','animalDescription','animalUpdatedDate'           ],
-          'filters':[
-            {
+            'filters':[
+              {
               'fieldName':'animalStatus',
               'operation':'equals',
               'criteria':'Available'
@@ -53,11 +55,11 @@
               'criteria':'Dog'
             },
             {
-            'fieldName':'animalNeedsFoster',
-            'operation':'equal',
-            'criteria': 'yes'
+              'fieldName':'animalNeedsFoster',
+              'operation':'equal',
+              'criteria': 'yes'
             }
-          ]
+            ]
         }
       };
       var encodedKeys = JSON.stringify(keys);
@@ -86,13 +88,13 @@
           'resultOrder' : 'asc',
           'calcFoundRows': 'Yes',
           'fields': [
-          'orgID','orgLocation','orgName', 'orgAddress', 'orgCity','orgPhone','orgEmail','orgWebsiteUrl','orgState'
+            'orgID','orgLocation','orgName', 'orgAddress', 'orgCity','orgPhone','orgEmail','orgWebsiteUrl','orgState'
           ],
           'filters':[
             {
-              'fieldName':'orgID',
-              'operation':'notblank',
-            }
+            'fieldName':'orgID',
+            'operation':'notblank',
+          }
           ]
         }
       };
@@ -129,8 +131,8 @@
       cb(mainCB,dogs);
     }
 
-    function _postDogsToFirebase(cb,dogs,rescueName){
-      var url = FIREBASE_URL + 'rescueOrgs/' + rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
+    function _postDogsToFirebase(cb,dogs){
+      var url = FIREBASE_URL + 'rescueOrgs/' + $rootScope.rescueName + '/shelterDogs' + '.json?auth=' + $rootScope.user.token;
 
       var jsonData = angular.toJson(dogs);
       $http.put(url,jsonData)
