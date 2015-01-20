@@ -8,6 +8,7 @@
       var ref = new Firebase(FIREBASE_URL);
       ref.unauth(function(){
         $rootScope.user = null;
+        $rootScope.rescueName = null;
         console.log('user logged out');
         cb();
       });

@@ -1,7 +1,7 @@
 <form name="loginForm" ng-submit="login.login()" novalidate>
   <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.userName}">
     <label>UserName</label>
-    <input class="form-control" type="password" ng-model="login.userName" required>
+    <input class="form-control" type="text" ng-model="login.userName" required>
   </div>
   <div class="form-group" ng-class="{'has-error':loginForm.$dirty && !login.email}">
     <label>Email</label>

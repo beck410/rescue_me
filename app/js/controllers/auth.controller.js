@@ -5,6 +5,7 @@
     var vm = this;
 
     vm.login = function(){
+      $rootScope.rescueName = vm.userName;
       loginFactory.login(vm.email, vm.password,vm.userName,function(){
         console.log('login finished');
       });

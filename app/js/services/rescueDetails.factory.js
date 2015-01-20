@@ -2,9 +2,8 @@
   'use strict';
   angular.module('rescue_me')
   .factory('rescueDetailsFactory', function(requestURL,$http,FIREBASE_URL,$routeParams){
-    var rescueName = $routeParams.rescueName;
 
-    function getDetails(cb){
+    function getDetails(rescueName,cb){
       var url = requestURL.url('rescueDetails',rescueName);
       $http.get(url)
       .success(function(details){

@@ -11,7 +11,7 @@
       vm.dogsRescued = count;
     });
 
-    rescueDetailsFactory.getDetails(function(details){
+    rescueDetailsFactory.getDetails(vm.rescueName,function(details){
       var completeDetails = completeDogDetails.fillEmptyDetails(details);
       vm.rescueOrg = completeDetails;
     });
@@ -115,7 +115,7 @@
     });
 
   })
-  .controller('editRescueController',function($location,rescueDetailsFactory,$routeParams){
+  .controller('editRescueController',function($location,rescueDetailsFactory,$routeParams,$scope){
     var vm = this;
     vm.rescueName = $routeParams.rescueName;
     vm.header = 'Change Rescue Details';
@@ -127,6 +127,7 @@
     vm.addDetails = function(){
       rescueDetailsFactory.editDetails(vm.user,vm.rescueName,function(){
         $location.path(vm.rescueName + '/snapshot');
+        $scope.apply;
       });
     };
   })
