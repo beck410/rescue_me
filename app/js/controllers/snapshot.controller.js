@@ -23,8 +23,9 @@
       vm.potentialDogPageSize = 2;
 
         vm.potentialOpen = function(index){
-          if(vm.currentpotentialDogPage > 0){
-            index += 5 * vm.currentRescueDogPage;
+          if(vm.currentPotentialDogPage > 0){
+             index += 2 * vm.currentPotentialDogPage;
+             console.log(index);
           }
 
           var modalInstance = $modal.open({
@@ -54,7 +55,7 @@
       };
 
       vm.nextPotentialDogs = function(){
-        vm.currentPotentialDogPage += 1;
+        vm.currentPotentialDogPage += 1; 
       };
 
       vm.prevPotentialDogs = function(){
