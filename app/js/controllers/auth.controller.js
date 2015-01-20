@@ -5,7 +5,7 @@
     var vm = this;
 
     vm.login = function(){
-      loginFactory.login(vm.email, vm.password, function(){
+      loginFactory.login(vm.email, vm.password,vm.userName,function(){
         console.log('login finished');
       });
     };
