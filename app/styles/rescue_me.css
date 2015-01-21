@@ -232,7 +232,7 @@ li {
       background: white;
       border-color: white; }
     .nav-main li a:hover, .nav-main li a:active, .nav-main li a:link {
-      border-radius: none; }
+      border-radius: 0; }
 
 .snapshot-potential-dogs li, .snapshot-rescue-dogs li {
   display: inline-block;
@@ -307,3 +307,10 @@ li {
 .snapshot-support {
   margin: 0 auto;
   text-align: center; }
+
+.landing-wrapper p, .landing-wrapper ul {
+  padding: 0 15px; }
+.landing-wrapper span {
+  font-weight: 700; }
+.landing-wrapper li {
+  padding-bottom: 10px; }
