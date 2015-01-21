@@ -17,6 +17,10 @@
       background: white;
       border-color: white;
     }
+
+    a:hover,a:active,a:link{
+      border-radius: none;
+    }
   }
 }
 

@@ -230,6 +230,8 @@ li {
       color: black;
       background: white;
       border-color: white; }
+    .nav-main li a:hover, .nav-main li a:active, .nav-main li a:link {
+      border-radius: none; }
 
 .snapshot-potential-dogs li, .snapshot-rescue-dogs li {
   display: inline-block;
