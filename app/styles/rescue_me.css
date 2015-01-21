@@ -56,7 +56,8 @@
   height: auto;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
-  margin-left: 55px; }
+  margin-left: 55px;
+  margin-top: -20px; }
   .login-wrapper h3 {
     margin: 0; }
 
