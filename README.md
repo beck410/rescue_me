@@ -19,7 +19,7 @@ The app provides the following the features:
 - [BootStrap](http://getbootstrap.com/)
 - [SASS](http://sass-lang.com/)
 - [Firebase](https://www.firebase.com)
-- - [jQuery](https://jquery.com/)
+- [jQuery](https://jquery.com/)
 
 #API References
 
