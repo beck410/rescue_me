@@ -4,7 +4,7 @@ https://bcd-rescue-me.firebaseapp.com
 
 ##Synopsis
 
-Front-end individual capstone project for [NSS](www.nashvillesoftwareschool.com).
+Front-end individual capstone project for [NSS](www.nashvillesoftwareschool.com) Cohort 7.
 
 An Angular web application that utilizes the RescueGroups API to connect dog rescue organizations with shelters with the purpose to save dogs on death row. [Firebase](https://www.firebase.com/) is used to store each dog resuce organization's details. 
 The app provides the following the features:
