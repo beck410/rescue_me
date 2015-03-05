@@ -1,4 +1,4 @@
-[rescue_me](https://bcd-rescue-me.firebaseapp.com/#/) Web App
+[Rescue Me](https://bcd-rescue-me.firebaseapp.com/#/) Web App
 =========
 https://bcd-rescue-me.firebaseapp.com
 
